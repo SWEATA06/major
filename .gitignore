@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pkl
+
+# Virtual environments
+venv/
+.venv/
+
+# Node / frontend
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# ML artifacts / checkpoints
+*.h5
+*.pt
+
+# Data (keep repo lightweight)
+data/
+*.csv
+
+# OS / editor
+.DS_Store
+Thumbs.db
