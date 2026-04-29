@@ -250,6 +250,18 @@ def timeline(db: Session = Depends(get_db), limit: int = 100):
     metrics = db.query(db_models.MetricsHistory).order_by(db_models.MetricsHistory.id.desc()).limit(limit).all()
     return list(reversed(metrics))
 
+@app.get("/api/predictions/latest")
+def latest_predictions(db: Session = Depends(get_db)):
+    """
+    Lightweight endpoint for real-time charts.
+    Returns the latest simulation outputs in the shape:
+      { "actual": number, "predicted": number, "timestamp": number }
+    """
+    metric = db.query(db_models.MetricsHistory).order_by(db_models.MetricsHistory.id.desc()).first()
+    if not metric:
+        return {"actual": 0.0, "predicted": 0.0, "timestamp": 0}
+    return {"actual": float(metric.actual_cpu), "predicted": float(metric.predicted_cpu), "timestamp": int(metric.timestamp)}
+
 def train_models_background():
     state.is_training = True
     try:

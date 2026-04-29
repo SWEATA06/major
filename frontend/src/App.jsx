@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getStatus, getCurrentMetrics, getTimeline, runSimulationStep, trainModels } from './api';
 import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area, ComposedChart, Bar
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, ComposedChart, Bar
 } from 'recharts';
 import { Play, Activity, Server, AlertTriangle, CheckCircle, ShieldAlert, DollarSign } from 'lucide-react';
+import LivePredictionChart from './LivePredictionChart.jsx';
 
 function App() {
   const [status, setStatus] = useState(null);
@@ -12,16 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [simRunning, setSimRunning] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-    const interval = setInterval(() => {
-      if (simRunning) triggerStep();
-      else fetchData();
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [simRunning]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const s = await getStatus();
       setStatus(s);
@@ -36,9 +28,9 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const triggerStep = async () => {
+  const triggerStep = useCallback(async () => {
     try {
       await runSimulationStep();
       await fetchData();
@@ -46,7 +38,22 @@ function App() {
       console.error("Simulation ended or error", err);
       setSimRunning(false);
     }
-  };
+  }, [fetchData]);
+
+  useEffect(() => {
+    // Schedule the initial load after the effect finishes to avoid sync state updates.
+    const kickoffId = setTimeout(() => {
+      fetchData();
+    }, 0);
+    const interval = setInterval(() => {
+      if (simRunning) triggerStep();
+      else fetchData();
+    }, 2000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(kickoffId);
+    };
+  }, [simRunning, fetchData, triggerStep]);
 
   const handleTrain = async () => {
     try {
@@ -149,22 +156,56 @@ function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-6 text-gray-200">Workload & Instance Tracking</h3>
+              <h3 className="text-xl font-bold mb-6 text-gray-200">Actual vs Predicted CPU Usage</h3>
               <div className="h-80 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <ComposedChart data={timeline} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#30363D" vertical={false} />
-                    <XAxis dataKey="timestamp" tickFormatter={(t) => new Date(t).toLocaleTimeString()} stroke="#6B7280" />
-                    <YAxis yAxisId="left" stroke="#6B7280" domain={[0, 100]} />
+                    <XAxis
+                      dataKey="timestamp"
+                      tickFormatter={(t) => new Date(t).toLocaleTimeString()}
+                      stroke="#6B7280"
+                      label={{ value: 'Time / Index', position: 'insideBottom', offset: -5 }}
+                    />
+                    <YAxis
+                      yAxisId="left"
+                      stroke="#6B7280"
+                      domain={[0, 100]}
+                      label={{ value: 'CPU Usage (%)', angle: -90, position: 'insideLeft' }}
+                    />
                     <YAxis yAxisId="right" orientation="right" stroke="#6B7280" />
                     <Tooltip contentStyle={{ backgroundColor: '#161B22', borderColor: '#30363D', color: '#fff' }} />
                     <Legend />
-                    <Area yAxisId="left" type="monotone" dataKey="actual_cpu" fill="#4F46E5" fillOpacity={0.1} stroke="#4F46E5" strokeWidth={2} name="Actual Load (%)" />
-                    <Line yAxisId="left" type="monotone" strokeDasharray="5 5" dataKey="predicted_cpu" stroke="#F59E0B" strokeWidth={2} name="Predicted Load (%)" />
+                    <Area
+                      yAxisId="left"
+                      type="monotone"
+                      dataKey="actual_cpu"
+                      fill="#4F46E5"
+                      fillOpacity={0.1}
+                      stroke="#4F46E5"
+                      strokeWidth={2}
+                      name="Actual CPU Usage"
+                    />
+                    <Line
+                      yAxisId="left"
+                      type="monotone"
+                      strokeDasharray="5 5"
+                      dataKey="predicted_cpu"
+                      stroke="#F59E0B"
+                      strokeWidth={2}
+                      name="Predicted CPU Usage (TCN + Attention Ensemble)"
+                    />
                     <Bar yAxisId="right" dataKey="instances" fill="#3B82F6" opacity={0.3} name="Instances" barSize={20} />
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>
+
+              <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+                This chart compares the simulator’s <b>actual</b> CPU usage (blue) with the model’s <b>predicted</b> CPU usage (orange).
+                The prediction is produced by the TCN + Attention workload predictor ensemble (5 models).
+                Where the lines overlap, the model is forecasting CPU accurately; wider separation indicates larger prediction error.
+                The bars show the simulated instance count used by the autoscaling logic.
+              </p>
             </div>
 
             <div className="glass-card p-6">
@@ -183,6 +224,10 @@ function App() {
                 </ResponsiveContainer>
               </div>
             </div>
+          </div>
+
+          <div className="glass-card p-6">
+            <LivePredictionChart enabled={true} maxPoints={100} pollIntervalMs={2000} />
           </div>
         </>
       )}
