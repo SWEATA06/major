@@ -79,6 +79,7 @@ def load_predictions_from_models_and_dataset(
     """
     # Import ML stack only if needed.
     import pandas as pd
+    import joblib
 
     from tcn import TCN
     from tensorflow.keras.models import load_model
@@ -108,18 +109,28 @@ def load_predictions_from_models_and_dataset(
     ]
     target_cols = ["future_cpu_usage", "future_request_rate"]
 
-    X, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
+    backend_models_dir = Path(__file__).resolve().parent / "backend" / "models"
+    feature_scaler = joblib.load(backend_models_dir / 'feature_scaler.joblib')
+    target_scaler = joblib.load(backend_models_dir / 'target_scaler.joblib')
+
+    df_scaled = df.copy()
+    df_scaled[feature_cols_tcn] = feature_scaler.transform(df_scaled[feature_cols_tcn])
+
+    X, _ = create_sequences(df_scaled, feature_cols_tcn, target_cols, seq_length=12)
+    _, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
+    
     actual = y[:, 0].astype(float)
     x_steps = np.arange(len(actual), dtype=int)
 
     preds_all_models = []
     for mp in model_paths:
         model = load_model(str(mp))
-        pred = model.predict(X, verbose=0)  # shape (n_points, 2)
-        preds_all_models.append(pred[:, 0].astype(float))
+        pred_scaled = model.predict(X, verbose=0)  # shape (n_points, 2)
+        pred_inv = target_scaler.inverse_transform(pred_scaled)
+        preds_all_models.append(pred_inv[:, 0].astype(float))
 
     preds_all_models = np.array(preds_all_models)  # (num_models, n_points)
-    preds_ensemble_mean = preds_all_models.mean(axis=0)
+    preds_ensemble_mean = np.median(preds_all_models, axis=0)
     return x_steps, actual, preds_all_models, preds_ensemble_mean
 
 

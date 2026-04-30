@@ -5,12 +5,13 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import get_custom_objects
 from tcn import TCN
 
-from src.feature_engineering import preprocess_and_engineer_features, create_sequences
-from src.models.workload_predictor import AttentionLayer
-from src.models.uncertainty_estimator import EnsemblePredictor
-from src.models.failure_predictor import load_xgboost_model
-from src.decision_engine import make_scaling_decision
-from src.simulator import CloudSimulator
+from backend.src.feature_engineering import preprocess_and_engineer_features, create_sequences
+from backend.src.models.workload_predictor import AttentionLayer
+from backend.src.models.uncertainty_estimator import EnsemblePredictor
+from backend.src.models.failure_predictor import load_xgboost_model
+from backend.src.decision_engine import make_scaling_decision
+from backend.src.simulator import CloudSimulator
+import joblib
 
 get_custom_objects().update({'TCN': TCN, 'AttentionLayer': AttentionLayer})
 
@@ -18,14 +19,14 @@ def main():
     print("Loading models...")
     models = []
     for i in range(5):
-        if not os.path.exists(f'models/workload_tcn_model_{i}.h5'):
+        if not os.path.exists(f'backend/models/workload_tcn_model_{i}.h5'):
             print("Error: Models not found. Run train.py first.")
             return
-        m = load_model(f'models/workload_tcn_model_{i}.h5')
+        m = load_model(f'backend/models/workload_tcn_model_{i}.h5')
         models.append(m)
         
     ensemble = EnsemblePredictor(models)
-    fail_model = load_xgboost_model('models/failure_predictor.joblib')
+    fail_model = load_xgboost_model('backend/models/failure_predictor.joblib')
     
     print("Loading test data...")
     df = pd.read_csv('data/final/final_dataset_ready.csv')
@@ -47,7 +48,16 @@ def main():
     ]
     target_cols = ['future_cpu_usage', 'future_request_rate']
     
-    X, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
+    print("Loading scalers...")
+    feature_scaler = joblib.load('backend/models/feature_scaler.joblib')
+    target_scaler = joblib.load('backend/models/target_scaler.joblib')
+    
+    df_scaled = df.copy()
+    df_scaled[feature_cols_tcn] = feature_scaler.transform(df_scaled[feature_cols_tcn])
+    df_scaled[target_cols] = target_scaler.transform(df_scaled[target_cols])
+    
+    X, _ = create_sequences(df_scaled, feature_cols_tcn, target_cols, seq_length=12)
+    _, y_actual = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
     
     simulator = CloudSimulator(initial_instances=5)
     
@@ -55,9 +65,13 @@ def main():
     for i in range(len(X)):
         current_seq = X[i:i+1] # shape (1, 12, features)
         
-        preds_mean, preds_std = ensemble.predict_with_uncertainty(current_seq)
+        preds_mean_scaled, preds_std_scaled = ensemble.predict_with_uncertainty(current_seq)
+        preds_mean = target_scaler.inverse_transform(preds_mean_scaled)
+        
         pred_cpu = preds_mean[0][0]
-        uncertainty = preds_std[0][0]
+        # Approximate uncertainty scaling for CPU
+        cpu_scale = target_scaler.data_max_[0] - target_scaler.data_min_[0]
+        uncertainty = preds_std_scaled[0][0] * cpu_scale
         
         current_xgb_slice = df[feature_cols_xgb].iloc[i + 11].values.reshape(1, -1)
         
@@ -73,7 +87,7 @@ def main():
             current_instances=simulator.current_instances
         )
         
-        actual_cpu = y[i][0]
+        actual_cpu = y_actual[i][0]
         latency = df.iloc[i + 11]['latency']
         
         timestamp = df.iloc[12+i]['timestamp'] if 'timestamp' in df.columns else i
