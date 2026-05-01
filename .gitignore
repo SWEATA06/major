@@ -28,3 +28,4 @@ Thumbs.db
 
 # Local generated plots
 comparison_*.png
+backend/db/*.db

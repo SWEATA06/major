@@ -28,19 +28,38 @@ def main():
     ]
     target_cols = ['future_cpu_usage', 'future_request_rate']
     
-    X, y = create_sequences(df_processed, feature_cols_tcn, target_cols, seq_length=12)
+    print("2.5 Scaling features and targets for TCN...")
+    from sklearn.preprocessing import MinMaxScaler
+    import joblib
+    
+    feature_scaler = MinMaxScaler()
+    target_scaler = MinMaxScaler()
+    
+    df_tcn = df_processed.copy()
+    df_tcn[feature_cols_tcn] = feature_scaler.fit_transform(df_tcn[feature_cols_tcn])
+    df_tcn[target_cols] = target_scaler.fit_transform(df_tcn[target_cols])
+    
+    if not os.path.exists('backend/models'):
+        os.makedirs('backend/models')
+        
+    joblib.dump(feature_scaler, 'backend/models/feature_scaler.joblib')
+    joblib.dump(target_scaler, 'backend/models/target_scaler.joblib')
+    
+    X, y = create_sequences(df_tcn, feature_cols_tcn, target_cols, seq_length=12)
     
     print("4. Training Workload Predictor Ensemble (5 models)...")
     if not os.path.exists('backend/models'):
         os.makedirs('backend/models')
         
     num_models = 5
+    from tensorflow.keras.callbacks import EarlyStopping
+    early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+    
     for i in range(num_models):
         print(f"   Training Model {i+1}/{num_models}...")
         model = build_workload_model(seq_length=12, num_features=len(feature_cols_tcn))
         model.fit(X, y, epochs=5, batch_size=64, validation_split=0.2, verbose=1)
-        # Save using the native Keras format (more robust than legacy HDF5 for custom layers)
-        model.save(f'backend/models/workload_tcn_model_{i}.keras')
+        model.save(f'backend/models/workload_tcn_model_{i}.h5')
         
     print("\n5. Training Failure Predictor (XGBoost)...")
     feature_cols_xgb = [

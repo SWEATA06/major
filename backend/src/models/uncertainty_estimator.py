@@ -20,7 +20,7 @@ class EnsemblePredictor:
         predictions = np.array(predictions)
         
         # predictions shape: (num_models, batch_size, num_targets)
-        mean_preds = np.mean(predictions, axis=0)
+        mean_preds = np.median(predictions, axis=0)
         std_preds = np.std(predictions, axis=0)
         
         return mean_preds, std_preds
