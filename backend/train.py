@@ -39,7 +39,8 @@ def main():
         print(f"   Training Model {i+1}/{num_models}...")
         model = build_workload_model(seq_length=12, num_features=len(feature_cols_tcn))
         model.fit(X, y, epochs=5, batch_size=64, validation_split=0.2, verbose=1)
-        model.save(f'backend/models/workload_tcn_model_{i}.h5')
+        # Save using the native Keras format (more robust than legacy HDF5 for custom layers)
+        model.save(f'backend/models/workload_tcn_model_{i}.keras')
         
     print("\n5. Training Failure Predictor (XGBoost)...")
     feature_cols_xgb = [

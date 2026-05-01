@@ -77,9 +77,13 @@ def load_models():
         if ML_AVAILABLE:
             models = []
             for i in range(5):
-                path = f'backend/models/workload_tcn_model_{i}.h5'
-                if os.path.exists(path):
-                    models.append(load_model(path))
+                # Prefer native Keras format; fall back to legacy HDF5 if needed
+                path_keras = f'backend/models/workload_tcn_model_{i}.keras'
+                path_h5 = f'backend/models/workload_tcn_model_{i}.h5'
+                if os.path.exists(path_keras):
+                    models.append(load_model(path_keras))
+                elif os.path.exists(path_h5):
+                    models.append(load_model(path_h5))
             if len(models) == 5:
                 state.ensemble = EnsemblePredictor(models)
                 state.fail_model = load_xgboost_model('backend/models/failure_predictor.joblib')
@@ -268,10 +272,18 @@ def train_models_background():
         if ML_AVAILABLE:
             import subprocess
             import sys
-            subprocess.run([sys.executable, "-m", "backend.train"], cwd="d:/major_project", check=True)
+            import os
+
+            repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+            train_py = os.path.join(repo_root, "backend", "train.py")
+            env = os.environ.copy()
+            # Ensure project root is on sys.path for imports like `from backend...`
+            env["PYTHONPATH"] = repo_root + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+
+            subprocess.run([sys.executable, train_py], cwd=repo_root, env=env, check=True)
         else:
-            time.sleep(2) # Simulate slight delay for mock
-            
+            time.sleep(2)  # Simulate slight delay for mock
+
         load_models()
         load_data()
     except Exception as e:

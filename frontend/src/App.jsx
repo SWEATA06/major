@@ -12,6 +12,30 @@ function App() {
   const [timeline, setTimeline] = useState([]);
   const [loading, setLoading] = useState(true);
   const [simRunning, setSimRunning] = useState(false);
+  const [staticData, setStaticData] = useState([]);
+
+  // Load static CSV served from public/static_chart_data.csv
+  const loadStaticCsv = useCallback(async () => {
+    try {
+      const res = await fetch('/static_chart_data.csv');
+      const text = await res.text();
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',').map(h => h.trim());
+      const rows = lines.slice(1).map(line => {
+        const parts = line.split(',');
+        const obj = {};
+        headers.forEach((h, i) => {
+          const v = parts[i];
+          // convert numeric-looking fields to numbers
+          obj[h] = isNaN(Number(v)) ? v : Number(v);
+        });
+        return obj;
+      });
+      setStaticData(rows);
+    } catch (e) {
+      console.error('Failed to load static CSV', e);
+    }
+  }, []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -44,6 +68,7 @@ function App() {
     // Schedule the initial load after the effect finishes to avoid sync state updates.
     const kickoffId = setTimeout(() => {
       fetchData();
+      loadStaticCsv();
     }, 0);
     const interval = setInterval(() => {
       if (simRunning) triggerStep();
@@ -154,80 +179,29 @@ function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-6 text-gray-200">Actual vs Predicted CPU Usage</h3>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={timeline} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#30363D" vertical={false} />
-                    <XAxis
-                      dataKey="timestamp"
-                      tickFormatter={(t) => new Date(t).toLocaleTimeString()}
-                      stroke="#6B7280"
-                      label={{ value: 'Time / Index', position: 'insideBottom', offset: -5 }}
-                    />
-                    <YAxis
-                      yAxisId="left"
-                      stroke="#6B7280"
-                      domain={[0, 100]}
-                      label={{ value: 'CPU Usage (%)', angle: -90, position: 'insideLeft' }}
-                    />
-                    <YAxis yAxisId="right" orientation="right" stroke="#6B7280" />
-                    <Tooltip contentStyle={{ backgroundColor: '#161B22', borderColor: '#30363D', color: '#fff' }} />
-                    <Legend />
-                    <Area
-                      yAxisId="left"
-                      type="monotone"
-                      dataKey="actual_cpu"
-                      fill="#4F46E5"
-                      fillOpacity={0.1}
-                      stroke="#4F46E5"
-                      strokeWidth={2}
-                      name="Actual CPU Usage"
-                    />
-                    <Line
-                      yAxisId="left"
-                      type="monotone"
-                      strokeDasharray="5 5"
-                      dataKey="predicted_cpu"
-                      stroke="#F59E0B"
-                      strokeWidth={2}
-                      name="Predicted CPU Usage (TCN + Attention Ensemble)"
-                    />
-                    <Bar yAxisId="right" dataKey="instances" fill="#3B82F6" opacity={0.3} name="Instances" barSize={20} />
-                  </ComposedChart>
-                </ResponsiveContainer>
-              </div>
-
-              <p className="mt-4 text-sm text-gray-400 leading-relaxed">
-                This chart compares the simulator’s <b>actual</b> CPU usage (blue) with the model’s <b>predicted</b> CPU usage (orange).
-                The prediction is produced by the TCN + Attention workload predictor ensemble (5 models).
-                Where the lines overlap, the model is forecasting CPU accurately; wider separation indicates larger prediction error.
-                The bars show the simulated instance count used by the autoscaling logic.
-              </p>
-            </div>
-
-            <div className="glass-card p-6">
-              <h3 className="text-xl font-bold mb-6 text-gray-200">Failure Risk & Uncertainty</h3>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={timeline} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#30363D" vertical={false} />
-                    <XAxis dataKey="timestamp" tickFormatter={(t) => new Date(t).toLocaleTimeString()} stroke="#6B7280" />
-                    <YAxis stroke="#6B7280" />
-                    <Tooltip contentStyle={{ backgroundColor: '#161B22', borderColor: '#30363D', color: '#fff' }} />
-                    <Legend />
-                    <Line type="monotone" dataKey="failure_prob" stroke="#EF4444" strokeWidth={2} name="Failure Risk (0-1)" />
-                    <Line type="monotone" dataKey="uncertainty" stroke="#10B981" strokeWidth={2} name="Prediction Uncertainty" />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
-
           <div className="glass-card p-6">
-            <LivePredictionChart enabled={true} maxPoints={100} pollIntervalMs={2000} />
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-gray-200">Static Actual vs Predicted CPU Usage (From Sheet)</h3>
+              <div className="flex gap-4">
+                <a href="/static_chart_data.csv" download className="text-sm text-primary underline">Download CSV</a>
+                <a href="/static_chart_data.xlsx" download className="text-sm text-primary underline">Download Excel (.xlsx)</a>
+              </div>
+            </div>
+            <div className="h-80 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={staticData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#30363D" vertical={false} />
+                  <XAxis dataKey="timestamp" tickFormatter={(t) => new Date(Number(t)).toLocaleTimeString()} stroke="#6B7280" />
+                  <YAxis yAxisId="left" stroke="#6B7280" domain={[0, 100]} />
+                  <Tooltip contentStyle={{ backgroundColor: '#161B22', borderColor: '#30363D', color: '#fff' }} />
+                  <Legend />
+                  <Line yAxisId="left" type="monotone" dataKey="actual_cpu" stroke="#4F46E5" strokeWidth={2} dot={false} name="Actual CPU" />
+                  <Line yAxisId="left" type="monotone" dataKey="predicted_cpu" stroke="#F59E0B" strokeWidth={2} dot={false} strokeDasharray="5 5" name="Predicted CPU" />
+                  <Bar dataKey="instances" fill="#3B82F6" opacity={0.25} name="Instances" />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="mt-4 text-sm text-gray-400">This chart is static and generated from the provided sheet. Use the download link to open the source in Excel.</p>
           </div>
         </>
       )}
