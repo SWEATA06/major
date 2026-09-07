@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getStatus, getCurrentMetrics, getTimeline, runSimulationStep, trainModels } from './api';
 import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, ComposedChart, Bar
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Bar
 } from 'recharts';
-import { Play, Activity, Server, AlertTriangle, CheckCircle, ShieldAlert, DollarSign } from 'lucide-react';
+import { Play, Activity, Server, AlertTriangle, CheckCircle, ShieldAlert, DollarSign, BarChart2, LayoutDashboard } from 'lucide-react';
 import LivePredictionChart from './LivePredictionChart.jsx';
+import BasePaperComparison from './BasePaperComparison.jsx';
+
 
 function App() {
   const [status, setStatus] = useState(null);
@@ -13,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [simRunning, setSimRunning] = useState(false);
   const [staticData, setStaticData] = useState([]);
+  const [activeTab, setActiveTab] = useState('dashboard');
 
   // Load static CSV served from public/static_chart_data.csv
   const loadStaticCsv = useCallback(async () => {
@@ -126,8 +129,35 @@ function App() {
         </div>
       </header>
 
-      {status?.models_loaded && metrics && (
+      {/* Navigation Tabs */}
+      <div className="flex gap-4 border-b border-border/50 pb-2">
+        <button
+          onClick={() => setActiveTab('dashboard')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all text-sm ${
+            activeTab === 'dashboard'
+              ? 'bg-primary text-white shadow-[0_0_12px_rgba(79,70,229,0.4)]'
+              : 'text-gray-400 hover:text-white hover:bg-card/50'
+          }`}
+        >
+          <LayoutDashboard size={18} /> Live Auto-Scaler Dashboard
+        </button>
+        <button
+          onClick={() => setActiveTab('base-paper')}
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all text-sm ${
+            activeTab === 'base-paper'
+              ? 'bg-primary text-white shadow-[0_0_12px_rgba(79,70,229,0.4)]'
+              : 'text-gray-400 hover:text-white hover:bg-card/50'
+          }`}
+        >
+          <BarChart2 size={18} /> Base Paper Comparison & Graphs
+        </button>
+      </div>
+
+      {activeTab === 'base-paper' && <BasePaperComparison />}
+
+      {activeTab === 'dashboard' && status?.models_loaded && metrics && (
         <>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {/* KPI Cards */}
             <div className="glass-card p-6 flex flex-col justify-between">

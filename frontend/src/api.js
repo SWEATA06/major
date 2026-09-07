@@ -8,3 +8,6 @@ export const getTimeline = () => axios.get(`${API_URL}/timeline`).then(res => re
 export const getLatestPrediction = () => axios.get(`${API_URL}/predictions/latest`).then(res => res.data);
 export const runSimulationStep = () => axios.post(`${API_URL}/scale/run`).then(res => res.data);
 export const trainModels = () => axios.post(`${API_URL}/model/train`).then(res => res.data);
+export const getBasePaperComparison = () => axios.get(`${API_URL}/comparison/base-paper`).then(res => res.data);
+export const runBasePaperComparison = () => axios.post(`${API_URL}/comparison/base-paper/run`).then(res => res.data);
+

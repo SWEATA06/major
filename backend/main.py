@@ -55,7 +55,14 @@ async def lifespan(app: FastAPI):
     # Shutdown
     pass
 
+from fastapi.staticfiles import StaticFiles
+
 app = FastAPI(lifespan=lifespan)
+
+charts_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "charts"))
+if not os.path.exists(charts_dir):
+    os.makedirs(charts_dir, exist_ok=True)
+app.mount("/charts", StaticFiles(directory=charts_dir), name="charts")
 
 app.add_middleware(
     CORSMiddleware,
@@ -64,6 +71,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 def get_db():
     db = database.SessionLocal()
@@ -298,3 +306,34 @@ def train_model(background_tasks: BackgroundTasks):
     
     background_tasks.add_task(train_models_background)
     return {"status": "training started", "message": "Using data/final/final_dataset.csv"}
+
+@app.get("/api/comparison/base-paper")
+def get_base_paper_comparison():
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    metrics_path = os.path.join(repo_root, "frontend", "public", "charts", "base_paper_comparison_metrics.json")
+    if not os.path.exists(metrics_path):
+        metrics_path = os.path.join(repo_root, "data", "charts", "base_paper_comparison_metrics.json")
+    
+    if os.path.exists(metrics_path):
+        import json
+        with open(metrics_path, "r") as f:
+            return json.load(f)
+    raise HTTPException(status_code=404, detail="Comparison metrics not generated yet. Please run train_and_compare_base_paper.py.")
+
+def run_base_paper_comparison_background():
+    try:
+        import subprocess
+        import sys
+        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        script = os.path.join(repo_root, "train_and_compare_base_paper.py")
+        env = os.environ.copy()
+        env["PYTHONPATH"] = repo_root + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+        subprocess.run([sys.executable, script], cwd=repo_root, env=env, check=True)
+    except Exception as e:
+        print(f"Error running base paper comparison: {e}")
+
+@app.post("/api/comparison/base-paper/run")
+def run_base_paper_comparison_endpoint(background_tasks: BackgroundTasks):
+    background_tasks.add_task(run_base_paper_comparison_background)
+    return {"status": "comparison benchmark started in background"}
+
