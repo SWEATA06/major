@@ -31,12 +31,42 @@ except ImportError as e:
 
 database.Base.metadata.create_all(bind=database.engine)
 
+
+def _ensure_energy_columns():
+    """
+    Idempotent lightweight migration: add energy/carbon columns to an existing
+    metrics_history table if they are missing. SQLAlchemy's create_all does not
+    ALTER existing tables, so older databases need these columns added so new
+    inserts don't fail.
+    """
+    from sqlalchemy import text
+    new_columns = {
+        "energy_kwh": "FLOAT DEFAULT 0.0",
+        "carbon_g": "FLOAT DEFAULT 0.0",
+        "carbon_intensity": "FLOAT DEFAULT 0.0",
+    }
+    try:
+        with database.engine.connect() as conn:
+            existing = conn.execute(text("PRAGMA table_info(metrics_history)")).fetchall()
+            existing_cols = {row[1] for row in existing}
+            for col, ddl in new_columns.items():
+                if col not in existing_cols:
+                    conn.execute(text(f"ALTER TABLE metrics_history ADD COLUMN {col} {ddl}"))
+            conn.commit()
+    except Exception as e:
+        print(f"WARNING: energy column migration skipped: {e}")
+
+
+_ensure_energy_columns()
+
 class AppState:
     simulator = CloudSimulator(initial_instances=5)
     drift_detector = DriftDetector(window_size=50, threshold=10.0)
     models_loaded = False
     ensemble = None
     fail_model = None
+    feature_scaler = None
+    target_scaler = None
     data_df = None
     X_seq = None
     y_seq = None
@@ -95,6 +125,22 @@ def load_models():
             if len(models) == 5:
                 state.ensemble = EnsemblePredictor(models)
                 state.fail_model = load_xgboost_model('backend/models/failure_predictor.joblib')
+                try:
+                    import joblib
+                    fs_path = 'backend/models/feature_scaler.joblib'
+                    ts_path = 'backend/models/target_scaler.joblib'
+                    if os.path.exists(fs_path) and os.path.exists(ts_path):
+                        state.feature_scaler = joblib.load(fs_path)
+                        state.target_scaler = joblib.load(ts_path)
+                        print("Scalers loaded successfully")
+                    else:
+                        state.feature_scaler = None
+                        state.target_scaler = None
+                        print("WARNING: Scaler files not found; predictions will use raw scale.")
+                except Exception as se:
+                    state.feature_scaler = None
+                    state.target_scaler = None
+                    print(f"WARNING: Failed to load scalers: {se}")
                 state.models_loaded = True
                 print("Models loaded successfully")
                 return
@@ -135,7 +181,13 @@ def load_data():
                     'hour_of_day', 'day_of_week', 'minute_bucket'
                 ]
                 target_cols = ['future_cpu_usage', 'future_request_rate']
-                X, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
+                if state.feature_scaler is not None and state.target_scaler is not None:
+                    df_scaled = df.copy()
+                    df_scaled[feature_cols_tcn] = state.feature_scaler.transform(df_scaled[feature_cols_tcn])
+                    X, _ = create_sequences(df_scaled, feature_cols_tcn, target_cols, seq_length=12)
+                    _, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
+                else:
+                    X, y = create_sequences(df, feature_cols_tcn, target_cols, seq_length=12)
                 state.X_seq = X
                 state.y_seq = y
                 state.max_steps = len(X)
@@ -146,12 +198,19 @@ def load_data():
         print(f"Error loading data: {e}")
 
 @app.get("/api/system/status")
-def get_status():
+def get_status(db: Session = Depends(get_db)):
+    recent_drift = False
+    try:
+        latest = db.query(db_models.MetricsHistory).order_by(db_models.MetricsHistory.id.desc()).first()
+        if latest is not None:
+            recent_drift = bool(latest.drift_detected)
+    except Exception:
+        recent_drift = False
     return {
         "status": "training" if state.is_training else "online",
         "models_loaded": state.models_loaded,
         "current_instances": state.simulator.current_instances,
-        "recent_drift": False
+        "recent_drift": recent_drift
     }
 
 @app.post("/api/scale/run")
@@ -167,8 +226,14 @@ def trigger_simulation_step(db: Session = Depends(get_db)):
     if ML_AVAILABLE:
         current_seq = state.X_seq[i:i+1]
         preds_mean, preds_std = state.ensemble.predict_with_uncertainty(current_seq)
-        pred_cpu = float(preds_mean[0][0])
-        uncertainty = float(preds_std[0][0])
+        if state.target_scaler is not None:
+            preds_mean_real = state.target_scaler.inverse_transform(preds_mean)
+            pred_cpu = float(preds_mean_real[0][0])
+            cpu_scale = float(state.target_scaler.data_max_[0] - state.target_scaler.data_min_[0])
+            uncertainty = float(preds_std[0][0]) * cpu_scale
+        else:
+            pred_cpu = float(preds_mean[0][0])
+            uncertainty = float(preds_std[0][0])
         
         feature_cols_xgb = [
             'cpu_usage', 'memory_usage', 'disk_io', 'network_usage', 
@@ -201,7 +266,12 @@ def trigger_simulation_step(db: Session = Depends(get_db)):
     state.drift_detector.add_record(actual_cpu, pred_cpu)
     is_drift, drift_value = state.drift_detector.check_drift()
     
-    # Cost logic
+    # Cost logic. budget_used reflects the simulator's real accumulated spend
+    # so the cost-aware tier responds to actual usage instead of a constant.
+    _summary = state.simulator.get_summary()
+    budget_used = float(_summary.get('total_cost', 0.0))
+    from backend.src.energy import carbon_intensity as _carbon_intensity
+    current_carbon = _carbon_intensity(hour)
     action, target_instances, reason = make_scaling_decision(
         predicted_cpu=pred_cpu,
         failure_prob=fail_prob,
@@ -210,9 +280,10 @@ def trigger_simulation_step(db: Session = Depends(get_db)):
         latency=latency,
         queue_length=queue_length,
         cost_per_instance=0.10,
-        budget_used=5.0,
+        budget_used=budget_used,
         daily_budget=10.0,
-        peak_hours=(9 <= hour <= 17)
+        peak_hours=(9 <= hour <= 17),
+        carbon_intensity=current_carbon
     )
     
     record = state.simulator.step(
@@ -223,7 +294,8 @@ def trigger_simulation_step(db: Session = Depends(get_db)):
         uncertainty=uncertainty,
         action=action,
         target_instances=target_instances,
-        latency=latency
+        latency=latency,
+        hour=hour
     )
     
     # Save to DB
@@ -237,6 +309,9 @@ def trigger_simulation_step(db: Session = Depends(get_db)):
         action=action,
         latency=float(record['latency']),
         cost=float(record['cost']),
+        energy_kwh=float(record.get('energy_kwh', 0.0)),
+        carbon_g=float(record.get('carbon_g', 0.0)),
+        carbon_intensity=float(record.get('carbon_intensity', 0.0)),
         drift_detected=is_drift
     )
     db.add(db_metric)
@@ -261,6 +336,30 @@ def current_metrics(db: Session = Depends(get_db)):
 def timeline(db: Session = Depends(get_db), limit: int = 100):
     metrics = db.query(db_models.MetricsHistory).order_by(db_models.MetricsHistory.id.desc()).limit(limit).all()
     return list(reversed(metrics))
+
+@app.get("/api/energy/summary")
+def energy_summary(db: Session = Depends(get_db)):
+    """
+    Aggregated energy and carbon metrics across all recorded simulation steps.
+    Powers the sustainability KPI cards on the dashboard.
+    """
+    from sqlalchemy import func
+    q = db.query(
+        func.coalesce(func.sum(db_models.MetricsHistory.energy_kwh), 0.0),
+        func.coalesce(func.sum(db_models.MetricsHistory.carbon_g), 0.0),
+        func.coalesce(func.avg(db_models.MetricsHistory.carbon_intensity), 0.0),
+        func.coalesce(func.sum(db_models.MetricsHistory.cost), 0.0),
+        func.count(db_models.MetricsHistory.id),
+    ).one()
+    total_energy, total_carbon, avg_intensity, total_cost, steps = q
+    return {
+        "total_energy_kwh": round(float(total_energy), 4),
+        "total_carbon_g": round(float(total_carbon), 2),
+        "total_carbon_kg": round(float(total_carbon) / 1000.0, 4),
+        "avg_carbon_intensity": round(float(avg_intensity), 2),
+        "total_cost": round(float(total_cost), 2),
+        "steps": int(steps),
+    }
 
 @app.get("/api/predictions/latest")
 def latest_predictions(db: Session = Depends(get_db)):

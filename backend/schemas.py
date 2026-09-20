@@ -12,6 +12,9 @@ class MetricOut(BaseModel):
     action: str
     latency: float
     cost: float
+    energy_kwh: float = 0.0
+    carbon_g: float = 0.0
+    carbon_intensity: float = 0.0
     drift_detected: bool
 
     class Config:

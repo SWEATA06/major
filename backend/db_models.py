@@ -14,4 +14,7 @@ class MetricsHistory(Base):
     action = Column(String)
     latency = Column(Float)
     cost = Column(Float)
+    energy_kwh = Column(Float, default=0.0)
+    carbon_g = Column(Float, default=0.0)
+    carbon_intensity = Column(Float, default=0.0)
     drift_detected = Column(Boolean, default=False)

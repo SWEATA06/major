@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getStatus, getCurrentMetrics, getTimeline, runSimulationStep, trainModels } from './api';
+import { getStatus, getCurrentMetrics, getTimeline, runSimulationStep, trainModels, getEnergySummary } from './api';
 import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Bar
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart, Bar, Area, AreaChart
 } from 'recharts';
-import { Play, Activity, Server, AlertTriangle, CheckCircle, ShieldAlert, DollarSign, BarChart2, LayoutDashboard } from 'lucide-react';
+import { Play, Activity, Server, AlertTriangle, CheckCircle, ShieldAlert, DollarSign, BarChart2, LayoutDashboard, Leaf, Zap, Cloud } from 'lucide-react';
 import LivePredictionChart from './LivePredictionChart.jsx';
 import BasePaperComparison from './BasePaperComparison.jsx';
 
@@ -12,6 +12,7 @@ function App() {
   const [status, setStatus] = useState(null);
   const [metrics, setMetrics] = useState(null);
   const [timeline, setTimeline] = useState([]);
+  const [energy, setEnergy] = useState(null);
   const [loading, setLoading] = useState(true);
   const [simRunning, setSimRunning] = useState(false);
   const [staticData, setStaticData] = useState([]);
@@ -49,6 +50,12 @@ function App() {
         setMetrics(m);
         const t = await getTimeline();
         setTimeline(t);
+        try {
+          const e = await getEnergySummary();
+          setEnergy(e);
+        } catch (energyErr) {
+          console.error('Failed to load energy summary', energyErr);
+        }
       }
     } catch (err) {
       console.error(err);
@@ -207,6 +214,73 @@ function App() {
                 {metrics.drift_detected ? 'Model Drift Detected' : 'Optimal Path'}
               </div>
             </div>
+          </div>
+
+          {/* Sustainability / Energy KPI row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="glass-card p-6 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
+              <div className="flex justify-between items-start text-gray-400 mb-2 font-medium">
+                Total Energy
+                <Zap size={20} className="text-yellow-400"/>
+              </div>
+              <div className="text-4xl font-bold">{energy ? energy.total_energy_kwh.toFixed(3) : '0.000'}<span className="text-lg text-gray-400 ml-1">kWh</span></div>
+              <div className="mt-4 text-xs text-gray-400">Across {energy ? energy.steps : 0} intervals</div>
+            </div>
+
+            <div className="glass-card p-6 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
+              <div className="flex justify-between items-start text-gray-400 mb-2 font-medium">
+                Carbon Emitted
+                <Leaf size={20} className="text-green-400"/>
+              </div>
+              <div className="text-4xl font-bold">{energy ? energy.total_carbon_kg.toFixed(3) : '0.000'}<span className="text-lg text-gray-400 ml-1">kg</span></div>
+              <div className="mt-4 text-xs text-gray-400">{energy ? energy.total_carbon_g.toFixed(1) : '0.0'} gCO₂ total</div>
+            </div>
+
+            <div className="glass-card p-6 flex flex-col justify-between relative overflow-hidden">
+              <div className={`absolute top-0 left-0 w-1 h-full ${(metrics.carbon_intensity ?? 0) > 420 ? 'bg-danger' : 'bg-success'}`}></div>
+              <div className="flex justify-between items-start text-gray-400 mb-2 font-medium">
+                Grid Carbon Intensity
+                <Cloud size={20} className={(metrics.carbon_intensity ?? 0) > 420 ? 'text-danger' : 'text-success'}/>
+              </div>
+              <div className="text-4xl font-bold">{(metrics.carbon_intensity ?? 0).toFixed(0)}<span className="text-lg text-gray-400 ml-1">g/kWh</span></div>
+              <div className={`mt-4 text-xs px-2 py-1 rounded inline-flex self-start font-medium ${(metrics.carbon_intensity ?? 0) > 420 ? 'bg-danger/20 text-danger border border-danger/30' : 'bg-success/20 text-success border border-success/30'}`}>
+                {(metrics.carbon_intensity ?? 0) > 420 ? 'Dirty grid — deferring' : 'Clean grid'}
+              </div>
+            </div>
+
+            <div className="glass-card p-6 flex flex-col justify-between">
+              <div className="flex justify-between items-start text-gray-400 mb-2 font-medium">
+                Avg Carbon Intensity
+                <Activity size={20} className="text-emerald-400"/>
+              </div>
+              <div className="text-4xl font-bold">{energy ? energy.avg_carbon_intensity.toFixed(0) : '0'}<span className="text-lg text-gray-400 ml-1">g/kWh</span></div>
+              <div className="mt-4 text-xs text-gray-400">Session average</div>
+            </div>
+          </div>
+
+          {/* Carbon intensity over time */}
+          <div className="glass-card p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Leaf size={20} className="text-green-400" />
+              <h3 className="text-xl font-bold text-gray-200">Carbon Intensity &amp; CPU Over Time</h3>
+            </div>
+            <div className="h-72 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <ComposedChart data={timeline} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#30363D" vertical={false} />
+                  <XAxis dataKey="timestamp" tickFormatter={(t) => new Date(Number(t)).toLocaleTimeString()} stroke="#6B7280" />
+                  <YAxis yAxisId="left" stroke="#6B7280" domain={[0, 100]} label={{ value: 'CPU %', angle: -90, position: 'insideLeft', fill: '#6B7280' }} />
+                  <YAxis yAxisId="right" orientation="right" stroke="#22C55E" label={{ value: 'gCO₂/kWh', angle: 90, position: 'insideRight', fill: '#22C55E' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#161B22', borderColor: '#30363D', color: '#fff' }} />
+                  <Legend />
+                  <Area yAxisId="right" type="monotone" dataKey="carbon_intensity" stroke="#22C55E" fill="#22C55E" fillOpacity={0.15} name="Carbon Intensity" />
+                  <Line yAxisId="left" type="monotone" dataKey="actual_cpu" stroke="#4F46E5" strokeWidth={2} dot={false} name="Actual CPU" />
+                </ComposedChart>
+              </ResponsiveContainer>
+            </div>
+            <p className="mt-4 text-sm text-gray-400">When grid carbon intensity is high (dirty), the scaler defers non-urgent scale-ups and trims idle instances harder — reducing emissions without breaking SLAs.</p>
           </div>
 
           <div className="glass-card p-6">

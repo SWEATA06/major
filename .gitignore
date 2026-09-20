@@ -6,6 +6,7 @@ __pycache__/
 # Virtual environments
 venv/
 .venv/
+venv311/
 
 # Node / frontend
 node_modules/
@@ -21,6 +22,7 @@ node_modules/
 # Data (keep repo lightweight)
 data/
 *.csv
+!frontend/public/static_chart_data.csv
 
 # OS / editor
 .DS_Store
