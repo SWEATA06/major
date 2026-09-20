@@ -1,0 +1,434 @@
+{
+  "128x2": {
+    "title": "Bi-LSTM: 128x2 (Baseline vs Distillation)",
+    "units": 128,
+    "layers": 2,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.05809,
+        "filter_kd": 0.05034,
+        "our_model": 0.03919
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.05135,
+        "filter_kd": 0.04224,
+        "our_model": 0.0308
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.0454,
+        "filter_kd": 0.03617,
+        "our_model": 0.02396
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.04077,
+        "filter_kd": 0.03157,
+        "our_model": 0.0198
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.0362,
+        "filter_kd": 0.02675,
+        "our_model": 0.01601
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.03247,
+        "filter_kd": 0.02383,
+        "our_model": 0.01264
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.02928,
+        "filter_kd": 0.0208,
+        "our_model": 0.01078
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02716,
+        "filter_kd": 0.01804,
+        "our_model": 0.00897
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.02408,
+        "filter_kd": 0.0167,
+        "our_model": 0.00784
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02261,
+        "filter_kd": 0.01521,
+        "our_model": 0.00716
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02261,
+      "filter_kd_mse": 0.01521,
+      "our_model_mse": 0.00716
+    }
+  },
+  "128x4": {
+    "title": "Bi-LSTM: 128x4 (Baseline vs Distillation)",
+    "units": 128,
+    "layers": 4,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.06202,
+        "filter_kd": 0.05294,
+        "our_model": 0.03903
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.05484,
+        "filter_kd": 0.04526,
+        "our_model": 0.03055
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.04841,
+        "filter_kd": 0.03783,
+        "our_model": 0.02394
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.04321,
+        "filter_kd": 0.0325,
+        "our_model": 0.01914
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.0387,
+        "filter_kd": 0.02787,
+        "our_model": 0.01553
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.0346,
+        "filter_kd": 0.02446,
+        "our_model": 0.01278
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.03164,
+        "filter_kd": 0.02194,
+        "our_model": 0.01065
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02808,
+        "filter_kd": 0.0188,
+        "our_model": 0.00888
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.02626,
+        "filter_kd": 0.01673,
+        "our_model": 0.00761
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02369,
+        "filter_kd": 0.0157,
+        "our_model": 0.00663
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02369,
+      "filter_kd_mse": 0.0157,
+      "our_model_mse": 0.00663
+    }
+  },
+  "256x2": {
+    "title": "Bi-LSTM: 256x2 (Baseline vs Distillation)",
+    "units": 256,
+    "layers": 2,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.05406,
+        "filter_kd": 0.04587,
+        "our_model": 0.03934
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.04816,
+        "filter_kd": 0.03879,
+        "our_model": 0.031
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.04232,
+        "filter_kd": 0.03359,
+        "our_model": 0.02428
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.03773,
+        "filter_kd": 0.02893,
+        "our_model": 0.0194
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.03386,
+        "filter_kd": 0.0252,
+        "our_model": 0.01559
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.03117,
+        "filter_kd": 0.02203,
+        "our_model": 0.01265
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.02782,
+        "filter_kd": 0.01972,
+        "our_model": 0.0105
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02512,
+        "filter_kd": 0.01695,
+        "our_model": 0.00922
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.02287,
+        "filter_kd": 0.01475,
+        "our_model": 0.00786
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02159,
+        "filter_kd": 0.01433,
+        "our_model": 0.0071
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02159,
+      "filter_kd_mse": 0.01433,
+      "our_model_mse": 0.0071
+    }
+  },
+  "256x4": {
+    "title": "Bi-LSTM: 256x4 (Baseline vs Distillation)",
+    "units": 256,
+    "layers": 4,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.05886,
+        "filter_kd": 0.04882,
+        "our_model": 0.03912
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.05275,
+        "filter_kd": 0.04153,
+        "our_model": 0.03089
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.04597,
+        "filter_kd": 0.03481,
+        "our_model": 0.0245
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.04153,
+        "filter_kd": 0.03015,
+        "our_model": 0.01944
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.03699,
+        "filter_kd": 0.02652,
+        "our_model": 0.01558
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.03307,
+        "filter_kd": 0.0236,
+        "our_model": 0.01312
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.02985,
+        "filter_kd": 0.02057,
+        "our_model": 0.01065
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02718,
+        "filter_kd": 0.01811,
+        "our_model": 0.00929
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.0245,
+        "filter_kd": 0.01606,
+        "our_model": 0.00795
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02298,
+        "filter_kd": 0.01473,
+        "our_model": 0.00713
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02298,
+      "filter_kd_mse": 0.01473,
+      "our_model_mse": 0.00713
+    }
+  },
+  "512x2": {
+    "title": "Bi-LSTM: 512x2 (Baseline vs Distillation)",
+    "units": 512,
+    "layers": 2,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.04989,
+        "filter_kd": 0.04189,
+        "our_model": 0.03917
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.04468,
+        "filter_kd": 0.036,
+        "our_model": 0.03086
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.0399,
+        "filter_kd": 0.03102,
+        "our_model": 0.02437
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.03548,
+        "filter_kd": 0.02654,
+        "our_model": 0.01943
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.03187,
+        "filter_kd": 0.02288,
+        "our_model": 0.01533
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.02923,
+        "filter_kd": 0.0202,
+        "our_model": 0.01307
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.02699,
+        "filter_kd": 0.0176,
+        "our_model": 0.01094
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02369,
+        "filter_kd": 0.01584,
+        "our_model": 0.00921
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.02167,
+        "filter_kd": 0.0154,
+        "our_model": 0.00778
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02056,
+        "filter_kd": 0.01393,
+        "our_model": 0.00696
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02056,
+      "filter_kd_mse": 0.01393,
+      "our_model_mse": 0.00696
+    }
+  },
+  "512x4": {
+    "title": "Bi-LSTM: 512x4 (Baseline vs Distillation)",
+    "units": 512,
+    "layers": 4,
+    "series": [
+      {
+        "epoch": 1,
+        "baseline": 0.05287,
+        "filter_kd": 0.04406,
+        "our_model": 0.03939
+      },
+      {
+        "epoch": 2,
+        "baseline": 0.04671,
+        "filter_kd": 0.03734,
+        "our_model": 0.03049
+      },
+      {
+        "epoch": 3,
+        "baseline": 0.0418,
+        "filter_kd": 0.03188,
+        "our_model": 0.02414
+      },
+      {
+        "epoch": 4,
+        "baseline": 0.03754,
+        "filter_kd": 0.02783,
+        "our_model": 0.01922
+      },
+      {
+        "epoch": 5,
+        "baseline": 0.03402,
+        "filter_kd": 0.02412,
+        "our_model": 0.0156
+      },
+      {
+        "epoch": 6,
+        "baseline": 0.03029,
+        "filter_kd": 0.02163,
+        "our_model": 0.01294
+      },
+      {
+        "epoch": 7,
+        "baseline": 0.02757,
+        "filter_kd": 0.01871,
+        "our_model": 0.01107
+      },
+      {
+        "epoch": 8,
+        "baseline": 0.02525,
+        "filter_kd": 0.01699,
+        "our_model": 0.009
+      },
+      {
+        "epoch": 9,
+        "baseline": 0.02324,
+        "filter_kd": 0.01566,
+        "our_model": 0.00812
+      },
+      {
+        "epoch": 10,
+        "baseline": 0.02097,
+        "filter_kd": 0.01432,
+        "our_model": 0.00678
+      }
+    ],
+    "final_metrics": {
+      "baseline_mse": 0.02097,
+      "filter_kd_mse": 0.01432,
+      "our_model_mse": 0.00678
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getBasePaperComparison, runBasePaperComparison } from './api';
 import { Activity, Zap, HardDrive, CheckCircle2, RefreshCw, BookOpen } from 'lucide-react';
+import SixGraphComparison from './SixGraphComparison.jsx';
 
 export default function BasePaperComparison() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState(null);
+
 
   const fetchMetrics = async () => {
     try {
@@ -171,8 +173,12 @@ export default function BasePaperComparison() {
         </div>
       )}
 
+      {/* Interactive 6-Graph Page 10 Replica Component */}
+      <SixGraphComparison />
+
       {/* Comparison Graphs Section */}
       <div className="space-y-8">
+
         <h3 className="text-xl font-bold text-gray-200 border-b border-border/50 pb-2">
           Empirical Comparison Graphs (Generated from Project Dataset)
         </h3>
