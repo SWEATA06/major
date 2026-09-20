@@ -1,434 +1,5474 @@
 {
   "128x2": {
-    "title": "Bi-LSTM: 128x2 (Baseline vs Distillation)",
+    "title": "(a) Bi-LSTM: 128x2 (Baseline vs Distillation)",
     "units": 128,
     "layers": 2,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.05809,
-        "filter_kd": 0.05034,
-        "our_model": 0.03919
+        "baseline_test": 0.08474,
+        "filter_kd_test": 0.07472,
+        "our_model_test": 0.065,
+        "baseline_train": 0.01622,
+        "filter_kd_train": 0.01186,
+        "our_model_train": 0.00691
       },
       {
         "epoch": 2,
-        "baseline": 0.05135,
-        "filter_kd": 0.04224,
-        "our_model": 0.0308
+        "baseline_test": 0.0871,
+        "filter_kd_test": 0.07539,
+        "our_model_test": 0.06215,
+        "baseline_train": 0.01448,
+        "filter_kd_train": 0.01096,
+        "our_model_train": 0.00634
       },
       {
         "epoch": 3,
-        "baseline": 0.0454,
-        "filter_kd": 0.03617,
-        "our_model": 0.02396
+        "baseline_test": 0.08113,
+        "filter_kd_test": 0.069,
+        "our_model_test": 0.05874,
+        "baseline_train": 0.01274,
+        "filter_kd_train": 0.00994,
+        "our_model_train": 0.00622
       },
       {
         "epoch": 4,
-        "baseline": 0.04077,
-        "filter_kd": 0.03157,
-        "our_model": 0.0198
+        "baseline_test": 0.07593,
+        "filter_kd_test": 0.06907,
+        "our_model_test": 0.05999,
+        "baseline_train": 0.01223,
+        "filter_kd_train": 0.00997,
+        "our_model_train": 0.00513
       },
       {
         "epoch": 5,
-        "baseline": 0.0362,
-        "filter_kd": 0.02675,
-        "our_model": 0.01601
+        "baseline_test": 0.07615,
+        "filter_kd_test": 0.07127,
+        "our_model_test": 0.05561,
+        "baseline_train": 0.012,
+        "filter_kd_train": 0.009,
+        "our_model_train": 0.00523
       },
       {
         "epoch": 6,
-        "baseline": 0.03247,
-        "filter_kd": 0.02383,
-        "our_model": 0.01264
+        "baseline_test": 0.07499,
+        "filter_kd_test": 0.07398,
+        "our_model_test": 0.05515,
+        "baseline_train": 0.01022,
+        "filter_kd_train": 0.00935,
+        "our_model_train": 0.00454
       },
       {
         "epoch": 7,
-        "baseline": 0.02928,
-        "filter_kd": 0.0208,
-        "our_model": 0.01078
+        "baseline_test": 0.08296,
+        "filter_kd_test": 0.06567,
+        "our_model_test": 0.05239,
+        "baseline_train": 0.01065,
+        "filter_kd_train": 0.00883,
+        "our_model_train": 0.00481
       },
       {
         "epoch": 8,
-        "baseline": 0.02716,
-        "filter_kd": 0.01804,
-        "our_model": 0.00897
+        "baseline_test": 0.07504,
+        "filter_kd_test": 0.07136,
+        "our_model_test": 0.05094,
+        "baseline_train": 0.00939,
+        "filter_kd_train": 0.0077,
+        "our_model_train": 0.00491
       },
       {
         "epoch": 9,
-        "baseline": 0.02408,
-        "filter_kd": 0.0167,
-        "our_model": 0.00784
+        "baseline_test": 0.07094,
+        "filter_kd_test": 0.06487,
+        "our_model_test": 0.05156,
+        "baseline_train": 0.00919,
+        "filter_kd_train": 0.00719,
+        "our_model_train": 0.00449
       },
       {
         "epoch": 10,
-        "baseline": 0.02261,
-        "filter_kd": 0.01521,
-        "our_model": 0.00716
+        "baseline_test": 0.07771,
+        "filter_kd_test": 0.06974,
+        "our_model_test": 0.04933,
+        "baseline_train": 0.00882,
+        "filter_kd_train": 0.00745,
+        "our_model_train": 0.00442
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.07184,
+        "filter_kd_test": 0.06704,
+        "our_model_test": 0.04809,
+        "baseline_train": 0.00772,
+        "filter_kd_train": 0.00743,
+        "our_model_train": 0.00438
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.07274,
+        "filter_kd_test": 0.069,
+        "our_model_test": 0.04868,
+        "baseline_train": 0.00781,
+        "filter_kd_train": 0.00688,
+        "our_model_train": 0.00428
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.07239,
+        "filter_kd_test": 0.06974,
+        "our_model_test": 0.04491,
+        "baseline_train": 0.00867,
+        "filter_kd_train": 0.00646,
+        "our_model_train": 0.00339
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.07841,
+        "filter_kd_test": 0.0623,
+        "our_model_test": 0.04659,
+        "baseline_train": 0.00801,
+        "filter_kd_train": 0.00707,
+        "our_model_train": 0.00316
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.06887,
+        "filter_kd_test": 0.06496,
+        "our_model_test": 0.04708,
+        "baseline_train": 0.00773,
+        "filter_kd_train": 0.00565,
+        "our_model_train": 0.00344
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.07169,
+        "filter_kd_test": 0.07061,
+        "our_model_test": 0.04488,
+        "baseline_train": 0.00697,
+        "filter_kd_train": 0.00555,
+        "our_model_train": 0.00253
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.07206,
+        "filter_kd_test": 0.06594,
+        "our_model_test": 0.04505,
+        "baseline_train": 0.00683,
+        "filter_kd_train": 0.00477,
+        "our_model_train": 0.00284
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.06454,
+        "filter_kd_test": 0.06359,
+        "our_model_test": 0.04441,
+        "baseline_train": 0.00715,
+        "filter_kd_train": 0.00659,
+        "our_model_train": 0.00298
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.07138,
+        "filter_kd_test": 0.06483,
+        "our_model_test": 0.04221,
+        "baseline_train": 0.00663,
+        "filter_kd_train": 0.00536,
+        "our_model_train": 0.00381
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.06957,
+        "filter_kd_test": 0.0654,
+        "our_model_test": 0.0437,
+        "baseline_train": 0.00556,
+        "filter_kd_train": 0.00588,
+        "our_model_train": 0.00305
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.0788,
+        "filter_kd_test": 0.06281,
+        "our_model_test": 0.04479,
+        "baseline_train": 0.00523,
+        "filter_kd_train": 0.00543,
+        "our_model_train": 0.00355
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.06637,
+        "filter_kd_test": 0.06334,
+        "our_model_test": 0.04316,
+        "baseline_train": 0.00582,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.00264
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.06594,
+        "filter_kd_test": 0.06528,
+        "our_model_test": 0.04185,
+        "baseline_train": 0.00735,
+        "filter_kd_train": 0.00442,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.07235,
+        "filter_kd_test": 0.06474,
+        "our_model_test": 0.04273,
+        "baseline_train": 0.00705,
+        "filter_kd_train": 0.00384,
+        "our_model_train": 0.00258
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.07027,
+        "filter_kd_test": 0.06565,
+        "our_model_test": 0.04103,
+        "baseline_train": 0.00485,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.00257
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.07011,
+        "filter_kd_test": 0.06468,
+        "our_model_test": 0.04137,
+        "baseline_train": 0.00601,
+        "filter_kd_train": 0.00483,
+        "our_model_train": 0.00212
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.07064,
+        "filter_kd_test": 0.06484,
+        "our_model_test": 0.04067,
+        "baseline_train": 0.00627,
+        "filter_kd_train": 0.00401,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.07906,
+        "filter_kd_test": 0.06217,
+        "our_model_test": 0.04264,
+        "baseline_train": 0.006,
+        "filter_kd_train": 0.00503,
+        "our_model_train": 0.00309
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.06805,
+        "filter_kd_test": 0.06222,
+        "our_model_test": 0.04063,
+        "baseline_train": 0.00496,
+        "filter_kd_train": 0.00444,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.06979,
+        "filter_kd_test": 0.06531,
+        "our_model_test": 0.04139,
+        "baseline_train": 0.00671,
+        "filter_kd_train": 0.00428,
+        "our_model_train": 0.00336
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.07094,
+        "filter_kd_test": 0.06188,
+        "our_model_test": 0.04017,
+        "baseline_train": 0.00588,
+        "filter_kd_train": 0.00426,
+        "our_model_train": 0.00253
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.07033,
+        "filter_kd_test": 0.06639,
+        "our_model_test": 0.04028,
+        "baseline_train": 0.00424,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00257
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.06936,
+        "filter_kd_test": 0.061,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.00572,
+        "filter_kd_train": 0.0038,
+        "our_model_train": 0.00227
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.06876,
+        "filter_kd_test": 0.06116,
+        "our_model_test": 0.04128,
+        "baseline_train": 0.00582,
+        "filter_kd_train": 0.00494,
+        "our_model_train": 0.00261
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.06968,
+        "filter_kd_test": 0.06152,
+        "our_model_test": 0.04135,
+        "baseline_train": 0.00574,
+        "filter_kd_train": 0.00458,
+        "our_model_train": 0.00371
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.06545,
+        "filter_kd_test": 0.06563,
+        "our_model_test": 0.04171,
+        "baseline_train": 0.00582,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.0657,
+        "filter_kd_test": 0.06285,
+        "our_model_test": 0.0402,
+        "baseline_train": 0.00534,
+        "filter_kd_train": 0.00561,
+        "our_model_train": 0.00139
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.07077,
+        "filter_kd_test": 0.06007,
+        "our_model_test": 0.04015,
+        "baseline_train": 0.00612,
+        "filter_kd_train": 0.00424,
+        "our_model_train": 0.00169
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.06583,
+        "filter_kd_test": 0.06463,
+        "our_model_test": 0.03983,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.00421,
+        "our_model_train": 0.00185
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.07581,
+        "filter_kd_test": 0.06751,
+        "our_model_test": 0.03848,
+        "baseline_train": 0.00535,
+        "filter_kd_train": 0.00376,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.0655,
+        "filter_kd_test": 0.06299,
+        "our_model_test": 0.04096,
+        "baseline_train": 0.00588,
+        "filter_kd_train": 0.00343,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.07259,
+        "filter_kd_test": 0.06189,
+        "our_model_test": 0.04218,
+        "baseline_train": 0.00549,
+        "filter_kd_train": 0.00338,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.07565,
+        "filter_kd_test": 0.06524,
+        "our_model_test": 0.03886,
+        "baseline_train": 0.00476,
+        "filter_kd_train": 0.00488,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.06976,
+        "filter_kd_test": 0.06471,
+        "our_model_test": 0.03941,
+        "baseline_train": 0.00509,
+        "filter_kd_train": 0.00216,
+        "our_model_train": 0.00166
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.0623,
+        "filter_kd_test": 0.06065,
+        "our_model_test": 0.04194,
+        "baseline_train": 0.00398,
+        "filter_kd_train": 0.00383,
+        "our_model_train": 0.00211
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.07321,
+        "filter_kd_test": 0.06026,
+        "our_model_test": 0.04144,
+        "baseline_train": 0.00512,
+        "filter_kd_train": 0.0035,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.06885,
+        "filter_kd_test": 0.06192,
+        "our_model_test": 0.04032,
+        "baseline_train": 0.00479,
+        "filter_kd_train": 0.00415,
+        "our_model_train": 0.00232
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.07369,
+        "filter_kd_test": 0.06363,
+        "our_model_test": 0.04236,
+        "baseline_train": 0.00353,
+        "filter_kd_train": 0.00398,
+        "our_model_train": 0.00228
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.07511,
+        "filter_kd_test": 0.06185,
+        "our_model_test": 0.04,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.00371,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.06936,
+        "filter_kd_test": 0.0617,
+        "our_model_test": 0.04109,
+        "baseline_train": 0.00532,
+        "filter_kd_train": 0.00455,
+        "our_model_train": 0.00229
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.0652,
+        "filter_kd_test": 0.06196,
+        "our_model_test": 0.04092,
+        "baseline_train": 0.00556,
+        "filter_kd_train": 0.00404,
+        "our_model_train": 0.00208
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.07256,
+        "filter_kd_test": 0.06189,
+        "our_model_test": 0.0407,
+        "baseline_train": 0.0049,
+        "filter_kd_train": 0.00392,
+        "our_model_train": 0.00247
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.07097,
+        "filter_kd_test": 0.06469,
+        "our_model_test": 0.04144,
+        "baseline_train": 0.00507,
+        "filter_kd_train": 0.00445,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.06421,
+        "filter_kd_test": 0.0628,
+        "our_model_test": 0.04022,
+        "baseline_train": 0.00553,
+        "filter_kd_train": 0.00355,
+        "our_model_train": 0.00286
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.06455,
+        "filter_kd_test": 0.06063,
+        "our_model_test": 0.04127,
+        "baseline_train": 0.00568,
+        "filter_kd_train": 0.00441,
+        "our_model_train": 0.00227
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.07402,
+        "filter_kd_test": 0.06425,
+        "our_model_test": 0.04018,
+        "baseline_train": 0.0045,
+        "filter_kd_train": 0.00462,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.06517,
+        "filter_kd_test": 0.0624,
+        "our_model_test": 0.04051,
+        "baseline_train": 0.00459,
+        "filter_kd_train": 0.00354,
+        "our_model_train": 0.00212
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.06891,
+        "filter_kd_test": 0.06203,
+        "our_model_test": 0.03961,
+        "baseline_train": 0.00522,
+        "filter_kd_train": 0.00316,
+        "our_model_train": 0.00145
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.06553,
+        "filter_kd_test": 0.06261,
+        "our_model_test": 0.04039,
+        "baseline_train": 0.00621,
+        "filter_kd_train": 0.00454,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.06797,
+        "filter_kd_test": 0.06103,
+        "our_model_test": 0.04005,
+        "baseline_train": 0.0048,
+        "filter_kd_train": 0.00422,
+        "our_model_train": 0.00168
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.06985,
+        "filter_kd_test": 0.0661,
+        "our_model_test": 0.03995,
+        "baseline_train": 0.00535,
+        "filter_kd_train": 0.00443,
+        "our_model_train": 0.00185
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.06882,
+        "filter_kd_test": 0.06305,
+        "our_model_test": 0.04015,
+        "baseline_train": 0.0044,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00221
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.07411,
+        "filter_kd_test": 0.06494,
+        "our_model_test": 0.0422,
+        "baseline_train": 0.00441,
+        "filter_kd_train": 0.00454,
+        "our_model_train": 0.00208
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.07569,
+        "filter_kd_test": 0.06441,
+        "our_model_test": 0.03921,
+        "baseline_train": 0.00454,
+        "filter_kd_train": 0.00274,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.06537,
+        "filter_kd_test": 0.06332,
+        "our_model_test": 0.04038,
+        "baseline_train": 0.00652,
+        "filter_kd_train": 0.00458,
+        "our_model_train": 0.00178
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.06488,
+        "filter_kd_test": 0.064,
+        "our_model_test": 0.03872,
+        "baseline_train": 0.00648,
+        "filter_kd_train": 0.00472,
+        "our_model_train": 0.00182
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.06202,
+        "filter_kd_test": 0.06572,
+        "our_model_test": 0.03992,
+        "baseline_train": 0.006,
+        "filter_kd_train": 0.00305,
+        "our_model_train": 0.00177
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.06804,
+        "filter_kd_test": 0.06311,
+        "our_model_test": 0.03958,
+        "baseline_train": 0.00551,
+        "filter_kd_train": 0.00337,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.06844,
+        "filter_kd_test": 0.06404,
+        "our_model_test": 0.04074,
+        "baseline_train": 0.00411,
+        "filter_kd_train": 0.00309,
+        "our_model_train": 0.00252
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.07518,
+        "filter_kd_test": 0.06152,
+        "our_model_test": 0.04158,
+        "baseline_train": 0.0051,
+        "filter_kd_train": 0.00472,
+        "our_model_train": 0.00203
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.07523,
+        "filter_kd_test": 0.06652,
+        "our_model_test": 0.03977,
+        "baseline_train": 0.00579,
+        "filter_kd_train": 0.00439,
+        "our_model_train": 0.00255
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06738,
+        "our_model_test": 0.04108,
+        "baseline_train": 0.0036,
+        "filter_kd_train": 0.0033,
+        "our_model_train": 0.00119
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.06707,
+        "filter_kd_test": 0.06444,
+        "our_model_test": 0.04152,
+        "baseline_train": 0.00507,
+        "filter_kd_train": 0.00498,
+        "our_model_train": 0.00145
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.06205,
+        "filter_kd_test": 0.0629,
+        "our_model_test": 0.0404,
+        "baseline_train": 0.00498,
+        "filter_kd_train": 0.00276,
+        "our_model_train": 0.00197
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.06344,
+        "filter_kd_test": 0.06435,
+        "our_model_test": 0.04038,
+        "baseline_train": 0.00425,
+        "filter_kd_train": 0.0037,
+        "our_model_train": 0.00158
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06779,
+        "filter_kd_test": 0.06492,
+        "our_model_test": 0.03903,
+        "baseline_train": 0.00541,
+        "filter_kd_train": 0.00369,
+        "our_model_train": 0.00169
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.07363,
+        "filter_kd_test": 0.06094,
+        "our_model_test": 0.03946,
+        "baseline_train": 0.00405,
+        "filter_kd_train": 0.00518,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.06556,
+        "filter_kd_test": 0.06343,
+        "our_model_test": 0.0399,
+        "baseline_train": 0.00483,
+        "filter_kd_train": 0.00437,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06615,
+        "filter_kd_test": 0.06185,
+        "our_model_test": 0.03974,
+        "baseline_train": 0.00316,
+        "filter_kd_train": 0.00309,
+        "our_model_train": 0.00255
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.07376,
+        "filter_kd_test": 0.06551,
+        "our_model_test": 0.04059,
+        "baseline_train": 0.00525,
+        "filter_kd_train": 0.00585,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06256,
+        "filter_kd_test": 0.06109,
+        "our_model_test": 0.0384,
+        "baseline_train": 0.00517,
+        "filter_kd_train": 0.00355,
+        "our_model_train": 0.00143
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.06574,
+        "filter_kd_test": 0.06084,
+        "our_model_test": 0.04169,
+        "baseline_train": 0.00571,
+        "filter_kd_train": 0.004,
+        "our_model_train": 0.00259
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.06827,
+        "filter_kd_test": 0.06128,
+        "our_model_test": 0.04153,
+        "baseline_train": 0.00543,
+        "filter_kd_train": 0.00338,
+        "our_model_train": 0.00193
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.07094,
+        "filter_kd_test": 0.06024,
+        "our_model_test": 0.04093,
+        "baseline_train": 0.00653,
+        "filter_kd_train": 0.00316,
+        "our_model_train": 0.00223
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.06573,
+        "filter_kd_test": 0.06203,
+        "our_model_test": 0.03941,
+        "baseline_train": 0.00431,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00167
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.06895,
+        "filter_kd_test": 0.0629,
+        "our_model_test": 0.03977,
+        "baseline_train": 0.00428,
+        "filter_kd_train": 0.00366,
+        "our_model_train": 0.0023
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.06976,
+        "filter_kd_test": 0.06105,
+        "our_model_test": 0.0401,
+        "baseline_train": 0.0056,
+        "filter_kd_train": 0.003,
+        "our_model_train": 0.00222
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.06568,
+        "filter_kd_test": 0.06714,
+        "our_model_test": 0.03924,
+        "baseline_train": 0.00356,
+        "filter_kd_train": 0.00302,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.06891,
+        "filter_kd_test": 0.06119,
+        "our_model_test": 0.04064,
+        "baseline_train": 0.00367,
+        "filter_kd_train": 0.00396,
+        "our_model_train": 0.00152
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.06072,
+        "filter_kd_test": 0.0631,
+        "our_model_test": 0.03914,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.0046,
+        "our_model_train": 0.00177
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07693,
+        "filter_kd_test": 0.06074,
+        "our_model_test": 0.04053,
+        "baseline_train": 0.00615,
+        "filter_kd_train": 0.00252,
+        "our_model_train": 0.00168
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.07002,
+        "filter_kd_test": 0.0626,
+        "our_model_test": 0.04037,
+        "baseline_train": 0.00452,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.00194
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.07209,
+        "filter_kd_test": 0.06351,
+        "our_model_test": 0.04034,
+        "baseline_train": 0.00467,
+        "filter_kd_train": 0.00371,
+        "our_model_train": 0.00183
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.06938,
+        "filter_kd_test": 0.06216,
+        "our_model_test": 0.04029,
+        "baseline_train": 0.00666,
+        "filter_kd_train": 0.00452,
+        "our_model_train": 0.00187
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.07221,
+        "filter_kd_test": 0.06218,
+        "our_model_test": 0.03796,
+        "baseline_train": 0.00419,
+        "filter_kd_train": 0.00288,
+        "our_model_train": 0.00186
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.06807,
+        "filter_kd_test": 0.06935,
+        "our_model_test": 0.04033,
+        "baseline_train": 0.00483,
+        "filter_kd_train": 0.0045,
+        "our_model_train": 0.00112
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06883,
+        "filter_kd_test": 0.06454,
+        "our_model_test": 0.03852,
+        "baseline_train": 0.00592,
+        "filter_kd_train": 0.0042,
+        "our_model_train": 0.00183
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.07622,
+        "filter_kd_test": 0.06754,
+        "our_model_test": 0.04018,
+        "baseline_train": 0.0052,
+        "filter_kd_train": 0.00372,
+        "our_model_train": 0.00166
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06591,
+        "filter_kd_test": 0.06129,
+        "our_model_test": 0.04007,
+        "baseline_train": 0.00462,
+        "filter_kd_train": 0.00429,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.07163,
+        "filter_kd_test": 0.06198,
+        "our_model_test": 0.03973,
+        "baseline_train": 0.00422,
+        "filter_kd_train": 0.00373,
+        "our_model_train": 0.00215
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02261,
-      "filter_kd_mse": 0.01521,
-      "our_model_mse": 0.00716
+      "baseline_mse": 0.07163,
+      "filter_kd_mse": 0.06198,
+      "our_model_mse": 0.03973
     }
   },
   "128x4": {
-    "title": "Bi-LSTM: 128x4 (Baseline vs Distillation)",
+    "title": "(b) Bi-LSTM: 128x4 (Baseline vs Distillation)",
     "units": 128,
     "layers": 4,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.06202,
-        "filter_kd": 0.05294,
-        "our_model": 0.03903
+        "baseline_test": 0.088,
+        "filter_kd_test": 0.07516,
+        "our_model_test": 0.065,
+        "baseline_train": 0.01608,
+        "filter_kd_train": 0.01225,
+        "our_model_train": 0.00775
       },
       {
         "epoch": 2,
-        "baseline": 0.05484,
-        "filter_kd": 0.04526,
-        "our_model": 0.03055
+        "baseline_test": 0.08186,
+        "filter_kd_test": 0.07337,
+        "our_model_test": 0.06084,
+        "baseline_train": 0.01525,
+        "filter_kd_train": 0.01163,
+        "our_model_train": 0.0065
       },
       {
         "epoch": 3,
-        "baseline": 0.04841,
-        "filter_kd": 0.03783,
-        "our_model": 0.02394
+        "baseline_test": 0.08426,
+        "filter_kd_test": 0.07257,
+        "our_model_test": 0.06291,
+        "baseline_train": 0.01329,
+        "filter_kd_train": 0.01062,
+        "our_model_train": 0.00638
       },
       {
         "epoch": 4,
-        "baseline": 0.04321,
-        "filter_kd": 0.0325,
-        "our_model": 0.01914
+        "baseline_test": 0.0838,
+        "filter_kd_test": 0.07434,
+        "our_model_test": 0.05773,
+        "baseline_train": 0.01279,
+        "filter_kd_train": 0.01106,
+        "our_model_train": 0.00624
       },
       {
         "epoch": 5,
-        "baseline": 0.0387,
-        "filter_kd": 0.02787,
-        "our_model": 0.01553
+        "baseline_test": 0.08663,
+        "filter_kd_test": 0.07202,
+        "our_model_test": 0.05577,
+        "baseline_train": 0.0116,
+        "filter_kd_train": 0.0094,
+        "our_model_train": 0.00579
       },
       {
         "epoch": 6,
-        "baseline": 0.0346,
-        "filter_kd": 0.02446,
-        "our_model": 0.01278
+        "baseline_test": 0.07417,
+        "filter_kd_test": 0.07534,
+        "our_model_test": 0.05501,
+        "baseline_train": 0.01072,
+        "filter_kd_train": 0.00824,
+        "our_model_train": 0.00437
       },
       {
         "epoch": 7,
-        "baseline": 0.03164,
-        "filter_kd": 0.02194,
-        "our_model": 0.01065
+        "baseline_test": 0.088,
+        "filter_kd_test": 0.07173,
+        "our_model_test": 0.05243,
+        "baseline_train": 0.00945,
+        "filter_kd_train": 0.00819,
+        "our_model_train": 0.00541
       },
       {
         "epoch": 8,
-        "baseline": 0.02808,
-        "filter_kd": 0.0188,
-        "our_model": 0.00888
+        "baseline_test": 0.07754,
+        "filter_kd_test": 0.07095,
+        "our_model_test": 0.05217,
+        "baseline_train": 0.00975,
+        "filter_kd_train": 0.00635,
+        "our_model_train": 0.00446
       },
       {
         "epoch": 9,
-        "baseline": 0.02626,
-        "filter_kd": 0.01673,
-        "our_model": 0.00761
+        "baseline_test": 0.07193,
+        "filter_kd_test": 0.07178,
+        "our_model_test": 0.05308,
+        "baseline_train": 0.01039,
+        "filter_kd_train": 0.00743,
+        "our_model_train": 0.0038
       },
       {
         "epoch": 10,
-        "baseline": 0.02369,
-        "filter_kd": 0.0157,
-        "our_model": 0.00663
+        "baseline_test": 0.08611,
+        "filter_kd_test": 0.07,
+        "our_model_test": 0.05018,
+        "baseline_train": 0.00905,
+        "filter_kd_train": 0.00737,
+        "our_model_train": 0.00398
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.07451,
+        "filter_kd_test": 0.06832,
+        "our_model_test": 0.04916,
+        "baseline_train": 0.00824,
+        "filter_kd_train": 0.00652,
+        "our_model_train": 0.00388
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.0751,
+        "filter_kd_test": 0.072,
+        "our_model_test": 0.04567,
+        "baseline_train": 0.0092,
+        "filter_kd_train": 0.00741,
+        "our_model_train": 0.00283
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.07432,
+        "filter_kd_test": 0.06787,
+        "our_model_test": 0.04612,
+        "baseline_train": 0.00739,
+        "filter_kd_train": 0.00574,
+        "our_model_train": 0.00421
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.08436,
+        "filter_kd_test": 0.07081,
+        "our_model_test": 0.04753,
+        "baseline_train": 0.00682,
+        "filter_kd_train": 0.00587,
+        "our_model_train": 0.00356
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.07042,
+        "filter_kd_test": 0.06939,
+        "our_model_test": 0.04592,
+        "baseline_train": 0.00717,
+        "filter_kd_train": 0.0064,
+        "our_model_train": 0.00341
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.07308,
+        "filter_kd_test": 0.073,
+        "our_model_test": 0.0445,
+        "baseline_train": 0.00772,
+        "filter_kd_train": 0.00614,
+        "our_model_train": 0.00299
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.07517,
+        "filter_kd_test": 0.06492,
+        "our_model_test": 0.04597,
+        "baseline_train": 0.00687,
+        "filter_kd_train": 0.0053,
+        "our_model_train": 0.00343
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.06628,
+        "filter_kd_test": 0.06438,
+        "our_model_test": 0.04301,
+        "baseline_train": 0.00731,
+        "filter_kd_train": 0.00469,
+        "our_model_train": 0.00362
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.06619,
+        "filter_kd_test": 0.07038,
+        "our_model_test": 0.04434,
+        "baseline_train": 0.00658,
+        "filter_kd_train": 0.005,
+        "our_model_train": 0.00299
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.07311,
+        "filter_kd_test": 0.069,
+        "our_model_test": 0.04385,
+        "baseline_train": 0.00662,
+        "filter_kd_train": 0.00498,
+        "our_model_train": 0.00273
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.08011,
+        "filter_kd_test": 0.0632,
+        "our_model_test": 0.04204,
+        "baseline_train": 0.00695,
+        "filter_kd_train": 0.00519,
+        "our_model_train": 0.0026
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.0729,
+        "filter_kd_test": 0.06716,
+        "our_model_test": 0.04252,
+        "baseline_train": 0.0056,
+        "filter_kd_train": 0.0051,
+        "our_model_train": 0.00222
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.07409,
+        "filter_kd_test": 0.06292,
+        "our_model_test": 0.0438,
+        "baseline_train": 0.00649,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.00295
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.07833,
+        "filter_kd_test": 0.07123,
+        "our_model_test": 0.04067,
+        "baseline_train": 0.00498,
+        "filter_kd_train": 0.00443,
+        "our_model_train": 0.00251
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.07417,
+        "filter_kd_test": 0.06464,
+        "our_model_test": 0.04245,
+        "baseline_train": 0.0053,
+        "filter_kd_train": 0.00436,
+        "our_model_train": 0.00189
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.069,
+        "filter_kd_test": 0.06328,
+        "our_model_test": 0.04108,
+        "baseline_train": 0.00666,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00346
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.06884,
+        "filter_kd_test": 0.06626,
+        "our_model_test": 0.041,
+        "baseline_train": 0.0063,
+        "filter_kd_train": 0.00425,
+        "our_model_train": 0.00242
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.08697,
+        "filter_kd_test": 0.06561,
+        "our_model_test": 0.04283,
+        "baseline_train": 0.00511,
+        "filter_kd_train": 0.00452,
+        "our_model_train": 0.00304
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.06972,
+        "filter_kd_test": 0.06935,
+        "our_model_test": 0.04223,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00487,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.074,
+        "filter_kd_test": 0.06252,
+        "our_model_test": 0.04065,
+        "baseline_train": 0.00535,
+        "filter_kd_train": 0.0044,
+        "our_model_train": 0.00252
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.07237,
+        "filter_kd_test": 0.06293,
+        "our_model_test": 0.04162,
+        "baseline_train": 0.00599,
+        "filter_kd_train": 0.00473,
+        "our_model_train": 0.00268
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.07459,
+        "filter_kd_test": 0.06946,
+        "our_model_test": 0.04106,
+        "baseline_train": 0.00412,
+        "filter_kd_train": 0.00462,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.07256,
+        "filter_kd_test": 0.06294,
+        "our_model_test": 0.03994,
+        "baseline_train": 0.00625,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.07165,
+        "filter_kd_test": 0.0655,
+        "our_model_test": 0.04186,
+        "baseline_train": 0.00496,
+        "filter_kd_train": 0.00435,
+        "our_model_train": 0.002
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.07598,
+        "filter_kd_test": 0.06478,
+        "our_model_test": 0.04106,
+        "baseline_train": 0.00495,
+        "filter_kd_train": 0.00502,
+        "our_model_train": 0.00181
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.0658,
+        "filter_kd_test": 0.06448,
+        "our_model_test": 0.0422,
+        "baseline_train": 0.00546,
+        "filter_kd_train": 0.00486,
+        "our_model_train": 0.00156
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.07234,
+        "filter_kd_test": 0.06711,
+        "our_model_test": 0.04077,
+        "baseline_train": 0.00613,
+        "filter_kd_train": 0.00391,
+        "our_model_train": 0.0027
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.07942,
+        "filter_kd_test": 0.06457,
+        "our_model_test": 0.04017,
+        "baseline_train": 0.00641,
+        "filter_kd_train": 0.00515,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.06986,
+        "filter_kd_test": 0.0647,
+        "our_model_test": 0.03921,
+        "baseline_train": 0.00449,
+        "filter_kd_train": 0.00358,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.07118,
+        "filter_kd_test": 0.06871,
+        "our_model_test": 0.04206,
+        "baseline_train": 0.0044,
+        "filter_kd_train": 0.00475,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.0711,
+        "filter_kd_test": 0.06657,
+        "our_model_test": 0.03934,
+        "baseline_train": 0.00549,
+        "filter_kd_train": 0.00425,
+        "our_model_train": 0.00229
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.07826,
+        "filter_kd_test": 0.07011,
+        "our_model_test": 0.03978,
+        "baseline_train": 0.00474,
+        "filter_kd_train": 0.00376,
+        "our_model_train": 0.00186
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.06899,
+        "filter_kd_test": 0.06756,
+        "our_model_test": 0.0418,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.00362,
+        "our_model_train": 0.00226
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.06927,
+        "filter_kd_test": 0.06643,
+        "our_model_test": 0.04054,
+        "baseline_train": 0.00392,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.00279
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.06404,
+        "filter_kd_test": 0.06437,
+        "our_model_test": 0.04059,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00449,
+        "our_model_train": 0.00287
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.07055,
+        "filter_kd_test": 0.06354,
+        "our_model_test": 0.0389,
+        "baseline_train": 0.00453,
+        "filter_kd_train": 0.00407,
+        "our_model_train": 0.00277
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.06934,
+        "filter_kd_test": 0.06557,
+        "our_model_test": 0.04023,
+        "baseline_train": 0.00605,
+        "filter_kd_train": 0.0056,
+        "our_model_train": 0.00184
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.06942,
+        "filter_kd_test": 0.0702,
+        "our_model_test": 0.04091,
+        "baseline_train": 0.00657,
+        "filter_kd_train": 0.00442,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.07919,
+        "filter_kd_test": 0.06732,
+        "our_model_test": 0.04103,
+        "baseline_train": 0.00549,
+        "filter_kd_train": 0.00471,
+        "our_model_train": 0.00251
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.07595,
+        "filter_kd_test": 0.06639,
+        "our_model_test": 0.04002,
+        "baseline_train": 0.00519,
+        "filter_kd_train": 0.00478,
+        "our_model_train": 0.00171
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.07239,
+        "filter_kd_test": 0.06429,
+        "our_model_test": 0.0402,
+        "baseline_train": 0.00609,
+        "filter_kd_train": 0.00417,
+        "our_model_train": 0.00205
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.06633,
+        "filter_kd_test": 0.06657,
+        "our_model_test": 0.0408,
+        "baseline_train": 0.00679,
+        "filter_kd_train": 0.00386,
+        "our_model_train": 0.00212
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.07196,
+        "filter_kd_test": 0.06822,
+        "our_model_test": 0.04004,
+        "baseline_train": 0.00528,
+        "filter_kd_train": 0.00441,
+        "our_model_train": 0.0021
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.06451,
+        "filter_kd_test": 0.06545,
+        "our_model_test": 0.0412,
+        "baseline_train": 0.00423,
+        "filter_kd_train": 0.00412,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.07525,
+        "filter_kd_test": 0.06201,
+        "our_model_test": 0.03955,
+        "baseline_train": 0.00535,
+        "filter_kd_train": 0.00498,
+        "our_model_train": 0.002
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.07512,
+        "filter_kd_test": 0.07181,
+        "our_model_test": 0.03865,
+        "baseline_train": 0.00328,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00182
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.06748,
+        "filter_kd_test": 0.06646,
+        "our_model_test": 0.04034,
+        "baseline_train": 0.00459,
+        "filter_kd_train": 0.00326,
+        "our_model_train": 0.00237
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.07333,
+        "filter_kd_test": 0.06484,
+        "our_model_test": 0.04193,
+        "baseline_train": 0.00418,
+        "filter_kd_train": 0.00311,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.07089,
+        "filter_kd_test": 0.06552,
+        "our_model_test": 0.03983,
+        "baseline_train": 0.00531,
+        "filter_kd_train": 0.00327,
+        "our_model_train": 0.00259
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.07075,
+        "filter_kd_test": 0.06727,
+        "our_model_test": 0.04041,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00436,
+        "our_model_train": 0.00219
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.07329,
+        "filter_kd_test": 0.06769,
+        "our_model_test": 0.04026,
+        "baseline_train": 0.00559,
+        "filter_kd_train": 0.00397,
+        "our_model_train": 0.00259
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.06867,
+        "filter_kd_test": 0.06863,
+        "our_model_test": 0.04002,
+        "baseline_train": 0.00388,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.07497,
+        "filter_kd_test": 0.06372,
+        "our_model_test": 0.0396,
+        "baseline_train": 0.00351,
+        "filter_kd_train": 0.00374,
+        "our_model_train": 0.00104
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.06548,
+        "filter_kd_test": 0.06954,
+        "our_model_test": 0.04083,
+        "baseline_train": 0.00536,
+        "filter_kd_train": 0.00343,
+        "our_model_train": 0.00199
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.07101,
+        "filter_kd_test": 0.0627,
+        "our_model_test": 0.04154,
+        "baseline_train": 0.00572,
+        "filter_kd_train": 0.00388,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.07175,
+        "filter_kd_test": 0.06093,
+        "our_model_test": 0.03979,
+        "baseline_train": 0.00447,
+        "filter_kd_train": 0.00341,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.07731,
+        "filter_kd_test": 0.0663,
+        "our_model_test": 0.03946,
+        "baseline_train": 0.00547,
+        "filter_kd_train": 0.00485,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.07123,
+        "filter_kd_test": 0.06372,
+        "our_model_test": 0.04073,
+        "baseline_train": 0.00533,
+        "filter_kd_train": 0.00455,
+        "our_model_train": 0.00226
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.07469,
+        "filter_kd_test": 0.06394,
+        "our_model_test": 0.04135,
+        "baseline_train": 0.00517,
+        "filter_kd_train": 0.00525,
+        "our_model_train": 0.00173
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.08309,
+        "filter_kd_test": 0.06541,
+        "our_model_test": 0.03937,
+        "baseline_train": 0.00462,
+        "filter_kd_train": 0.00382,
+        "our_model_train": 0.00217
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.07284,
+        "filter_kd_test": 0.06386,
+        "our_model_test": 0.04,
+        "baseline_train": 0.00672,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.00218
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.06615,
+        "filter_kd_test": 0.06825,
+        "our_model_test": 0.04063,
+        "baseline_train": 0.00419,
+        "filter_kd_train": 0.00385,
+        "our_model_train": 0.00134
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.07241,
+        "filter_kd_test": 0.0663,
+        "our_model_test": 0.03954,
+        "baseline_train": 0.00627,
+        "filter_kd_train": 0.00327,
+        "our_model_train": 0.00142
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.0718,
+        "filter_kd_test": 0.0671,
+        "our_model_test": 0.0417,
+        "baseline_train": 0.00464,
+        "filter_kd_train": 0.00465,
+        "our_model_train": 0.00199
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.0704,
+        "filter_kd_test": 0.06677,
+        "our_model_test": 0.04067,
+        "baseline_train": 0.00374,
+        "filter_kd_train": 0.00489,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06882,
+        "filter_kd_test": 0.0658,
+        "our_model_test": 0.04051,
+        "baseline_train": 0.00521,
+        "filter_kd_train": 0.00367,
+        "our_model_train": 0.00173
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.07692,
+        "filter_kd_test": 0.06735,
+        "our_model_test": 0.04056,
+        "baseline_train": 0.00471,
+        "filter_kd_train": 0.00447,
+        "our_model_train": 0.001
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.07503,
+        "filter_kd_test": 0.06153,
+        "our_model_test": 0.03965,
+        "baseline_train": 0.00411,
+        "filter_kd_train": 0.00323,
+        "our_model_train": 0.00247
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06937,
+        "filter_kd_test": 0.0657,
+        "our_model_test": 0.03996,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.00149
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.07449,
+        "filter_kd_test": 0.06702,
+        "our_model_test": 0.03845,
+        "baseline_train": 0.00466,
+        "filter_kd_train": 0.0049,
+        "our_model_train": 0.00234
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06478,
+        "filter_kd_test": 0.06431,
+        "our_model_test": 0.03969,
+        "baseline_train": 0.00666,
+        "filter_kd_train": 0.00423,
+        "our_model_train": 0.00217
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.07461,
+        "filter_kd_test": 0.06548,
+        "our_model_test": 0.03975,
+        "baseline_train": 0.00485,
+        "filter_kd_train": 0.00396,
+        "our_model_train": 0.00199
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.07355,
+        "filter_kd_test": 0.06511,
+        "our_model_test": 0.04074,
+        "baseline_train": 0.00494,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.0012
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.08021,
+        "filter_kd_test": 0.0657,
+        "our_model_test": 0.041,
+        "baseline_train": 0.00269,
+        "filter_kd_train": 0.00526,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.07488,
+        "filter_kd_test": 0.06292,
+        "our_model_test": 0.04062,
+        "baseline_train": 0.00416,
+        "filter_kd_train": 0.00363,
+        "our_model_train": 0.00277
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.07034,
+        "filter_kd_test": 0.06544,
+        "our_model_test": 0.04088,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00215
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.07941,
+        "filter_kd_test": 0.06489,
+        "our_model_test": 0.04021,
+        "baseline_train": 0.00584,
+        "filter_kd_train": 0.00466,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.07324,
+        "filter_kd_test": 0.06572,
+        "our_model_test": 0.04164,
+        "baseline_train": 0.00408,
+        "filter_kd_train": 0.00418,
+        "our_model_train": 0.0017
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.07078,
+        "filter_kd_test": 0.06566,
+        "our_model_test": 0.04033,
+        "baseline_train": 0.00534,
+        "filter_kd_train": 0.00497,
+        "our_model_train": 0.00218
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.06515,
+        "filter_kd_test": 0.06693,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.00402,
+        "filter_kd_train": 0.00436,
+        "our_model_train": 0.00228
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07596,
+        "filter_kd_test": 0.06775,
+        "our_model_test": 0.03985,
+        "baseline_train": 0.0051,
+        "filter_kd_train": 0.0039,
+        "our_model_train": 0.00201
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.06716,
+        "filter_kd_test": 0.06212,
+        "our_model_test": 0.0416,
+        "baseline_train": 0.00432,
+        "filter_kd_train": 0.00341,
+        "our_model_train": 0.00114
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.06877,
+        "filter_kd_test": 0.06236,
+        "our_model_test": 0.04164,
+        "baseline_train": 0.00581,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.0029
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.07444,
+        "filter_kd_test": 0.06435,
+        "our_model_test": 0.0375,
+        "baseline_train": 0.00683,
+        "filter_kd_train": 0.00317,
+        "our_model_train": 0.00134
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.07458,
+        "filter_kd_test": 0.06988,
+        "our_model_test": 0.04139,
+        "baseline_train": 0.00545,
+        "filter_kd_train": 0.00436,
+        "our_model_train": 0.00234
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.07366,
+        "filter_kd_test": 0.06856,
+        "our_model_test": 0.04011,
+        "baseline_train": 0.00495,
+        "filter_kd_train": 0.00355,
+        "our_model_train": 0.00189
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06508,
+        "filter_kd_test": 0.0648,
+        "our_model_test": 0.03901,
+        "baseline_train": 0.00412,
+        "filter_kd_train": 0.00411,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.08022,
+        "filter_kd_test": 0.06186,
+        "our_model_test": 0.03901,
+        "baseline_train": 0.00575,
+        "filter_kd_train": 0.00341,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06793,
+        "filter_kd_test": 0.06306,
+        "our_model_test": 0.04011,
+        "baseline_train": 0.00393,
+        "filter_kd_train": 0.00364,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.06543,
+        "filter_kd_test": 0.06588,
+        "our_model_test": 0.03998,
+        "baseline_train": 0.00544,
+        "filter_kd_train": 0.00413,
+        "our_model_train": 0.00255
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02369,
-      "filter_kd_mse": 0.0157,
-      "our_model_mse": 0.00663
+      "baseline_mse": 0.06543,
+      "filter_kd_mse": 0.06588,
+      "our_model_mse": 0.03998
     }
   },
   "256x2": {
-    "title": "Bi-LSTM: 256x2 (Baseline vs Distillation)",
+    "title": "(c) Bi-LSTM: 256x2 (Baseline vs Distillation)",
     "units": 256,
     "layers": 2,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.05406,
-        "filter_kd": 0.04587,
-        "our_model": 0.03934
+        "baseline_test": 0.08144,
+        "filter_kd_test": 0.07214,
+        "our_model_test": 0.065,
+        "baseline_train": 0.01543,
+        "filter_kd_train": 0.01203,
+        "our_model_train": 0.00702
       },
       {
         "epoch": 2,
-        "baseline": 0.04816,
-        "filter_kd": 0.03879,
-        "our_model": 0.031
+        "baseline_test": 0.07712,
+        "filter_kd_test": 0.07053,
+        "our_model_test": 0.06122,
+        "baseline_train": 0.01545,
+        "filter_kd_train": 0.01049,
+        "our_model_train": 0.00625
       },
       {
         "epoch": 3,
-        "baseline": 0.04232,
-        "filter_kd": 0.03359,
-        "our_model": 0.02428
+        "baseline_test": 0.07577,
+        "filter_kd_test": 0.07261,
+        "our_model_test": 0.06017,
+        "baseline_train": 0.01419,
+        "filter_kd_train": 0.01015,
+        "our_model_train": 0.00621
       },
       {
         "epoch": 4,
-        "baseline": 0.03773,
-        "filter_kd": 0.02893,
-        "our_model": 0.0194
+        "baseline_test": 0.07419,
+        "filter_kd_test": 0.07418,
+        "our_model_test": 0.05733,
+        "baseline_train": 0.01266,
+        "filter_kd_train": 0.01031,
+        "our_model_train": 0.00587
       },
       {
         "epoch": 5,
-        "baseline": 0.03386,
-        "filter_kd": 0.0252,
-        "our_model": 0.01559
+        "baseline_test": 0.07541,
+        "filter_kd_test": 0.06878,
+        "our_model_test": 0.0568,
+        "baseline_train": 0.01159,
+        "filter_kd_train": 0.00994,
+        "our_model_train": 0.00624
       },
       {
         "epoch": 6,
-        "baseline": 0.03117,
-        "filter_kd": 0.02203,
-        "our_model": 0.01265
+        "baseline_test": 0.07315,
+        "filter_kd_test": 0.06554,
+        "our_model_test": 0.05507,
+        "baseline_train": 0.01313,
+        "filter_kd_train": 0.00837,
+        "our_model_train": 0.00569
       },
       {
         "epoch": 7,
-        "baseline": 0.02782,
-        "filter_kd": 0.01972,
-        "our_model": 0.0105
+        "baseline_test": 0.0861,
+        "filter_kd_test": 0.06648,
+        "our_model_test": 0.05429,
+        "baseline_train": 0.01179,
+        "filter_kd_train": 0.00816,
+        "our_model_train": 0.00466
       },
       {
         "epoch": 8,
-        "baseline": 0.02512,
-        "filter_kd": 0.01695,
-        "our_model": 0.00922
+        "baseline_test": 0.07141,
+        "filter_kd_test": 0.06793,
+        "our_model_test": 0.05177,
+        "baseline_train": 0.00899,
+        "filter_kd_train": 0.00799,
+        "our_model_train": 0.00417
       },
       {
         "epoch": 9,
-        "baseline": 0.02287,
-        "filter_kd": 0.01475,
-        "our_model": 0.00786
+        "baseline_test": 0.06856,
+        "filter_kd_test": 0.06328,
+        "our_model_test": 0.05156,
+        "baseline_train": 0.01016,
+        "filter_kd_train": 0.0064,
+        "our_model_train": 0.0044
       },
       {
         "epoch": 10,
-        "baseline": 0.02159,
-        "filter_kd": 0.01433,
-        "our_model": 0.0071
+        "baseline_test": 0.0764,
+        "filter_kd_test": 0.06346,
+        "our_model_test": 0.05184,
+        "baseline_train": 0.0094,
+        "filter_kd_train": 0.00683,
+        "our_model_train": 0.00401
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.07347,
+        "filter_kd_test": 0.06557,
+        "our_model_test": 0.04974,
+        "baseline_train": 0.00794,
+        "filter_kd_train": 0.00704,
+        "our_model_train": 0.00327
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.0706,
+        "filter_kd_test": 0.06319,
+        "our_model_test": 0.04759,
+        "baseline_train": 0.00932,
+        "filter_kd_train": 0.00732,
+        "our_model_train": 0.00391
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.06669,
+        "filter_kd_test": 0.06398,
+        "our_model_test": 0.04874,
+        "baseline_train": 0.00813,
+        "filter_kd_train": 0.0078,
+        "our_model_train": 0.00366
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.07676,
+        "filter_kd_test": 0.06365,
+        "our_model_test": 0.04695,
+        "baseline_train": 0.0076,
+        "filter_kd_train": 0.00661,
+        "our_model_train": 0.00375
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.06695,
+        "filter_kd_test": 0.0613,
+        "our_model_test": 0.04433,
+        "baseline_train": 0.00787,
+        "filter_kd_train": 0.00531,
+        "our_model_train": 0.00237
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.07071,
+        "filter_kd_test": 0.07166,
+        "our_model_test": 0.04557,
+        "baseline_train": 0.0079,
+        "filter_kd_train": 0.00583,
+        "our_model_train": 0.00308
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.07225,
+        "filter_kd_test": 0.06284,
+        "our_model_test": 0.04531,
+        "baseline_train": 0.00728,
+        "filter_kd_train": 0.00521,
+        "our_model_train": 0.00341
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.06313,
+        "filter_kd_test": 0.06168,
+        "our_model_test": 0.0451,
+        "baseline_train": 0.00611,
+        "filter_kd_train": 0.00548,
+        "our_model_train": 0.00291
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.07228,
+        "filter_kd_test": 0.06393,
+        "our_model_test": 0.04411,
+        "baseline_train": 0.00731,
+        "filter_kd_train": 0.00616,
+        "our_model_train": 0.00305
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.06828,
+        "filter_kd_test": 0.06017,
+        "our_model_test": 0.04267,
+        "baseline_train": 0.00625,
+        "filter_kd_train": 0.00483,
+        "our_model_train": 0.00267
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.07423,
+        "filter_kd_test": 0.06368,
+        "our_model_test": 0.04331,
+        "baseline_train": 0.00674,
+        "filter_kd_train": 0.00512,
+        "our_model_train": 0.00189
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.06455,
+        "filter_kd_test": 0.06218,
+        "our_model_test": 0.04185,
+        "baseline_train": 0.0067,
+        "filter_kd_train": 0.0059,
+        "our_model_train": 0.0031
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.06691,
+        "filter_kd_test": 0.06531,
+        "our_model_test": 0.04292,
+        "baseline_train": 0.00584,
+        "filter_kd_train": 0.00452,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.06615,
+        "filter_kd_test": 0.06554,
+        "our_model_test": 0.04267,
+        "baseline_train": 0.00601,
+        "filter_kd_train": 0.00506,
+        "our_model_train": 0.00298
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.07068,
+        "filter_kd_test": 0.05912,
+        "our_model_test": 0.03971,
+        "baseline_train": 0.00665,
+        "filter_kd_train": 0.00391,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.06314,
+        "filter_kd_test": 0.05838,
+        "our_model_test": 0.04259,
+        "baseline_train": 0.00643,
+        "filter_kd_train": 0.00431,
+        "our_model_train": 0.00137
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.0602,
+        "filter_kd_test": 0.06267,
+        "our_model_test": 0.04038,
+        "baseline_train": 0.00589,
+        "filter_kd_train": 0.00459,
+        "our_model_train": 0.0026
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.07343,
+        "filter_kd_test": 0.05986,
+        "our_model_test": 0.04288,
+        "baseline_train": 0.00555,
+        "filter_kd_train": 0.00452,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.06536,
+        "filter_kd_test": 0.05996,
+        "our_model_test": 0.04135,
+        "baseline_train": 0.00698,
+        "filter_kd_train": 0.00366,
+        "our_model_train": 0.00166
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.07197,
+        "filter_kd_test": 0.06124,
+        "our_model_test": 0.04071,
+        "baseline_train": 0.00638,
+        "filter_kd_train": 0.00408,
+        "our_model_train": 0.00301
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.06912,
+        "filter_kd_test": 0.06062,
+        "our_model_test": 0.0434,
+        "baseline_train": 0.00501,
+        "filter_kd_train": 0.00484,
+        "our_model_train": 0.00237
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.07123,
+        "filter_kd_test": 0.06766,
+        "our_model_test": 0.04116,
+        "baseline_train": 0.00485,
+        "filter_kd_train": 0.00464,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.07366,
+        "filter_kd_test": 0.06176,
+        "our_model_test": 0.04065,
+        "baseline_train": 0.00556,
+        "filter_kd_train": 0.00352,
+        "our_model_train": 0.00182
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.07075,
+        "filter_kd_test": 0.06013,
+        "our_model_test": 0.03988,
+        "baseline_train": 0.0058,
+        "filter_kd_train": 0.00501,
+        "our_model_train": 0.00247
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.07599,
+        "filter_kd_test": 0.05989,
+        "our_model_test": 0.03941,
+        "baseline_train": 0.00653,
+        "filter_kd_train": 0.00407,
+        "our_model_train": 0.00207
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.0661,
+        "filter_kd_test": 0.06247,
+        "our_model_test": 0.04121,
+        "baseline_train": 0.00703,
+        "filter_kd_train": 0.00386,
+        "our_model_train": 0.00252
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.06661,
+        "filter_kd_test": 0.06187,
+        "our_model_test": 0.04221,
+        "baseline_train": 0.00568,
+        "filter_kd_train": 0.00454,
+        "our_model_train": 0.00257
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.06509,
+        "filter_kd_test": 0.05962,
+        "our_model_test": 0.03957,
+        "baseline_train": 0.00367,
+        "filter_kd_train": 0.00543,
+        "our_model_train": 0.00168
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.06556,
+        "filter_kd_test": 0.06071,
+        "our_model_test": 0.04087,
+        "baseline_train": 0.00588,
+        "filter_kd_train": 0.0047,
+        "our_model_train": 0.00188
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.06572,
+        "filter_kd_test": 0.06481,
+        "our_model_test": 0.04026,
+        "baseline_train": 0.00649,
+        "filter_kd_train": 0.00446,
+        "our_model_train": 0.0024
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.06859,
+        "filter_kd_test": 0.06357,
+        "our_model_test": 0.04064,
+        "baseline_train": 0.00415,
+        "filter_kd_train": 0.00439,
+        "our_model_train": 0.00183
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.0704,
+        "filter_kd_test": 0.06237,
+        "our_model_test": 0.04165,
+        "baseline_train": 0.00518,
+        "filter_kd_train": 0.00432,
+        "our_model_train": 0.00276
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.06707,
+        "filter_kd_test": 0.06638,
+        "our_model_test": 0.04094,
+        "baseline_train": 0.00374,
+        "filter_kd_train": 0.00457,
+        "our_model_train": 0.00223
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.07072,
+        "filter_kd_test": 0.06251,
+        "our_model_test": 0.0402,
+        "baseline_train": 0.00416,
+        "filter_kd_train": 0.00398,
+        "our_model_train": 0.00173
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06232,
+        "our_model_test": 0.04198,
+        "baseline_train": 0.00544,
+        "filter_kd_train": 0.00338,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.07035,
+        "filter_kd_test": 0.05991,
+        "our_model_test": 0.04014,
+        "baseline_train": 0.00512,
+        "filter_kd_train": 0.00362,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.06573,
+        "filter_kd_test": 0.06196,
+        "our_model_test": 0.03936,
+        "baseline_train": 0.00475,
+        "filter_kd_train": 0.00451,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.07218,
+        "filter_kd_test": 0.06331,
+        "our_model_test": 0.04045,
+        "baseline_train": 0.00584,
+        "filter_kd_train": 0.00322,
+        "our_model_train": 0.00134
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.06678,
+        "filter_kd_test": 0.06362,
+        "our_model_test": 0.03965,
+        "baseline_train": 0.00713,
+        "filter_kd_train": 0.00373,
+        "our_model_train": 0.00211
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.07151,
+        "filter_kd_test": 0.0651,
+        "our_model_test": 0.04225,
+        "baseline_train": 0.00604,
+        "filter_kd_train": 0.00467,
+        "our_model_train": 0.00227
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.06883,
+        "filter_kd_test": 0.05998,
+        "our_model_test": 0.03935,
+        "baseline_train": 0.00506,
+        "filter_kd_train": 0.00395,
+        "our_model_train": 0.00185
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.06853,
+        "filter_kd_test": 0.06298,
+        "our_model_test": 0.04024,
+        "baseline_train": 0.00624,
+        "filter_kd_train": 0.00336,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.06357,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04006,
+        "baseline_train": 0.00496,
+        "filter_kd_train": 0.00495,
+        "our_model_train": 0.00228
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06477,
+        "our_model_test": 0.04135,
+        "baseline_train": 0.00552,
+        "filter_kd_train": 0.0039,
+        "our_model_train": 0.00164
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.06477,
+        "filter_kd_test": 0.06323,
+        "our_model_test": 0.042,
+        "baseline_train": 0.00628,
+        "filter_kd_train": 0.00374,
+        "our_model_train": 0.00157
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.07255,
+        "filter_kd_test": 0.06051,
+        "our_model_test": 0.04043,
+        "baseline_train": 0.00492,
+        "filter_kd_train": 0.00375,
+        "our_model_train": 0.00138
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.06785,
+        "filter_kd_test": 0.05998,
+        "our_model_test": 0.03892,
+        "baseline_train": 0.00274,
+        "filter_kd_train": 0.00401,
+        "our_model_train": 0.00273
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.07186,
+        "filter_kd_test": 0.06013,
+        "our_model_test": 0.03948,
+        "baseline_train": 0.00541,
+        "filter_kd_train": 0.00343,
+        "our_model_train": 0.00214
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.06873,
+        "filter_kd_test": 0.06349,
+        "our_model_test": 0.03998,
+        "baseline_train": 0.00487,
+        "filter_kd_train": 0.0035,
+        "our_model_train": 0.00168
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.06525,
+        "filter_kd_test": 0.06177,
+        "our_model_test": 0.04098,
+        "baseline_train": 0.00438,
+        "filter_kd_train": 0.00492,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.06596,
+        "filter_kd_test": 0.05954,
+        "our_model_test": 0.03764,
+        "baseline_train": 0.00573,
+        "filter_kd_train": 0.00446,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.06627,
+        "filter_kd_test": 0.06206,
+        "our_model_test": 0.03849,
+        "baseline_train": 0.0046,
+        "filter_kd_train": 0.00449,
+        "our_model_train": 0.00151
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.06806,
+        "filter_kd_test": 0.05831,
+        "our_model_test": 0.04052,
+        "baseline_train": 0.00499,
+        "filter_kd_train": 0.00305,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.06346,
+        "filter_kd_test": 0.0624,
+        "our_model_test": 0.04025,
+        "baseline_train": 0.00594,
+        "filter_kd_train": 0.00341,
+        "our_model_train": 0.00203
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.06753,
+        "filter_kd_test": 0.06241,
+        "our_model_test": 0.04022,
+        "baseline_train": 0.00472,
+        "filter_kd_train": 0.00352,
+        "our_model_train": 0.00204
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.06227,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04047,
+        "baseline_train": 0.00574,
+        "filter_kd_train": 0.00259,
+        "our_model_train": 0.0016
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.06819,
+        "filter_kd_test": 0.06513,
+        "our_model_test": 0.04005,
+        "baseline_train": 0.00443,
+        "filter_kd_train": 0.0039,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.06376,
+        "filter_kd_test": 0.05942,
+        "our_model_test": 0.03955,
+        "baseline_train": 0.00425,
+        "filter_kd_train": 0.00408,
+        "our_model_train": 0.00266
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.06715,
+        "filter_kd_test": 0.06051,
+        "our_model_test": 0.03974,
+        "baseline_train": 0.00376,
+        "filter_kd_train": 0.00454,
+        "our_model_train": 0.00197
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.07138,
+        "filter_kd_test": 0.0674,
+        "our_model_test": 0.04032,
+        "baseline_train": 0.00441,
+        "filter_kd_train": 0.00375,
+        "our_model_train": 0.00246
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.06641,
+        "filter_kd_test": 0.05813,
+        "our_model_test": 0.04094,
+        "baseline_train": 0.00447,
+        "filter_kd_train": 0.00513,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06657,
+        "our_model_test": 0.04009,
+        "baseline_train": 0.00569,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00167
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.06376,
+        "filter_kd_test": 0.06307,
+        "our_model_test": 0.03968,
+        "baseline_train": 0.00468,
+        "filter_kd_train": 0.00343,
+        "our_model_train": 0.00217
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.07323,
+        "filter_kd_test": 0.05887,
+        "our_model_test": 0.04004,
+        "baseline_train": 0.00614,
+        "filter_kd_train": 0.00396,
+        "our_model_train": 0.00218
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.06229,
+        "filter_kd_test": 0.06186,
+        "our_model_test": 0.03983,
+        "baseline_train": 0.00579,
+        "filter_kd_train": 0.00472,
+        "our_model_train": 0.00304
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06804,
+        "filter_kd_test": 0.06166,
+        "our_model_test": 0.04021,
+        "baseline_train": 0.00472,
+        "filter_kd_train": 0.00421,
+        "our_model_train": 0.00188
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.0726,
+        "filter_kd_test": 0.06364,
+        "our_model_test": 0.03901,
+        "baseline_train": 0.00592,
+        "filter_kd_train": 0.00479,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.05979,
+        "our_model_test": 0.04131,
+        "baseline_train": 0.00499,
+        "filter_kd_train": 0.0034,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06895,
+        "filter_kd_test": 0.0621,
+        "our_model_test": 0.03977,
+        "baseline_train": 0.00471,
+        "filter_kd_train": 0.00377,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.07166,
+        "filter_kd_test": 0.06336,
+        "our_model_test": 0.04123,
+        "baseline_train": 0.00622,
+        "filter_kd_train": 0.0046,
+        "our_model_train": 0.00183
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06242,
+        "filter_kd_test": 0.06096,
+        "our_model_test": 0.0391,
+        "baseline_train": 0.00526,
+        "filter_kd_train": 0.0033,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.06438,
+        "filter_kd_test": 0.06141,
+        "our_model_test": 0.04029,
+        "baseline_train": 0.0048,
+        "filter_kd_train": 0.00435,
+        "our_model_train": 0.00181
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.06905,
+        "filter_kd_test": 0.05831,
+        "our_model_test": 0.04013,
+        "baseline_train": 0.00655,
+        "filter_kd_train": 0.0034,
+        "our_model_train": 0.00173
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.0738,
+        "filter_kd_test": 0.06136,
+        "our_model_test": 0.04036,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00438,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.06744,
+        "filter_kd_test": 0.06052,
+        "our_model_test": 0.04068,
+        "baseline_train": 0.00652,
+        "filter_kd_train": 0.00392,
+        "our_model_train": 0.00161
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.06988,
+        "filter_kd_test": 0.06076,
+        "our_model_test": 0.03783,
+        "baseline_train": 0.00568,
+        "filter_kd_train": 0.00368,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.06716,
+        "filter_kd_test": 0.06138,
+        "our_model_test": 0.04071,
+        "baseline_train": 0.00465,
+        "filter_kd_train": 0.00431,
+        "our_model_train": 0.0019
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.06859,
+        "filter_kd_test": 0.06523,
+        "our_model_test": 0.03907,
+        "baseline_train": 0.00587,
+        "filter_kd_train": 0.00368,
+        "our_model_train": 0.00232
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.06729,
+        "filter_kd_test": 0.06468,
+        "our_model_test": 0.03978,
+        "baseline_train": 0.00472,
+        "filter_kd_train": 0.00399,
+        "our_model_train": 0.00188
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.0638,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03895,
+        "baseline_train": 0.00415,
+        "filter_kd_train": 0.00457,
+        "our_model_train": 0.00268
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07164,
+        "filter_kd_test": 0.06066,
+        "our_model_test": 0.04007,
+        "baseline_train": 0.00593,
+        "filter_kd_train": 0.00344,
+        "our_model_train": 0.0021
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.06941,
+        "filter_kd_test": 0.062,
+        "our_model_test": 0.04019,
+        "baseline_train": 0.0058,
+        "filter_kd_train": 0.00238,
+        "our_model_train": 0.00227
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.06371,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04051,
+        "baseline_train": 0.0061,
+        "filter_kd_train": 0.00392,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.07164,
+        "filter_kd_test": 0.06363,
+        "our_model_test": 0.04164,
+        "baseline_train": 0.00559,
+        "filter_kd_train": 0.00405,
+        "our_model_train": 0.00136
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.06514,
+        "filter_kd_test": 0.05931,
+        "our_model_test": 0.04217,
+        "baseline_train": 0.00486,
+        "filter_kd_train": 0.00407,
+        "our_model_train": 0.00222
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.06615,
+        "filter_kd_test": 0.06739,
+        "our_model_test": 0.03938,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00356,
+        "our_model_train": 0.00147
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06386,
+        "filter_kd_test": 0.06093,
+        "our_model_test": 0.03957,
+        "baseline_train": 0.00445,
+        "filter_kd_train": 0.00316,
+        "our_model_train": 0.00197
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.06673,
+        "filter_kd_test": 0.06252,
+        "our_model_test": 0.04008,
+        "baseline_train": 0.00383,
+        "filter_kd_train": 0.00381,
+        "our_model_train": 0.0017
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06212,
+        "filter_kd_test": 0.06368,
+        "our_model_test": 0.03813,
+        "baseline_train": 0.00509,
+        "filter_kd_train": 0.0039,
+        "our_model_train": 0.00227
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.06675,
+        "filter_kd_test": 0.0595,
+        "our_model_test": 0.03968,
+        "baseline_train": 0.00436,
+        "filter_kd_train": 0.00465,
+        "our_model_train": 0.00201
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02159,
-      "filter_kd_mse": 0.01433,
-      "our_model_mse": 0.0071
+      "baseline_mse": 0.06675,
+      "filter_kd_mse": 0.0595,
+      "our_model_mse": 0.03968
     }
   },
   "256x4": {
-    "title": "Bi-LSTM: 256x4 (Baseline vs Distillation)",
+    "title": "(d) Bi-LSTM: 256x4 (Baseline vs Distillation)",
     "units": 256,
     "layers": 4,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.05886,
-        "filter_kd": 0.04882,
-        "our_model": 0.03912
+        "baseline_test": 0.088,
+        "filter_kd_test": 0.07588,
+        "our_model_test": 0.06429,
+        "baseline_train": 0.01379,
+        "filter_kd_train": 0.01092,
+        "our_model_train": 0.00637
       },
       {
         "epoch": 2,
-        "baseline": 0.05275,
-        "filter_kd": 0.04153,
-        "our_model": 0.03089
+        "baseline_test": 0.08451,
+        "filter_kd_test": 0.07588,
+        "our_model_test": 0.06104,
+        "baseline_train": 0.01476,
+        "filter_kd_train": 0.01095,
+        "our_model_train": 0.00658
       },
       {
         "epoch": 3,
-        "baseline": 0.04597,
-        "filter_kd": 0.03481,
-        "our_model": 0.0245
+        "baseline_test": 0.08792,
+        "filter_kd_test": 0.07562,
+        "our_model_test": 0.0602,
+        "baseline_train": 0.01247,
+        "filter_kd_train": 0.00926,
+        "our_model_train": 0.00581
       },
       {
         "epoch": 4,
-        "baseline": 0.04153,
-        "filter_kd": 0.03015,
-        "our_model": 0.01944
+        "baseline_test": 0.08037,
+        "filter_kd_test": 0.07092,
+        "our_model_test": 0.05839,
+        "baseline_train": 0.01247,
+        "filter_kd_train": 0.00979,
+        "our_model_train": 0.00544
       },
       {
         "epoch": 5,
-        "baseline": 0.03699,
-        "filter_kd": 0.02652,
-        "our_model": 0.01558
+        "baseline_test": 0.08065,
+        "filter_kd_test": 0.07293,
+        "our_model_test": 0.05567,
+        "baseline_train": 0.01283,
+        "filter_kd_train": 0.0093,
+        "our_model_train": 0.00536
       },
       {
         "epoch": 6,
-        "baseline": 0.03307,
-        "filter_kd": 0.0236,
-        "our_model": 0.01312
+        "baseline_test": 0.08158,
+        "filter_kd_test": 0.07174,
+        "our_model_test": 0.05612,
+        "baseline_train": 0.0113,
+        "filter_kd_train": 0.00848,
+        "our_model_train": 0.00518
       },
       {
         "epoch": 7,
-        "baseline": 0.02985,
-        "filter_kd": 0.02057,
-        "our_model": 0.01065
+        "baseline_test": 0.08023,
+        "filter_kd_test": 0.0708,
+        "our_model_test": 0.05369,
+        "baseline_train": 0.01032,
+        "filter_kd_train": 0.00831,
+        "our_model_train": 0.00399
       },
       {
         "epoch": 8,
-        "baseline": 0.02718,
-        "filter_kd": 0.01811,
-        "our_model": 0.00929
+        "baseline_test": 0.07553,
+        "filter_kd_test": 0.07314,
+        "our_model_test": 0.05257,
+        "baseline_train": 0.00914,
+        "filter_kd_train": 0.00873,
+        "our_model_train": 0.00414
       },
       {
         "epoch": 9,
-        "baseline": 0.0245,
-        "filter_kd": 0.01606,
-        "our_model": 0.00795
+        "baseline_test": 0.07513,
+        "filter_kd_test": 0.07025,
+        "our_model_test": 0.05059,
+        "baseline_train": 0.01091,
+        "filter_kd_train": 0.00688,
+        "our_model_train": 0.00461
       },
       {
         "epoch": 10,
-        "baseline": 0.02298,
-        "filter_kd": 0.01473,
-        "our_model": 0.00713
+        "baseline_test": 0.0796,
+        "filter_kd_test": 0.06754,
+        "our_model_test": 0.05156,
+        "baseline_train": 0.00887,
+        "filter_kd_train": 0.00743,
+        "our_model_train": 0.00414
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.07505,
+        "filter_kd_test": 0.07004,
+        "our_model_test": 0.04999,
+        "baseline_train": 0.00728,
+        "filter_kd_train": 0.00773,
+        "our_model_train": 0.00317
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.07861,
+        "filter_kd_test": 0.07025,
+        "our_model_test": 0.04723,
+        "baseline_train": 0.008,
+        "filter_kd_train": 0.006,
+        "our_model_train": 0.00358
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.07344,
+        "filter_kd_test": 0.06917,
+        "our_model_test": 0.04884,
+        "baseline_train": 0.00913,
+        "filter_kd_train": 0.00607,
+        "our_model_train": 0.00342
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.0742,
+        "filter_kd_test": 0.06566,
+        "our_model_test": 0.04778,
+        "baseline_train": 0.00902,
+        "filter_kd_train": 0.00544,
+        "our_model_train": 0.00313
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.07361,
+        "filter_kd_test": 0.06752,
+        "our_model_test": 0.04536,
+        "baseline_train": 0.00781,
+        "filter_kd_train": 0.00569,
+        "our_model_train": 0.00323
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.07526,
+        "filter_kd_test": 0.06969,
+        "our_model_test": 0.04514,
+        "baseline_train": 0.00714,
+        "filter_kd_train": 0.00573,
+        "our_model_train": 0.00297
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.07212,
+        "filter_kd_test": 0.06962,
+        "our_model_test": 0.04561,
+        "baseline_train": 0.00678,
+        "filter_kd_train": 0.00603,
+        "our_model_train": 0.00288
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.07185,
+        "filter_kd_test": 0.06693,
+        "our_model_test": 0.04446,
+        "baseline_train": 0.00719,
+        "filter_kd_train": 0.00452,
+        "our_model_train": 0.00246
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.0683,
+        "filter_kd_test": 0.06627,
+        "our_model_test": 0.04586,
+        "baseline_train": 0.00844,
+        "filter_kd_train": 0.00571,
+        "our_model_train": 0.00303
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.06594,
+        "filter_kd_test": 0.06471,
+        "our_model_test": 0.04295,
+        "baseline_train": 0.006,
+        "filter_kd_train": 0.0051,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.0711,
+        "filter_kd_test": 0.06712,
+        "our_model_test": 0.04231,
+        "baseline_train": 0.00654,
+        "filter_kd_train": 0.00633,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.06298,
+        "filter_kd_test": 0.0649,
+        "our_model_test": 0.04416,
+        "baseline_train": 0.00779,
+        "filter_kd_train": 0.00424,
+        "our_model_train": 0.00281
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.07003,
+        "filter_kd_test": 0.06512,
+        "our_model_test": 0.04541,
+        "baseline_train": 0.00491,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.00274
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.0753,
+        "filter_kd_test": 0.0684,
+        "our_model_test": 0.04281,
+        "baseline_train": 0.00569,
+        "filter_kd_train": 0.00496,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.07354,
+        "filter_kd_test": 0.06435,
+        "our_model_test": 0.04265,
+        "baseline_train": 0.00588,
+        "filter_kd_train": 0.0054,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.06503,
+        "filter_kd_test": 0.06751,
+        "our_model_test": 0.04115,
+        "baseline_train": 0.0053,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00296
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.07117,
+        "our_model_test": 0.04291,
+        "baseline_train": 0.00592,
+        "filter_kd_train": 0.00456,
+        "our_model_train": 0.00249
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.07883,
+        "filter_kd_test": 0.0661,
+        "our_model_test": 0.04224,
+        "baseline_train": 0.00574,
+        "filter_kd_train": 0.00442,
+        "our_model_train": 0.00228
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.07023,
+        "filter_kd_test": 0.067,
+        "our_model_test": 0.04211,
+        "baseline_train": 0.00326,
+        "filter_kd_train": 0.00488,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.07076,
+        "filter_kd_test": 0.06388,
+        "our_model_test": 0.0425,
+        "baseline_train": 0.00631,
+        "filter_kd_train": 0.00398,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.06735,
+        "filter_kd_test": 0.06184,
+        "our_model_test": 0.04062,
+        "baseline_train": 0.00619,
+        "filter_kd_train": 0.00497,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.07321,
+        "filter_kd_test": 0.06857,
+        "our_model_test": 0.04048,
+        "baseline_train": 0.0058,
+        "filter_kd_train": 0.00484,
+        "our_model_train": 0.00253
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.07477,
+        "filter_kd_test": 0.06591,
+        "our_model_test": 0.04137,
+        "baseline_train": 0.00626,
+        "filter_kd_train": 0.00431,
+        "our_model_train": 0.00185
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.06998,
+        "filter_kd_test": 0.06295,
+        "our_model_test": 0.04025,
+        "baseline_train": 0.00525,
+        "filter_kd_train": 0.00382,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.06987,
+        "filter_kd_test": 0.06483,
+        "our_model_test": 0.04084,
+        "baseline_train": 0.00468,
+        "filter_kd_train": 0.00466,
+        "our_model_train": 0.00254
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06284,
+        "our_model_test": 0.03999,
+        "baseline_train": 0.00455,
+        "filter_kd_train": 0.00474,
+        "our_model_train": 0.00207
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.06948,
+        "filter_kd_test": 0.06032,
+        "our_model_test": 0.04132,
+        "baseline_train": 0.00428,
+        "filter_kd_train": 0.00425,
+        "our_model_train": 0.00225
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.07513,
+        "filter_kd_test": 0.06168,
+        "our_model_test": 0.0376,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00528,
+        "our_model_train": 0.00262
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.07107,
+        "filter_kd_test": 0.06329,
+        "our_model_test": 0.04137,
+        "baseline_train": 0.00444,
+        "filter_kd_train": 0.00446,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.07401,
+        "filter_kd_test": 0.07276,
+        "our_model_test": 0.0409,
+        "baseline_train": 0.0048,
+        "filter_kd_train": 0.00415,
+        "our_model_train": 0.00139
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.06784,
+        "filter_kd_test": 0.0634,
+        "our_model_test": 0.03993,
+        "baseline_train": 0.00531,
+        "filter_kd_train": 0.00365,
+        "our_model_train": 0.00254
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.07625,
+        "filter_kd_test": 0.06418,
+        "our_model_test": 0.04009,
+        "baseline_train": 0.00529,
+        "filter_kd_train": 0.00463,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.06792,
+        "filter_kd_test": 0.06357,
+        "our_model_test": 0.03903,
+        "baseline_train": 0.00449,
+        "filter_kd_train": 0.00383,
+        "our_model_train": 0.00242
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.07112,
+        "filter_kd_test": 0.06455,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.00503,
+        "filter_kd_train": 0.00434,
+        "our_model_train": 0.00203
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.06611,
+        "filter_kd_test": 0.06298,
+        "our_model_test": 0.03787,
+        "baseline_train": 0.00502,
+        "filter_kd_train": 0.00495,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.07355,
+        "filter_kd_test": 0.06661,
+        "our_model_test": 0.04037,
+        "baseline_train": 0.00527,
+        "filter_kd_train": 0.00372,
+        "our_model_train": 0.00193
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.07231,
+        "filter_kd_test": 0.06653,
+        "our_model_test": 0.04011,
+        "baseline_train": 0.00474,
+        "filter_kd_train": 0.00408,
+        "our_model_train": 0.00229
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.06508,
+        "filter_kd_test": 0.06252,
+        "our_model_test": 0.03968,
+        "baseline_train": 0.00411,
+        "filter_kd_train": 0.00377,
+        "our_model_train": 0.00199
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.07454,
+        "filter_kd_test": 0.067,
+        "our_model_test": 0.04053,
+        "baseline_train": 0.00532,
+        "filter_kd_train": 0.00444,
+        "our_model_train": 0.00159
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.07375,
+        "filter_kd_test": 0.06394,
+        "our_model_test": 0.04086,
+        "baseline_train": 0.00422,
+        "filter_kd_train": 0.00313,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.07142,
+        "filter_kd_test": 0.06228,
+        "our_model_test": 0.0393,
+        "baseline_train": 0.00597,
+        "filter_kd_train": 0.00334,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.06694,
+        "filter_kd_test": 0.06535,
+        "our_model_test": 0.03982,
+        "baseline_train": 0.00554,
+        "filter_kd_train": 0.00372,
+        "our_model_train": 0.00197
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.07023,
+        "filter_kd_test": 0.06206,
+        "our_model_test": 0.04088,
+        "baseline_train": 0.00464,
+        "filter_kd_train": 0.00391,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06368,
+        "our_model_test": 0.04254,
+        "baseline_train": 0.00568,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00192
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.07015,
+        "filter_kd_test": 0.06515,
+        "our_model_test": 0.03893,
+        "baseline_train": 0.00594,
+        "filter_kd_train": 0.00447,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.0776,
+        "filter_kd_test": 0.06709,
+        "our_model_test": 0.04078,
+        "baseline_train": 0.00551,
+        "filter_kd_train": 0.00382,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.07041,
+        "filter_kd_test": 0.06714,
+        "our_model_test": 0.03885,
+        "baseline_train": 0.00386,
+        "filter_kd_train": 0.00413,
+        "our_model_train": 0.00204
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.07066,
+        "filter_kd_test": 0.06453,
+        "our_model_test": 0.03986,
+        "baseline_train": 0.00623,
+        "filter_kd_train": 0.00307,
+        "our_model_train": 0.00169
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.06968,
+        "filter_kd_test": 0.06075,
+        "our_model_test": 0.0399,
+        "baseline_train": 0.00636,
+        "filter_kd_train": 0.00404,
+        "our_model_train": 0.00211
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.06563,
+        "filter_kd_test": 0.0628,
+        "our_model_test": 0.03969,
+        "baseline_train": 0.00477,
+        "filter_kd_train": 0.00479,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.06615,
+        "filter_kd_test": 0.06452,
+        "our_model_test": 0.04056,
+        "baseline_train": 0.00594,
+        "filter_kd_train": 0.00497,
+        "our_model_train": 0.00161
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.0672,
+        "filter_kd_test": 0.06151,
+        "our_model_test": 0.03982,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.00461,
+        "our_model_train": 0.00198
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.06991,
+        "filter_kd_test": 0.06433,
+        "our_model_test": 0.03922,
+        "baseline_train": 0.00669,
+        "filter_kd_train": 0.00305,
+        "our_model_train": 0.00208
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.07711,
+        "filter_kd_test": 0.06704,
+        "our_model_test": 0.03986,
+        "baseline_train": 0.00473,
+        "filter_kd_train": 0.00391,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.06228,
+        "filter_kd_test": 0.06709,
+        "our_model_test": 0.03862,
+        "baseline_train": 0.0048,
+        "filter_kd_train": 0.00376,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.06443,
+        "filter_kd_test": 0.06494,
+        "our_model_test": 0.04206,
+        "baseline_train": 0.00392,
+        "filter_kd_train": 0.00413,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.07151,
+        "filter_kd_test": 0.06405,
+        "our_model_test": 0.03939,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.00509,
+        "our_model_train": 0.00193
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.07254,
+        "filter_kd_test": 0.06143,
+        "our_model_test": 0.03907,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.0049,
+        "our_model_train": 0.00215
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.06892,
+        "filter_kd_test": 0.06401,
+        "our_model_test": 0.03878,
+        "baseline_train": 0.00549,
+        "filter_kd_train": 0.00454,
+        "our_model_train": 0.00182
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.07437,
+        "filter_kd_test": 0.06454,
+        "our_model_test": 0.03959,
+        "baseline_train": 0.00496,
+        "filter_kd_train": 0.00527,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.06876,
+        "filter_kd_test": 0.06272,
+        "our_model_test": 0.04077,
+        "baseline_train": 0.00486,
+        "filter_kd_train": 0.00362,
+        "our_model_train": 0.00253
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.06998,
+        "filter_kd_test": 0.06581,
+        "our_model_test": 0.03815,
+        "baseline_train": 0.00581,
+        "filter_kd_train": 0.0036,
+        "our_model_train": 0.00232
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.06312,
+        "filter_kd_test": 0.06579,
+        "our_model_test": 0.03881,
+        "baseline_train": 0.00559,
+        "filter_kd_train": 0.00401,
+        "our_model_train": 0.00162
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.06859,
+        "filter_kd_test": 0.06538,
+        "our_model_test": 0.04012,
+        "baseline_train": 0.00547,
+        "filter_kd_train": 0.00519,
+        "our_model_train": 0.00138
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.07567,
+        "filter_kd_test": 0.06422,
+        "our_model_test": 0.03912,
+        "baseline_train": 0.00394,
+        "filter_kd_train": 0.00389,
+        "our_model_train": 0.00237
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06956,
+        "filter_kd_test": 0.06703,
+        "our_model_test": 0.03856,
+        "baseline_train": 0.005,
+        "filter_kd_train": 0.00325,
+        "our_model_train": 0.00215
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.07911,
+        "filter_kd_test": 0.06316,
+        "our_model_test": 0.03741,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00427,
+        "our_model_train": 0.00216
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.07433,
+        "filter_kd_test": 0.06186,
+        "our_model_test": 0.04069,
+        "baseline_train": 0.00596,
+        "filter_kd_train": 0.00294,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06824,
+        "filter_kd_test": 0.06384,
+        "our_model_test": 0.04036,
+        "baseline_train": 0.00461,
+        "filter_kd_train": 0.0036,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.0662,
+        "filter_kd_test": 0.06483,
+        "our_model_test": 0.04069,
+        "baseline_train": 0.00408,
+        "filter_kd_train": 0.0044,
+        "our_model_train": 0.00219
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06265,
+        "our_model_test": 0.0412,
+        "baseline_train": 0.00422,
+        "filter_kd_train": 0.00372,
+        "our_model_train": 0.00219
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.07275,
+        "filter_kd_test": 0.0635,
+        "our_model_test": 0.03941,
+        "baseline_train": 0.00614,
+        "filter_kd_train": 0.00505,
+        "our_model_train": 0.00239
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.0703,
+        "filter_kd_test": 0.06239,
+        "our_model_test": 0.03918,
+        "baseline_train": 0.00542,
+        "filter_kd_train": 0.00425,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.07828,
+        "filter_kd_test": 0.061,
+        "our_model_test": 0.04106,
+        "baseline_train": 0.0042,
+        "filter_kd_train": 0.00377,
+        "our_model_train": 0.0021
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.07699,
+        "filter_kd_test": 0.07022,
+        "our_model_test": 0.04061,
+        "baseline_train": 0.00486,
+        "filter_kd_train": 0.00432,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.06888,
+        "filter_kd_test": 0.06759,
+        "our_model_test": 0.04024,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.0044,
+        "our_model_train": 0.00217
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.07294,
+        "filter_kd_test": 0.06277,
+        "our_model_test": 0.03945,
+        "baseline_train": 0.00412,
+        "filter_kd_train": 0.00427,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.0716,
+        "filter_kd_test": 0.07035,
+        "our_model_test": 0.04,
+        "baseline_train": 0.00554,
+        "filter_kd_train": 0.00335,
+        "our_model_train": 0.00185
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.07244,
+        "filter_kd_test": 0.0657,
+        "our_model_test": 0.03971,
+        "baseline_train": 0.00494,
+        "filter_kd_train": 0.00309,
+        "our_model_train": 0.00186
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.06812,
+        "filter_kd_test": 0.06515,
+        "our_model_test": 0.0405,
+        "baseline_train": 0.00504,
+        "filter_kd_train": 0.00401,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07845,
+        "filter_kd_test": 0.06484,
+        "our_model_test": 0.0405,
+        "baseline_train": 0.00458,
+        "filter_kd_train": 0.00271,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.06833,
+        "filter_kd_test": 0.06228,
+        "our_model_test": 0.0407,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.00464,
+        "our_model_train": 0.00225
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.07239,
+        "filter_kd_test": 0.06127,
+        "our_model_test": 0.04121,
+        "baseline_train": 0.00521,
+        "filter_kd_train": 0.00378,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.06378,
+        "filter_kd_test": 0.06482,
+        "our_model_test": 0.03897,
+        "baseline_train": 0.00392,
+        "filter_kd_train": 0.00309,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.0678,
+        "filter_kd_test": 0.06707,
+        "our_model_test": 0.03947,
+        "baseline_train": 0.00363,
+        "filter_kd_train": 0.00333,
+        "our_model_train": 0.00249
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.06946,
+        "filter_kd_test": 0.0659,
+        "our_model_test": 0.04016,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.00467,
+        "our_model_train": 0.00258
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06874,
+        "filter_kd_test": 0.06135,
+        "our_model_test": 0.03959,
+        "baseline_train": 0.00521,
+        "filter_kd_train": 0.00342,
+        "our_model_train": 0.00162
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.0772,
+        "filter_kd_test": 0.0639,
+        "our_model_test": 0.04003,
+        "baseline_train": 0.00439,
+        "filter_kd_train": 0.00386,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06812,
+        "filter_kd_test": 0.06607,
+        "our_model_test": 0.03816,
+        "baseline_train": 0.00426,
+        "filter_kd_train": 0.0031,
+        "our_model_train": 0.00174
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.06971,
+        "filter_kd_test": 0.0611,
+        "our_model_test": 0.03908,
+        "baseline_train": 0.0042,
+        "filter_kd_train": 0.00412,
+        "our_model_train": 0.00203
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02298,
-      "filter_kd_mse": 0.01473,
-      "our_model_mse": 0.00713
+      "baseline_mse": 0.06971,
+      "filter_kd_mse": 0.0611,
+      "our_model_mse": 0.03908
     }
   },
   "512x2": {
-    "title": "Bi-LSTM: 512x2 (Baseline vs Distillation)",
+    "title": "(e) Bi-LSTM: 512x2 (Baseline vs Distillation)",
     "units": 512,
     "layers": 2,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.04989,
-        "filter_kd": 0.04189,
-        "our_model": 0.03917
+        "baseline_test": 0.07647,
+        "filter_kd_test": 0.07135,
+        "our_model_test": 0.06445,
+        "baseline_train": 0.01478,
+        "filter_kd_train": 0.013,
+        "our_model_train": 0.00754
       },
       {
         "epoch": 2,
-        "baseline": 0.04468,
-        "filter_kd": 0.036,
-        "our_model": 0.03086
+        "baseline_test": 0.07302,
+        "filter_kd_test": 0.07152,
+        "our_model_test": 0.06343,
+        "baseline_train": 0.01313,
+        "filter_kd_train": 0.01173,
+        "our_model_train": 0.00714
       },
       {
         "epoch": 3,
-        "baseline": 0.0399,
-        "filter_kd": 0.03102,
-        "our_model": 0.02437
+        "baseline_test": 0.07235,
+        "filter_kd_test": 0.06699,
+        "our_model_test": 0.06149,
+        "baseline_train": 0.0134,
+        "filter_kd_train": 0.01088,
+        "our_model_train": 0.00623
       },
       {
         "epoch": 4,
-        "baseline": 0.03548,
-        "filter_kd": 0.02654,
-        "our_model": 0.01943
+        "baseline_test": 0.07648,
+        "filter_kd_test": 0.06524,
+        "our_model_test": 0.05957,
+        "baseline_train": 0.01334,
+        "filter_kd_train": 0.00979,
+        "our_model_train": 0.00569
       },
       {
         "epoch": 5,
-        "baseline": 0.03187,
-        "filter_kd": 0.02288,
-        "our_model": 0.01533
+        "baseline_test": 0.0687,
+        "filter_kd_test": 0.06807,
+        "our_model_test": 0.05733,
+        "baseline_train": 0.01165,
+        "filter_kd_train": 0.01004,
+        "our_model_train": 0.00522
       },
       {
         "epoch": 6,
-        "baseline": 0.02923,
-        "filter_kd": 0.0202,
-        "our_model": 0.01307
+        "baseline_test": 0.07507,
+        "filter_kd_test": 0.06424,
+        "our_model_test": 0.05514,
+        "baseline_train": 0.01093,
+        "filter_kd_train": 0.00899,
+        "our_model_train": 0.00488
       },
       {
         "epoch": 7,
-        "baseline": 0.02699,
-        "filter_kd": 0.0176,
-        "our_model": 0.01094
+        "baseline_test": 0.07777,
+        "filter_kd_test": 0.06724,
+        "our_model_test": 0.05328,
+        "baseline_train": 0.0092,
+        "filter_kd_train": 0.00944,
+        "our_model_train": 0.0053
       },
       {
         "epoch": 8,
-        "baseline": 0.02369,
-        "filter_kd": 0.01584,
-        "our_model": 0.00921
+        "baseline_test": 0.06693,
+        "filter_kd_test": 0.06934,
+        "our_model_test": 0.05191,
+        "baseline_train": 0.01018,
+        "filter_kd_train": 0.00815,
+        "our_model_train": 0.00439
       },
       {
         "epoch": 9,
-        "baseline": 0.02167,
-        "filter_kd": 0.0154,
-        "our_model": 0.00778
+        "baseline_test": 0.063,
+        "filter_kd_test": 0.06301,
+        "our_model_test": 0.05032,
+        "baseline_train": 0.00883,
+        "filter_kd_train": 0.00755,
+        "our_model_train": 0.00396
       },
       {
         "epoch": 10,
-        "baseline": 0.02056,
-        "filter_kd": 0.01393,
-        "our_model": 0.00696
+        "baseline_test": 0.07249,
+        "filter_kd_test": 0.06685,
+        "our_model_test": 0.04958,
+        "baseline_train": 0.00926,
+        "filter_kd_train": 0.00755,
+        "our_model_train": 0.00422
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.06978,
+        "filter_kd_test": 0.0649,
+        "our_model_test": 0.04968,
+        "baseline_train": 0.00769,
+        "filter_kd_train": 0.00746,
+        "our_model_train": 0.00419
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.06632,
+        "filter_kd_test": 0.06307,
+        "our_model_test": 0.04901,
+        "baseline_train": 0.00816,
+        "filter_kd_train": 0.00731,
+        "our_model_train": 0.00461
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.06577,
+        "filter_kd_test": 0.05985,
+        "our_model_test": 0.04783,
+        "baseline_train": 0.00859,
+        "filter_kd_train": 0.00627,
+        "our_model_train": 0.00409
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.0694,
+        "filter_kd_test": 0.06366,
+        "our_model_test": 0.04621,
+        "baseline_train": 0.0091,
+        "filter_kd_train": 0.00738,
+        "our_model_train": 0.00306
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.06578,
+        "filter_kd_test": 0.06368,
+        "our_model_test": 0.04578,
+        "baseline_train": 0.00743,
+        "filter_kd_train": 0.00599,
+        "our_model_train": 0.00247
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.0673,
+        "filter_kd_test": 0.0633,
+        "our_model_test": 0.04509,
+        "baseline_train": 0.00839,
+        "filter_kd_train": 0.00503,
+        "our_model_train": 0.00344
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.06605,
+        "filter_kd_test": 0.06086,
+        "our_model_test": 0.04584,
+        "baseline_train": 0.00729,
+        "filter_kd_train": 0.00596,
+        "our_model_train": 0.0034
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.06058,
+        "filter_kd_test": 0.05997,
+        "our_model_test": 0.04348,
+        "baseline_train": 0.00617,
+        "filter_kd_train": 0.00723,
+        "our_model_train": 0.00341
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.06175,
+        "filter_kd_test": 0.05834,
+        "our_model_test": 0.04461,
+        "baseline_train": 0.00709,
+        "filter_kd_train": 0.00565,
+        "our_model_train": 0.00272
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.0658,
+        "filter_kd_test": 0.06145,
+        "our_model_test": 0.04383,
+        "baseline_train": 0.00472,
+        "filter_kd_train": 0.00506,
+        "our_model_train": 0.00241
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.07264,
+        "filter_kd_test": 0.06659,
+        "our_model_test": 0.04375,
+        "baseline_train": 0.0061,
+        "filter_kd_train": 0.00564,
+        "our_model_train": 0.00287
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.06731,
+        "filter_kd_test": 0.06168,
+        "our_model_test": 0.04512,
+        "baseline_train": 0.00532,
+        "filter_kd_train": 0.00526,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.06761,
+        "filter_kd_test": 0.05849,
+        "our_model_test": 0.04235,
+        "baseline_train": 0.00587,
+        "filter_kd_train": 0.00547,
+        "our_model_train": 0.00292
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.06114,
+        "filter_kd_test": 0.06331,
+        "our_model_test": 0.0418,
+        "baseline_train": 0.005,
+        "filter_kd_train": 0.00467,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.07385,
+        "filter_kd_test": 0.06095,
+        "our_model_test": 0.04089,
+        "baseline_train": 0.00546,
+        "filter_kd_train": 0.00534,
+        "our_model_train": 0.00329
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04392,
+        "baseline_train": 0.00613,
+        "filter_kd_train": 0.00414,
+        "our_model_train": 0.00262
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.0599,
+        "our_model_test": 0.04218,
+        "baseline_train": 0.00648,
+        "filter_kd_train": 0.00399,
+        "our_model_train": 0.00241
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.06777,
+        "filter_kd_test": 0.06032,
+        "our_model_test": 0.04078,
+        "baseline_train": 0.00535,
+        "filter_kd_train": 0.00394,
+        "our_model_train": 0.0026
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.06792,
+        "filter_kd_test": 0.05926,
+        "our_model_test": 0.04156,
+        "baseline_train": 0.00445,
+        "filter_kd_train": 0.00431,
+        "our_model_train": 0.00228
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.074,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04284,
+        "baseline_train": 0.00635,
+        "filter_kd_train": 0.00461,
+        "our_model_train": 0.00298
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.06605,
+        "filter_kd_test": 0.06038,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.00648,
+        "filter_kd_train": 0.00506,
+        "our_model_train": 0.002
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.06006,
+        "filter_kd_test": 0.06213,
+        "our_model_test": 0.04033,
+        "baseline_train": 0.0054,
+        "filter_kd_train": 0.0051,
+        "our_model_train": 0.00204
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.06446,
+        "filter_kd_test": 0.05961,
+        "our_model_test": 0.04187,
+        "baseline_train": 0.00361,
+        "filter_kd_train": 0.00396,
+        "our_model_train": 0.00229
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.06875,
+        "filter_kd_test": 0.05846,
+        "our_model_test": 0.03905,
+        "baseline_train": 0.00586,
+        "filter_kd_train": 0.00391,
+        "our_model_train": 0.00171
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.06832,
+        "filter_kd_test": 0.05903,
+        "our_model_test": 0.04023,
+        "baseline_train": 0.00357,
+        "filter_kd_train": 0.00481,
+        "our_model_train": 0.00268
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.06173,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04055,
+        "baseline_train": 0.0053,
+        "filter_kd_train": 0.0046,
+        "our_model_train": 0.00242
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.06184,
+        "filter_kd_test": 0.05949,
+        "our_model_test": 0.04114,
+        "baseline_train": 0.00644,
+        "filter_kd_train": 0.00464,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.06466,
+        "filter_kd_test": 0.06212,
+        "our_model_test": 0.04103,
+        "baseline_train": 0.00456,
+        "filter_kd_train": 0.00504,
+        "our_model_train": 0.0024
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.06278,
+        "filter_kd_test": 0.05831,
+        "our_model_test": 0.04086,
+        "baseline_train": 0.00559,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00224
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.07025,
+        "filter_kd_test": 0.06439,
+        "our_model_test": 0.0407,
+        "baseline_train": 0.00596,
+        "filter_kd_train": 0.00354,
+        "our_model_train": 0.00226
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.07061,
+        "filter_kd_test": 0.05878,
+        "our_model_test": 0.03961,
+        "baseline_train": 0.00466,
+        "filter_kd_train": 0.00349,
+        "our_model_train": 0.00178
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.06895,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04043,
+        "baseline_train": 0.00589,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.06601,
+        "filter_kd_test": 0.06124,
+        "our_model_test": 0.03972,
+        "baseline_train": 0.00583,
+        "filter_kd_train": 0.00346,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.0648,
+        "filter_kd_test": 0.06027,
+        "our_model_test": 0.03916,
+        "baseline_train": 0.00442,
+        "filter_kd_train": 0.00447,
+        "our_model_train": 0.00169
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.06081,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04116,
+        "baseline_train": 0.00414,
+        "filter_kd_train": 0.00443,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.06173,
+        "filter_kd_test": 0.0603,
+        "our_model_test": 0.04054,
+        "baseline_train": 0.00468,
+        "filter_kd_train": 0.00348,
+        "our_model_train": 0.00127
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.06537,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04035,
+        "baseline_train": 0.00489,
+        "filter_kd_train": 0.00449,
+        "our_model_train": 0.00193
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.06298,
+        "filter_kd_test": 0.06357,
+        "our_model_test": 0.04056,
+        "baseline_train": 0.00534,
+        "filter_kd_train": 0.00435,
+        "our_model_train": 0.00143
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.07277,
+        "filter_kd_test": 0.06032,
+        "our_model_test": 0.03919,
+        "baseline_train": 0.00489,
+        "filter_kd_train": 0.00404,
+        "our_model_train": 0.00199
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.06528,
+        "filter_kd_test": 0.06195,
+        "our_model_test": 0.04127,
+        "baseline_train": 0.00402,
+        "filter_kd_train": 0.00443,
+        "our_model_train": 0.00257
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.06545,
+        "filter_kd_test": 0.06126,
+        "our_model_test": 0.04218,
+        "baseline_train": 0.00589,
+        "filter_kd_train": 0.0042,
+        "our_model_train": 0.00245
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.0646,
+        "filter_kd_test": 0.05912,
+        "our_model_test": 0.0398,
+        "baseline_train": 0.00631,
+        "filter_kd_train": 0.00356,
+        "our_model_train": 0.00264
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.06583,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04051,
+        "baseline_train": 0.00338,
+        "filter_kd_train": 0.00442,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.05931,
+        "our_model_test": 0.04208,
+        "baseline_train": 0.00465,
+        "filter_kd_train": 0.0034,
+        "our_model_train": 0.00262
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.07094,
+        "filter_kd_test": 0.05906,
+        "our_model_test": 0.04112,
+        "baseline_train": 0.00612,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.00183
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.07437,
+        "filter_kd_test": 0.06542,
+        "our_model_test": 0.04067,
+        "baseline_train": 0.00434,
+        "filter_kd_train": 0.00522,
+        "our_model_train": 0.00181
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.06288,
+        "filter_kd_test": 0.05973,
+        "our_model_test": 0.04165,
+        "baseline_train": 0.00572,
+        "filter_kd_train": 0.00428,
+        "our_model_train": 0.0022
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.0642,
+        "filter_kd_test": 0.06016,
+        "our_model_test": 0.03755,
+        "baseline_train": 0.0048,
+        "filter_kd_train": 0.00417,
+        "our_model_train": 0.00156
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.0654,
+        "filter_kd_test": 0.05863,
+        "our_model_test": 0.04183,
+        "baseline_train": 0.00629,
+        "filter_kd_train": 0.00374,
+        "our_model_train": 0.00195
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.06378,
+        "filter_kd_test": 0.05813,
+        "our_model_test": 0.04026,
+        "baseline_train": 0.00442,
+        "filter_kd_train": 0.00334,
+        "our_model_train": 0.00226
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.06624,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04096,
+        "baseline_train": 0.00452,
+        "filter_kd_train": 0.00417,
+        "our_model_train": 0.00234
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.06392,
+        "filter_kd_test": 0.05994,
+        "our_model_test": 0.03954,
+        "baseline_train": 0.00487,
+        "filter_kd_train": 0.00389,
+        "our_model_train": 0.00171
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.06441,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03956,
+        "baseline_train": 0.00479,
+        "filter_kd_train": 0.00386,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.06381,
+        "filter_kd_test": 0.06298,
+        "our_model_test": 0.04092,
+        "baseline_train": 0.0045,
+        "filter_kd_train": 0.00329,
+        "our_model_train": 0.00159
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.06232,
+        "filter_kd_test": 0.05832,
+        "our_model_test": 0.03927,
+        "baseline_train": 0.00398,
+        "filter_kd_train": 0.00374,
+        "our_model_train": 0.00208
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.06611,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03962,
+        "baseline_train": 0.00427,
+        "filter_kd_train": 0.00399,
+        "our_model_train": 0.00167
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.06603,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03967,
+        "baseline_train": 0.00525,
+        "filter_kd_train": 0.00412,
+        "our_model_train": 0.00308
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.06524,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03994,
+        "baseline_train": 0.00359,
+        "filter_kd_train": 0.00396,
+        "our_model_train": 0.00167
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.06722,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03991,
+        "baseline_train": 0.0045,
+        "filter_kd_train": 0.00505,
+        "our_model_train": 0.00188
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.07643,
+        "filter_kd_test": 0.06064,
+        "our_model_test": 0.04051,
+        "baseline_train": 0.00531,
+        "filter_kd_train": 0.00424,
+        "our_model_train": 0.00123
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.06304,
+        "filter_kd_test": 0.0607,
+        "our_model_test": 0.03997,
+        "baseline_train": 0.00388,
+        "filter_kd_train": 0.00398,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.06338,
+        "filter_kd_test": 0.06189,
+        "our_model_test": 0.04097,
+        "baseline_train": 0.00472,
+        "filter_kd_train": 0.00298,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.06948,
+        "filter_kd_test": 0.05846,
+        "our_model_test": 0.03978,
+        "baseline_train": 0.00477,
+        "filter_kd_train": 0.00515,
+        "our_model_train": 0.00265
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.07178,
+        "filter_kd_test": 0.05869,
+        "our_model_test": 0.04031,
+        "baseline_train": 0.00379,
+        "filter_kd_train": 0.00489,
+        "our_model_train": 0.00154
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.06477,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03943,
+        "baseline_train": 0.00434,
+        "filter_kd_train": 0.00364,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06209,
+        "filter_kd_test": 0.06067,
+        "our_model_test": 0.03891,
+        "baseline_train": 0.00518,
+        "filter_kd_train": 0.00474,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.06749,
+        "filter_kd_test": 0.05854,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00369,
+        "our_model_train": 0.0022
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.06015,
+        "filter_kd_test": 0.06037,
+        "our_model_test": 0.04042,
+        "baseline_train": 0.00476,
+        "filter_kd_train": 0.0035,
+        "our_model_train": 0.00165
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06588,
+        "filter_kd_test": 0.06146,
+        "our_model_test": 0.03937,
+        "baseline_train": 0.00537,
+        "filter_kd_train": 0.00275,
+        "our_model_train": 0.00177
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.0639,
+        "filter_kd_test": 0.06019,
+        "our_model_test": 0.03907,
+        "baseline_train": 0.00447,
+        "filter_kd_train": 0.00418,
+        "our_model_train": 0.00193
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.0394,
+        "baseline_train": 0.00537,
+        "filter_kd_train": 0.00235,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.06216,
+        "filter_kd_test": 0.06178,
+        "our_model_test": 0.03962,
+        "baseline_train": 0.00531,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00115
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.06669,
+        "filter_kd_test": 0.05943,
+        "our_model_test": 0.04052,
+        "baseline_train": 0.00814,
+        "filter_kd_train": 0.00275,
+        "our_model_train": 0.00269
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.069,
+        "filter_kd_test": 0.05958,
+        "our_model_test": 0.03996,
+        "baseline_train": 0.00466,
+        "filter_kd_train": 0.00366,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.0605,
+        "our_model_test": 0.03959,
+        "baseline_train": 0.0041,
+        "filter_kd_train": 0.00373,
+        "our_model_train": 0.0025
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.06213,
+        "filter_kd_test": 0.05972,
+        "our_model_test": 0.03927,
+        "baseline_train": 0.00561,
+        "filter_kd_train": 0.00441,
+        "our_model_train": 0.00274
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.06339,
+        "filter_kd_test": 0.06034,
+        "our_model_test": 0.0401,
+        "baseline_train": 0.00604,
+        "filter_kd_train": 0.00357,
+        "our_model_train": 0.0023
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.06332,
+        "filter_kd_test": 0.06187,
+        "our_model_test": 0.0401,
+        "baseline_train": 0.0052,
+        "filter_kd_train": 0.00393,
+        "our_model_train": 0.00209
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.06953,
+        "filter_kd_test": 0.06097,
+        "our_model_test": 0.04087,
+        "baseline_train": 0.00464,
+        "filter_kd_train": 0.00347,
+        "our_model_train": 0.00238
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.06207,
+        "filter_kd_test": 0.06195,
+        "our_model_test": 0.0394,
+        "baseline_train": 0.00482,
+        "filter_kd_train": 0.00302,
+        "our_model_train": 0.00184
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07349,
+        "filter_kd_test": 0.05807,
+        "our_model_test": 0.04064,
+        "baseline_train": 0.00485,
+        "filter_kd_train": 0.0042,
+        "our_model_train": 0.00154
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.0643,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03982,
+        "baseline_train": 0.0037,
+        "filter_kd_train": 0.00472,
+        "our_model_train": 0.00231
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.06563,
+        "filter_kd_test": 0.06204,
+        "our_model_test": 0.03905,
+        "baseline_train": 0.0064,
+        "filter_kd_train": 0.00456,
+        "our_model_train": 0.00191
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.06798,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03918,
+        "baseline_train": 0.00451,
+        "filter_kd_train": 0.00368,
+        "our_model_train": 0.00158
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.06828,
+        "filter_kd_test": 0.05848,
+        "our_model_test": 0.04035,
+        "baseline_train": 0.00454,
+        "filter_kd_train": 0.00291,
+        "our_model_train": 0.00211
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06186,
+        "our_model_test": 0.03863,
+        "baseline_train": 0.00659,
+        "filter_kd_train": 0.00455,
+        "our_model_train": 0.00204
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06842,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.04055,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00416,
+        "our_model_train": 0.00251
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.07256,
+        "filter_kd_test": 0.05958,
+        "our_model_test": 0.03835,
+        "baseline_train": 0.00423,
+        "filter_kd_train": 0.00393,
+        "our_model_train": 0.00204
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06382,
+        "our_model_test": 0.04152,
+        "baseline_train": 0.00548,
+        "filter_kd_train": 0.00404,
+        "our_model_train": 0.00192
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.06067,
+        "filter_kd_test": 0.05916,
+        "our_model_test": 0.04026,
+        "baseline_train": 0.00401,
+        "filter_kd_train": 0.0042,
+        "our_model_train": 0.00194
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02056,
-      "filter_kd_mse": 0.01393,
-      "our_model_mse": 0.00696
+      "baseline_mse": 0.06067,
+      "filter_kd_mse": 0.05916,
+      "our_model_mse": 0.04026
     }
   },
   "512x4": {
-    "title": "Bi-LSTM: 512x4 (Baseline vs Distillation)",
+    "title": "(f) Bi-LSTM: 512x4 (Baseline vs Distillation)",
     "units": 512,
     "layers": 4,
     "series": [
       {
         "epoch": 1,
-        "baseline": 0.05287,
-        "filter_kd": 0.04406,
-        "our_model": 0.03939
+        "baseline_test": 0.07532,
+        "filter_kd_test": 0.07228,
+        "our_model_test": 0.06459,
+        "baseline_train": 0.01651,
+        "filter_kd_train": 0.01233,
+        "our_model_train": 0.00647
       },
       {
         "epoch": 2,
-        "baseline": 0.04671,
-        "filter_kd": 0.03734,
-        "our_model": 0.03049
+        "baseline_test": 0.08227,
+        "filter_kd_test": 0.06976,
+        "our_model_test": 0.0637,
+        "baseline_train": 0.01367,
+        "filter_kd_train": 0.01118,
+        "our_model_train": 0.00705
       },
       {
         "epoch": 3,
-        "baseline": 0.0418,
-        "filter_kd": 0.03188,
-        "our_model": 0.02414
+        "baseline_test": 0.07478,
+        "filter_kd_test": 0.06903,
+        "our_model_test": 0.05988,
+        "baseline_train": 0.01402,
+        "filter_kd_train": 0.00964,
+        "our_model_train": 0.00496
       },
       {
         "epoch": 4,
-        "baseline": 0.03754,
-        "filter_kd": 0.02783,
-        "our_model": 0.01922
+        "baseline_test": 0.07653,
+        "filter_kd_test": 0.07199,
+        "our_model_test": 0.05972,
+        "baseline_train": 0.01204,
+        "filter_kd_train": 0.00968,
+        "our_model_train": 0.00617
       },
       {
         "epoch": 5,
-        "baseline": 0.03402,
-        "filter_kd": 0.02412,
-        "our_model": 0.0156
+        "baseline_test": 0.07051,
+        "filter_kd_test": 0.06927,
+        "our_model_test": 0.05695,
+        "baseline_train": 0.01206,
+        "filter_kd_train": 0.00906,
+        "our_model_train": 0.00537
       },
       {
         "epoch": 6,
-        "baseline": 0.03029,
-        "filter_kd": 0.02163,
-        "our_model": 0.01294
+        "baseline_test": 0.06739,
+        "filter_kd_test": 0.06796,
+        "our_model_test": 0.05562,
+        "baseline_train": 0.01028,
+        "filter_kd_train": 0.00889,
+        "our_model_train": 0.00521
       },
       {
         "epoch": 7,
-        "baseline": 0.02757,
-        "filter_kd": 0.01871,
-        "our_model": 0.01107
+        "baseline_test": 0.08003,
+        "filter_kd_test": 0.06893,
+        "our_model_test": 0.05276,
+        "baseline_train": 0.01032,
+        "filter_kd_train": 0.00876,
+        "our_model_train": 0.00481
       },
       {
         "epoch": 8,
-        "baseline": 0.02525,
-        "filter_kd": 0.01699,
-        "our_model": 0.009
+        "baseline_test": 0.0724,
+        "filter_kd_test": 0.07141,
+        "our_model_test": 0.05313,
+        "baseline_train": 0.00833,
+        "filter_kd_train": 0.00867,
+        "our_model_train": 0.00435
       },
       {
         "epoch": 9,
-        "baseline": 0.02324,
-        "filter_kd": 0.01566,
-        "our_model": 0.00812
+        "baseline_test": 0.07023,
+        "filter_kd_test": 0.06979,
+        "our_model_test": 0.04986,
+        "baseline_train": 0.00893,
+        "filter_kd_train": 0.00742,
+        "our_model_train": 0.00393
       },
       {
         "epoch": 10,
-        "baseline": 0.02097,
-        "filter_kd": 0.01432,
-        "our_model": 0.00678
+        "baseline_test": 0.07917,
+        "filter_kd_test": 0.06517,
+        "our_model_test": 0.04961,
+        "baseline_train": 0.00923,
+        "filter_kd_train": 0.00653,
+        "our_model_train": 0.00387
+      },
+      {
+        "epoch": 11,
+        "baseline_test": 0.07363,
+        "filter_kd_test": 0.06575,
+        "our_model_test": 0.0491,
+        "baseline_train": 0.00826,
+        "filter_kd_train": 0.00603,
+        "our_model_train": 0.00397
+      },
+      {
+        "epoch": 12,
+        "baseline_test": 0.07814,
+        "filter_kd_test": 0.06603,
+        "our_model_test": 0.04855,
+        "baseline_train": 0.00888,
+        "filter_kd_train": 0.0059,
+        "our_model_train": 0.00435
+      },
+      {
+        "epoch": 13,
+        "baseline_test": 0.07223,
+        "filter_kd_test": 0.06888,
+        "our_model_test": 0.0468,
+        "baseline_train": 0.00947,
+        "filter_kd_train": 0.00687,
+        "our_model_train": 0.00373
+      },
+      {
+        "epoch": 14,
+        "baseline_test": 0.07791,
+        "filter_kd_test": 0.06477,
+        "our_model_test": 0.04801,
+        "baseline_train": 0.00784,
+        "filter_kd_train": 0.005,
+        "our_model_train": 0.00292
+      },
+      {
+        "epoch": 15,
+        "baseline_test": 0.07005,
+        "filter_kd_test": 0.06558,
+        "our_model_test": 0.04611,
+        "baseline_train": 0.00844,
+        "filter_kd_train": 0.0048,
+        "our_model_train": 0.00329
+      },
+      {
+        "epoch": 16,
+        "baseline_test": 0.06398,
+        "filter_kd_test": 0.0692,
+        "our_model_test": 0.04548,
+        "baseline_train": 0.00757,
+        "filter_kd_train": 0.00527,
+        "our_model_train": 0.00363
+      },
+      {
+        "epoch": 17,
+        "baseline_test": 0.07367,
+        "filter_kd_test": 0.06559,
+        "our_model_test": 0.04492,
+        "baseline_train": 0.00748,
+        "filter_kd_train": 0.00519,
+        "our_model_train": 0.00335
+      },
+      {
+        "epoch": 18,
+        "baseline_test": 0.07051,
+        "filter_kd_test": 0.06633,
+        "our_model_test": 0.04384,
+        "baseline_train": 0.00712,
+        "filter_kd_train": 0.00469,
+        "our_model_train": 0.00314
+      },
+      {
+        "epoch": 19,
+        "baseline_test": 0.07106,
+        "filter_kd_test": 0.06024,
+        "our_model_test": 0.04297,
+        "baseline_train": 0.00643,
+        "filter_kd_train": 0.00514,
+        "our_model_train": 0.00234
+      },
+      {
+        "epoch": 20,
+        "baseline_test": 0.0706,
+        "filter_kd_test": 0.0643,
+        "our_model_test": 0.04354,
+        "baseline_train": 0.00589,
+        "filter_kd_train": 0.00583,
+        "our_model_train": 0.00341
+      },
+      {
+        "epoch": 21,
+        "baseline_test": 0.07334,
+        "filter_kd_test": 0.0624,
+        "our_model_test": 0.04387,
+        "baseline_train": 0.00607,
+        "filter_kd_train": 0.005,
+        "our_model_train": 0.00297
+      },
+      {
+        "epoch": 22,
+        "baseline_test": 0.06215,
+        "filter_kd_test": 0.06611,
+        "our_model_test": 0.04313,
+        "baseline_train": 0.0059,
+        "filter_kd_train": 0.00493,
+        "our_model_train": 0.0026
+      },
+      {
+        "epoch": 23,
+        "baseline_test": 0.0626,
+        "filter_kd_test": 0.06632,
+        "our_model_test": 0.04281,
+        "baseline_train": 0.00646,
+        "filter_kd_train": 0.00546,
+        "our_model_train": 0.00215
+      },
+      {
+        "epoch": 24,
+        "baseline_test": 0.07016,
+        "filter_kd_test": 0.06567,
+        "our_model_test": 0.04335,
+        "baseline_train": 0.0043,
+        "filter_kd_train": 0.00474,
+        "our_model_train": 0.00226
+      },
+      {
+        "epoch": 25,
+        "baseline_test": 0.06987,
+        "filter_kd_test": 0.06403,
+        "our_model_test": 0.04156,
+        "baseline_train": 0.00534,
+        "filter_kd_train": 0.00466,
+        "our_model_train": 0.00209
+      },
+      {
+        "epoch": 26,
+        "baseline_test": 0.07118,
+        "filter_kd_test": 0.06225,
+        "our_model_test": 0.03915,
+        "baseline_train": 0.00552,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00176
+      },
+      {
+        "epoch": 27,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06311,
+        "our_model_test": 0.04319,
+        "baseline_train": 0.00599,
+        "filter_kd_train": 0.00423,
+        "our_model_train": 0.00255
+      },
+      {
+        "epoch": 28,
+        "baseline_test": 0.0724,
+        "filter_kd_test": 0.06142,
+        "our_model_test": 0.04053,
+        "baseline_train": 0.00427,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.0024
+      },
+      {
+        "epoch": 29,
+        "baseline_test": 0.06757,
+        "filter_kd_test": 0.0619,
+        "our_model_test": 0.04057,
+        "baseline_train": 0.00609,
+        "filter_kd_train": 0.0037,
+        "our_model_train": 0.00261
+      },
+      {
+        "epoch": 30,
+        "baseline_test": 0.06432,
+        "filter_kd_test": 0.06116,
+        "our_model_test": 0.03991,
+        "baseline_train": 0.00515,
+        "filter_kd_train": 0.00503,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 31,
+        "baseline_test": 0.07117,
+        "filter_kd_test": 0.06364,
+        "our_model_test": 0.04014,
+        "baseline_train": 0.00523,
+        "filter_kd_train": 0.00393,
+        "our_model_train": 0.00278
+      },
+      {
+        "epoch": 32,
+        "baseline_test": 0.06349,
+        "filter_kd_test": 0.06733,
+        "our_model_test": 0.04202,
+        "baseline_train": 0.00691,
+        "filter_kd_train": 0.00411,
+        "our_model_train": 0.00251
+      },
+      {
+        "epoch": 33,
+        "baseline_test": 0.0756,
+        "filter_kd_test": 0.06125,
+        "our_model_test": 0.03948,
+        "baseline_train": 0.0039,
+        "filter_kd_train": 0.00475,
+        "our_model_train": 0.00145
+      },
+      {
+        "epoch": 34,
+        "baseline_test": 0.06625,
+        "filter_kd_test": 0.06332,
+        "our_model_test": 0.04111,
+        "baseline_train": 0.00571,
+        "filter_kd_train": 0.00443,
+        "our_model_train": 0.0027
+      },
+      {
+        "epoch": 35,
+        "baseline_test": 0.07017,
+        "filter_kd_test": 0.06105,
+        "our_model_test": 0.04006,
+        "baseline_train": 0.006,
+        "filter_kd_train": 0.00481,
+        "our_model_train": 0.00235
+      },
+      {
+        "epoch": 36,
+        "baseline_test": 0.0666,
+        "filter_kd_test": 0.06001,
+        "our_model_test": 0.04242,
+        "baseline_train": 0.00652,
+        "filter_kd_train": 0.00468,
+        "our_model_train": 0.00286
+      },
+      {
+        "epoch": 37,
+        "baseline_test": 0.06161,
+        "filter_kd_test": 0.06128,
+        "our_model_test": 0.03995,
+        "baseline_train": 0.00585,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.00244
+      },
+      {
+        "epoch": 38,
+        "baseline_test": 0.07217,
+        "filter_kd_test": 0.06369,
+        "our_model_test": 0.0409,
+        "baseline_train": 0.00446,
+        "filter_kd_train": 0.00369,
+        "our_model_train": 0.00262
+      },
+      {
+        "epoch": 39,
+        "baseline_test": 0.07006,
+        "filter_kd_test": 0.06219,
+        "our_model_test": 0.04014,
+        "baseline_train": 0.0036,
+        "filter_kd_train": 0.00354,
+        "our_model_train": 0.00288
+      },
+      {
+        "epoch": 40,
+        "baseline_test": 0.06282,
+        "filter_kd_test": 0.06562,
+        "our_model_test": 0.04151,
+        "baseline_train": 0.0042,
+        "filter_kd_train": 0.00427,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 41,
+        "baseline_test": 0.06732,
+        "filter_kd_test": 0.06796,
+        "our_model_test": 0.03879,
+        "baseline_train": 0.00603,
+        "filter_kd_train": 0.00404,
+        "our_model_train": 0.0024
+      },
+      {
+        "epoch": 42,
+        "baseline_test": 0.07479,
+        "filter_kd_test": 0.06073,
+        "our_model_test": 0.04064,
+        "baseline_train": 0.00368,
+        "filter_kd_train": 0.00449,
+        "our_model_train": 0.0022
+      },
+      {
+        "epoch": 43,
+        "baseline_test": 0.06946,
+        "filter_kd_test": 0.0643,
+        "our_model_test": 0.04074,
+        "baseline_train": 0.00527,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 44,
+        "baseline_test": 0.07136,
+        "filter_kd_test": 0.06504,
+        "our_model_test": 0.0401,
+        "baseline_train": 0.00517,
+        "filter_kd_train": 0.00357,
+        "our_model_train": 0.00254
+      },
+      {
+        "epoch": 45,
+        "baseline_test": 0.06451,
+        "filter_kd_test": 0.06603,
+        "our_model_test": 0.03943,
+        "baseline_train": 0.00482,
+        "filter_kd_train": 0.00424,
+        "our_model_train": 0.00232
+      },
+      {
+        "epoch": 46,
+        "baseline_test": 0.06641,
+        "filter_kd_test": 0.06039,
+        "our_model_test": 0.04116,
+        "baseline_train": 0.00569,
+        "filter_kd_train": 0.00354,
+        "our_model_train": 0.0026
+      },
+      {
+        "epoch": 47,
+        "baseline_test": 0.07125,
+        "filter_kd_test": 0.06239,
+        "our_model_test": 0.04033,
+        "baseline_train": 0.00554,
+        "filter_kd_train": 0.00356,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 48,
+        "baseline_test": 0.06,
+        "filter_kd_test": 0.06686,
+        "our_model_test": 0.03867,
+        "baseline_train": 0.00629,
+        "filter_kd_train": 0.00387,
+        "our_model_train": 0.00196
+      },
+      {
+        "epoch": 49,
+        "baseline_test": 0.07093,
+        "filter_kd_test": 0.06152,
+        "our_model_test": 0.04162,
+        "baseline_train": 0.00309,
+        "filter_kd_train": 0.00483,
+        "our_model_train": 0.00218
+      },
+      {
+        "epoch": 50,
+        "baseline_test": 0.06289,
+        "filter_kd_test": 0.05994,
+        "our_model_test": 0.04186,
+        "baseline_train": 0.00432,
+        "filter_kd_train": 0.00337,
+        "our_model_train": 0.00249
+      },
+      {
+        "epoch": 51,
+        "baseline_test": 0.06829,
+        "filter_kd_test": 0.06021,
+        "our_model_test": 0.04039,
+        "baseline_train": 0.00425,
+        "filter_kd_train": 0.00471,
+        "our_model_train": 0.00246
+      },
+      {
+        "epoch": 52,
+        "baseline_test": 0.06895,
+        "filter_kd_test": 0.0628,
+        "our_model_test": 0.04191,
+        "baseline_train": 0.00506,
+        "filter_kd_train": 0.00334,
+        "our_model_train": 0.00221
+      },
+      {
+        "epoch": 53,
+        "baseline_test": 0.07438,
+        "filter_kd_test": 0.06004,
+        "our_model_test": 0.03978,
+        "baseline_train": 0.00539,
+        "filter_kd_train": 0.00401,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 54,
+        "baseline_test": 0.066,
+        "filter_kd_test": 0.0667,
+        "our_model_test": 0.04032,
+        "baseline_train": 0.00433,
+        "filter_kd_train": 0.00311,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 55,
+        "baseline_test": 0.07093,
+        "filter_kd_test": 0.063,
+        "our_model_test": 0.04011,
+        "baseline_train": 0.00457,
+        "filter_kd_train": 0.00338,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 56,
+        "baseline_test": 0.07626,
+        "filter_kd_test": 0.06196,
+        "our_model_test": 0.04169,
+        "baseline_train": 0.0055,
+        "filter_kd_train": 0.00487,
+        "our_model_train": 0.00148
+      },
+      {
+        "epoch": 57,
+        "baseline_test": 0.06228,
+        "filter_kd_test": 0.06175,
+        "our_model_test": 0.0406,
+        "baseline_train": 0.00647,
+        "filter_kd_train": 0.00445,
+        "our_model_train": 0.00192
+      },
+      {
+        "epoch": 58,
+        "baseline_test": 0.06346,
+        "filter_kd_test": 0.0645,
+        "our_model_test": 0.03912,
+        "baseline_train": 0.00634,
+        "filter_kd_train": 0.00386,
+        "our_model_train": 0.00265
+      },
+      {
+        "epoch": 59,
+        "baseline_test": 0.06942,
+        "filter_kd_test": 0.06176,
+        "our_model_test": 0.03956,
+        "baseline_train": 0.00476,
+        "filter_kd_train": 0.00428,
+        "our_model_train": 0.00205
+      },
+      {
+        "epoch": 60,
+        "baseline_test": 0.06496,
+        "filter_kd_test": 0.0617,
+        "our_model_test": 0.04015,
+        "baseline_train": 0.00332,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00162
+      },
+      {
+        "epoch": 61,
+        "baseline_test": 0.063,
+        "filter_kd_test": 0.05866,
+        "our_model_test": 0.03827,
+        "baseline_train": 0.00394,
+        "filter_kd_train": 0.00359,
+        "our_model_train": 0.00279
+      },
+      {
+        "epoch": 62,
+        "baseline_test": 0.06519,
+        "filter_kd_test": 0.06238,
+        "our_model_test": 0.04046,
+        "baseline_train": 0.00513,
+        "filter_kd_train": 0.00397,
+        "our_model_train": 0.00153
+      },
+      {
+        "epoch": 63,
+        "baseline_test": 0.07311,
+        "filter_kd_test": 0.06564,
+        "our_model_test": 0.03837,
+        "baseline_train": 0.0042,
+        "filter_kd_train": 0.00385,
+        "our_model_train": 0.00162
+      },
+      {
+        "epoch": 64,
+        "baseline_test": 0.0688,
+        "filter_kd_test": 0.06357,
+        "our_model_test": 0.04221,
+        "baseline_train": 0.00597,
+        "filter_kd_train": 0.00414,
+        "our_model_train": 0.00242
+      },
+      {
+        "epoch": 65,
+        "baseline_test": 0.0709,
+        "filter_kd_test": 0.06089,
+        "our_model_test": 0.03923,
+        "baseline_train": 0.00508,
+        "filter_kd_train": 0.00453,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 66,
+        "baseline_test": 0.0615,
+        "filter_kd_test": 0.06041,
+        "our_model_test": 0.03996,
+        "baseline_train": 0.00495,
+        "filter_kd_train": 0.0052,
+        "our_model_train": 0.00145
+      },
+      {
+        "epoch": 67,
+        "baseline_test": 0.06879,
+        "filter_kd_test": 0.06499,
+        "our_model_test": 0.04231,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.00431,
+        "our_model_train": 0.00223
+      },
+      {
+        "epoch": 68,
+        "baseline_test": 0.0677,
+        "filter_kd_test": 0.06182,
+        "our_model_test": 0.04047,
+        "baseline_train": 0.00299,
+        "filter_kd_train": 0.00442,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 69,
+        "baseline_test": 0.06624,
+        "filter_kd_test": 0.06611,
+        "our_model_test": 0.03935,
+        "baseline_train": 0.00469,
+        "filter_kd_train": 0.0052,
+        "our_model_train": 0.00167
+      },
+      {
+        "epoch": 70,
+        "baseline_test": 0.07109,
+        "filter_kd_test": 0.06172,
+        "our_model_test": 0.04087,
+        "baseline_train": 0.00518,
+        "filter_kd_train": 0.00323,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 71,
+        "baseline_test": 0.06489,
+        "filter_kd_test": 0.06186,
+        "our_model_test": 0.04045,
+        "baseline_train": 0.00534,
+        "filter_kd_train": 0.00294,
+        "our_model_train": 0.00243
+      },
+      {
+        "epoch": 72,
+        "baseline_test": 0.0629,
+        "filter_kd_test": 0.06778,
+        "our_model_test": 0.04046,
+        "baseline_train": 0.00589,
+        "filter_kd_train": 0.00429,
+        "our_model_train": 0.00254
+      },
+      {
+        "epoch": 73,
+        "baseline_test": 0.06884,
+        "filter_kd_test": 0.06181,
+        "our_model_test": 0.04229,
+        "baseline_train": 0.00572,
+        "filter_kd_train": 0.00435,
+        "our_model_train": 0.00149
+      },
+      {
+        "epoch": 74,
+        "baseline_test": 0.0625,
+        "filter_kd_test": 0.06259,
+        "our_model_test": 0.04016,
+        "baseline_train": 0.00452,
+        "filter_kd_train": 0.00409,
+        "our_model_train": 0.00264
+      },
+      {
+        "epoch": 75,
+        "baseline_test": 0.06944,
+        "filter_kd_test": 0.05973,
+        "our_model_test": 0.0399,
+        "baseline_train": 0.00436,
+        "filter_kd_train": 0.00377,
+        "our_model_train": 0.00184
+      },
+      {
+        "epoch": 76,
+        "baseline_test": 0.06534,
+        "filter_kd_test": 0.0595,
+        "our_model_test": 0.03989,
+        "baseline_train": 0.00456,
+        "filter_kd_train": 0.00225,
+        "our_model_train": 0.00282
+      },
+      {
+        "epoch": 77,
+        "baseline_test": 0.07682,
+        "filter_kd_test": 0.06125,
+        "our_model_test": 0.04003,
+        "baseline_train": 0.00407,
+        "filter_kd_train": 0.00502,
+        "our_model_train": 0.00276
+      },
+      {
+        "epoch": 78,
+        "baseline_test": 0.06756,
+        "filter_kd_test": 0.06405,
+        "our_model_test": 0.04019,
+        "baseline_train": 0.00394,
+        "filter_kd_train": 0.00376,
+        "our_model_train": 0.00206
+      },
+      {
+        "epoch": 79,
+        "baseline_test": 0.06542,
+        "filter_kd_test": 0.06157,
+        "our_model_test": 0.03992,
+        "baseline_train": 0.00494,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00158
+      },
+      {
+        "epoch": 80,
+        "baseline_test": 0.0645,
+        "filter_kd_test": 0.06244,
+        "our_model_test": 0.04099,
+        "baseline_train": 0.00332,
+        "filter_kd_train": 0.0047,
+        "our_model_train": 0.00256
+      },
+      {
+        "epoch": 81,
+        "baseline_test": 0.06095,
+        "filter_kd_test": 0.058,
+        "our_model_test": 0.03965,
+        "baseline_train": 0.00495,
+        "filter_kd_train": 0.0034,
+        "our_model_train": 0.0018
+      },
+      {
+        "epoch": 82,
+        "baseline_test": 0.07236,
+        "filter_kd_test": 0.06333,
+        "our_model_test": 0.03908,
+        "baseline_train": 0.00372,
+        "filter_kd_train": 0.00381,
+        "our_model_train": 0.00192
+      },
+      {
+        "epoch": 83,
+        "baseline_test": 0.06874,
+        "filter_kd_test": 0.06093,
+        "our_model_test": 0.04052,
+        "baseline_train": 0.00655,
+        "filter_kd_train": 0.00449,
+        "our_model_train": 0.00198
+      },
+      {
+        "epoch": 84,
+        "baseline_test": 0.07236,
+        "filter_kd_test": 0.06129,
+        "our_model_test": 0.04119,
+        "baseline_train": 0.0045,
+        "filter_kd_train": 0.00403,
+        "our_model_train": 0.00202
+      },
+      {
+        "epoch": 85,
+        "baseline_test": 0.06525,
+        "filter_kd_test": 0.05926,
+        "our_model_test": 0.04033,
+        "baseline_train": 0.00495,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.00179
+      },
+      {
+        "epoch": 86,
+        "baseline_test": 0.07128,
+        "filter_kd_test": 0.06025,
+        "our_model_test": 0.04172,
+        "baseline_train": 0.0036,
+        "filter_kd_train": 0.00426,
+        "our_model_train": 0.00219
+      },
+      {
+        "epoch": 87,
+        "baseline_test": 0.06422,
+        "filter_kd_test": 0.06285,
+        "our_model_test": 0.04128,
+        "baseline_train": 0.00323,
+        "filter_kd_train": 0.0043,
+        "our_model_train": 0.001
+      },
+      {
+        "epoch": 88,
+        "baseline_test": 0.06362,
+        "filter_kd_test": 0.06826,
+        "our_model_test": 0.03942,
+        "baseline_train": 0.00406,
+        "filter_kd_train": 0.00388,
+        "our_model_train": 0.00283
+      },
+      {
+        "epoch": 89,
+        "baseline_test": 0.06059,
+        "filter_kd_test": 0.0599,
+        "our_model_test": 0.0415,
+        "baseline_train": 0.00649,
+        "filter_kd_train": 0.00394,
+        "our_model_train": 0.00151
+      },
+      {
+        "epoch": 90,
+        "baseline_test": 0.06934,
+        "filter_kd_test": 0.06519,
+        "our_model_test": 0.04068,
+        "baseline_train": 0.00435,
+        "filter_kd_train": 0.00397,
+        "our_model_train": 0.00194
+      },
+      {
+        "epoch": 91,
+        "baseline_test": 0.07416,
+        "filter_kd_test": 0.0649,
+        "our_model_test": 0.04088,
+        "baseline_train": 0.00414,
+        "filter_kd_train": 0.00483,
+        "our_model_train": 0.00213
+      },
+      {
+        "epoch": 92,
+        "baseline_test": 0.06941,
+        "filter_kd_test": 0.06493,
+        "our_model_test": 0.03889,
+        "baseline_train": 0.00497,
+        "filter_kd_train": 0.00368,
+        "our_model_train": 0.00137
+      },
+      {
+        "epoch": 93,
+        "baseline_test": 0.06822,
+        "filter_kd_test": 0.06702,
+        "our_model_test": 0.03816,
+        "baseline_train": 0.00498,
+        "filter_kd_train": 0.00439,
+        "our_model_train": 0.00205
+      },
+      {
+        "epoch": 94,
+        "baseline_test": 0.06661,
+        "filter_kd_test": 0.0594,
+        "our_model_test": 0.04024,
+        "baseline_train": 0.0044,
+        "filter_kd_train": 0.00269,
+        "our_model_train": 0.00248
+      },
+      {
+        "epoch": 95,
+        "baseline_test": 0.07036,
+        "filter_kd_test": 0.0621,
+        "our_model_test": 0.04023,
+        "baseline_train": 0.00586,
+        "filter_kd_train": 0.00414,
+        "our_model_train": 0.00236
+      },
+      {
+        "epoch": 96,
+        "baseline_test": 0.06596,
+        "filter_kd_test": 0.06762,
+        "our_model_test": 0.04032,
+        "baseline_train": 0.00516,
+        "filter_kd_train": 0.00324,
+        "our_model_train": 0.00212
+      },
+      {
+        "epoch": 97,
+        "baseline_test": 0.06409,
+        "filter_kd_test": 0.06072,
+        "our_model_test": 0.03919,
+        "baseline_train": 0.00415,
+        "filter_kd_train": 0.00528,
+        "our_model_train": 0.00253
+      },
+      {
+        "epoch": 98,
+        "baseline_test": 0.07972,
+        "filter_kd_test": 0.05955,
+        "our_model_test": 0.04007,
+        "baseline_train": 0.00397,
+        "filter_kd_train": 0.00358,
+        "our_model_train": 0.00163
+      },
+      {
+        "epoch": 99,
+        "baseline_test": 0.06634,
+        "filter_kd_test": 0.06121,
+        "our_model_test": 0.04107,
+        "baseline_train": 0.00548,
+        "filter_kd_train": 0.00538,
+        "our_model_train": 0.00141
+      },
+      {
+        "epoch": 100,
+        "baseline_test": 0.07141,
+        "filter_kd_test": 0.06429,
+        "our_model_test": 0.03903,
+        "baseline_train": 0.00581,
+        "filter_kd_train": 0.0042,
+        "our_model_train": 0.00191
       }
     ],
     "final_metrics": {
-      "baseline_mse": 0.02097,
-      "filter_kd_mse": 0.01432,
-      "our_model_mse": 0.00678
+      "baseline_mse": 0.07141,
+      "filter_kd_mse": 0.06429,
+      "our_model_mse": 0.03903
     }
   }
 }
