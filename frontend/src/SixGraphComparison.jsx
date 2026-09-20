@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
-import { Eye, EyeOff, Layers, Grid, Maximize2, HelpCircle, X, Info, Zap, CheckCircle2, Sliders } from 'lucide-react';
+import { Eye, EyeOff, Layers, Grid, Maximize2, HelpCircle, X, Info, Zap, CheckCircle2, Sliders, Award, Sparkles, TrendingUp } from 'lucide-react';
 
 export default function SixGraphComparison() {
   const [graphsData, setGraphsData] = useState(null);
@@ -57,7 +57,7 @@ export default function SixGraphComparison() {
       {/* Top Header & Interactive Toggles */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-border/50 pb-4">
         <div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <h3 className="text-xl font-bold text-gray-100 flex items-center gap-2">
               <Layers className="text-primary" size={22} /> Figure 8: 6-Architecture Benchmark Curves (Page 10 Base Paper)
             </h3>
@@ -72,7 +72,7 @@ export default function SixGraphComparison() {
           </div>
 
           <p className="text-xs text-gray-400 mt-1">
-            Replicates exact Page 10 100-epoch validation test spikes & train loss curves. Toggle model lines ON/OFF or focus on specific architecture graphs.
+            Replicates exact Page 10 100-epoch validation test spikes & train loss curves across all 6 model sizes.
           </p>
         </div>
 
@@ -106,14 +106,15 @@ export default function SixGraphComparison() {
 
           <button
             onClick={() => setShowOurModel(!showOurModel)}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border ${
               showOurModel
-                ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 shadow-[0_0_10px_rgba(16,185,129,0.3)]'
+                ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/50 shadow-[0_0_12px_rgba(16,185,129,0.4)] ring-1 ring-emerald-400/40'
                 : 'bg-card/40 text-gray-500 border-border/40 opacity-60'
             }`}
           >
             {showOurModel ? <Eye size={14} /> : <EyeOff size={14} />}
-            Test loss (Our TCN+Attention)
+            <Sparkles size={13} className="text-emerald-400" />
+            Our Improved Model (WINNER)
           </button>
 
           <button
@@ -171,10 +172,11 @@ export default function SixGraphComparison() {
                     onClick={() => setActiveArch(key)}
                     className="text-xs text-primary hover:underline flex items-center gap-1"
                   >
-                    Focus
+                    Focus & Insights
                   </button>
                 </div>
-                <div className="h-60 w-full">
+
+                <div className="h-56 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={item.series} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#30363D" />
@@ -207,9 +209,9 @@ export default function SixGraphComparison() {
                         <Line
                           type="monotone"
                           dataKey="our_model_test"
-                          name="Test (Our TCN)"
+                          name="Our Model ★"
                           stroke="#10B981"
-                          strokeWidth={1.8}
+                          strokeWidth={2.2}
                           dot={false}
                         />
                       )}
@@ -227,6 +229,16 @@ export default function SixGraphComparison() {
                     </LineChart>
                   </ResponsiveContainer>
                 </div>
+
+                {/* Subgraph Highlight Callout Box */}
+                <div className="mt-3 pt-2 border-t border-border/40 text border-emerald-500/30 bg-emerald-500/5 p-2 rounded.5 text-xs text-emerald-300 flex items-center justify-between">
+                  <span className="font-semibold flex items-center gap-1">
+                    <Zap size={13} className="text-emerald-400" /> Our Model Victory:
+                  </span>
+                  <span className="font-bold font-mono text-emerald-400">
+                    ↓ {item.final_metrics.our_improvement_pct}% Lower Error
+                  </span>
+                </div>
               </div>
             );
           })}
@@ -235,11 +247,12 @@ export default function SixGraphComparison() {
 
       {/* RENDER VIEW: Individual Subgraph Focus View */}
       {activeArch !== 'grid' && graphsData[activeArch] && (
-        <div className="bg-card/40 border border-primary/30 p-6 rounded-xl flex flex-col gap-4">
+        <div className="bg-card/40 border border-primary/30 p-6 rounded-xl flex flex-col gap-6">
           <div className="flex justify-between items-center">
             <div>
-              <span className="text-xs font-semibold text-primary uppercase tracking-wider">Individual Subgraph View</span>
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">Individual Subgraph Focus View</span>
               <h3 className="text-2xl font-bold text-white mt-0.5">{graphsData[activeArch].title}</h3>
+              <p className="text-xs text-gray-400 mt-1">{graphsData[activeArch].profile}</p>
             </div>
             <button
               onClick={() => setActiveArch('grid')}
@@ -282,9 +295,9 @@ export default function SixGraphComparison() {
                   <Line
                     type="monotone"
                     dataKey="our_model_test"
-                    name="Test loss (Our TCN + Attention Model)"
+                    name="Test loss (Our TCN + Attention Model ★ WINNER)"
                     stroke="#10B981"
-                    strokeWidth={2.5}
+                    strokeWidth={2.8}
                     dot={false}
                   />
                 )}
@@ -303,21 +316,52 @@ export default function SixGraphComparison() {
             </ResponsiveContainer>
           </div>
 
-          {/* Subgraph Metric Summary Banner */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border/40 text-center">
-            <div className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20">
+          {/* Subgraph Metric Summary Cards */}
+          <div className="grid grid-cols-3 gap-4 pt-2 text-center">
+            <div className="bg-blue-500/10 p-3.5 rounded-xl border border-blue-500/20">
               <div className="text-xs text-blue-400 font-medium">Baseline Test MSE</div>
-              <div className="text-lg font-bold font-mono text-gray-100">{graphsData[activeArch].final_metrics.baseline_mse}</div>
+              <div className="text-xl font-bold font-mono text-gray-100">{graphsData[activeArch].final_metrics.baseline_mse}</div>
             </div>
-            <div className="bg-amber-500/10 p-3 rounded-lg border border-amber-500/20">
+            <div className="bg-amber-500/10 p-3.5 rounded-xl border border-amber-500/20">
               <div className="text-xs text-amber-400 font-medium">Filter-KD Test MSE</div>
-              <div className="text-lg font-bold font-mono text-amber-300">{graphsData[activeArch].final_metrics.filter_kd_mse}</div>
+              <div className="text-xl font-bold font-mono text-amber-300">{graphsData[activeArch].final_metrics.filter_kd_mse}</div>
             </div>
-            <div className="bg-emerald-500/10 p-3 rounded-lg border border-emerald-500/20">
-              <div className="text-xs text-emerald-400 font-medium">Our Model Test MSE</div>
-              <div className="text-lg font-bold font-mono text-emerald-400">{graphsData[activeArch].final_metrics.our_model_mse}</div>
+            <div className="bg-emerald-500/10 p-3.5 rounded-xl border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.15)] relative overflow-hidden">
+              <div className="text-xs text-emerald-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
+                <Award size={14} /> Our Model Test MSE (Winner)
+              </div>
+              <div className="text-xl font-bold font-mono text-emerald-400 mt-0.5">{graphsData[activeArch].final_metrics.our_model_mse}</div>
+              <div className="text-[11px] text-emerald-300 mt-1 font-semibold">
+                ↓ {graphsData[activeArch].final_metrics.our_improvement_pct}% Lower Error than Filter-KD
+              </div>
             </div>
           </div>
+
+          {/* Dedicated "Why Our Model Wins Here" Callout Box */}
+          <div className="bg-gradient-to-r from-emerald-950/40 via-card to-card p-5 rounded-xl border border-emerald-500/30 space-y-3">
+            <h4 className="text-base font-bold text-emerald-400 flex items-center gap-2">
+              <Sparkles size={18} /> Why Our Improved Model Beats the Base Paper's {activeArch} Model:
+            </h4>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div className="bg-card/50 p-3 rounded-lg border border-border/40 space-y-1">
+                <span className="font-semibold text-gray-300 text-sm">📖 Base Paper {activeArch} Analysis:</span>
+                <p className="text-gray-400 leading-relaxed">
+                  {graphsData[activeArch].explanation}
+                </p>
+              </div>
+
+              <div className="bg-emerald-500/10 p-3 rounded-lg border border-emerald-500/20 space-y-1">
+                <span className="font-bold text-emerald-300 text-sm flex items-center gap-1">
+                  <TrendingUp size={14} /> Our Model Technological Superiority:
+                </span>
+                <p className="text-emerald-200 leading-relaxed">
+                  {graphsData[activeArch].why_our_model_wins}
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       )}
 
@@ -377,20 +421,20 @@ export default function SixGraphComparison() {
               {/* Card 3: Comparing the models */}
               <div className="bg-card/40 p-4 rounded-xl border border-border/50 space-y-2">
                 <h4 className="font-bold text-white text-base mb-1 flex items-center gap-2">
-                  3. Comparing the Model Lines (Why is our model better?)
+                  3. Comparing the Model Lines (Why Our Model Wins in Every Aspect!)
                 </h4>
                 <div className="space-y-2 text-xs">
                   <div className="flex items-start gap-2 bg-blue-500/10 p-2.5 rounded-lg border border-blue-500/20">
-                    <span className="text-blue-400 font-bold min-w-28">🔴 Base Paper Baseline:</span>
-                    <span>Standard Bi-LSTM network. Shows <strong>high error (~0.07) with noisy spikes</strong> because standard recurrent networks struggle with sudden workload spikes.</span>
+                    <span className="text-blue-400 font-bold min-w-28">🔵 Base Paper Baseline:</span>
+                    <span>Standard Bi-LSTM network. Shows <strong>high error (~0.07) with noisy spikes</strong> because standard recurrent networks struggle with sudden workload surges.</span>
                   </div>
                   <div className="flex items-start gap-2 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20">
                     <span className="text-amber-400 font-bold min-w-28">🟡 Base Paper Filter-KD:</span>
                     <span>Distilled student network learning from a heavy teacher. Reduces error (~0.063) by filtering out wrong teacher predictions.</span>
                   </div>
-                  <div className="flex items-start gap-2 bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
+                  <div className="flex items-start gap-2 bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/30 ring-1 ring-emerald-400/30">
                     <span className="text-emerald-400 font-bold min-w-28 flex items-center gap-1"><Zap size={13} /> Our Improved Model:</span>
-                    <span><strong>TCN + Temporal Attention Ensemble</strong>. Achieves the <strong>lowest error (~0.038) and superior stability</strong> because causal dilated convolutions retain long-term memory without losing spike information!</span>
+                    <span><strong>TCN + Temporal Attention Ensemble (WINNER)</strong>. Achieves the <strong>lowest error (~0.038, 40% improvement) and super-smooth stability</strong> because Causal Dilated Convolutions + Temporal Attention process time-series data without loss of memory!</span>
                   </div>
                 </div>
               </div>
