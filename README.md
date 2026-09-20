@@ -568,8 +568,8 @@ python backend/inference.py
 - GitHub: [https://github.com/SWEATA06/major.git](https://github.com/SWEATA06/major.git)
 
 ### Authors & Contributors
-- **Sweata** ([@SWEATA06](https://github.com/SWEATA06))
 - **Avish Chawla**
+- **Sweata**
 
 ### Acknowledgments
 Developed as a Major Project for cloud resource optimization and predictive analytics evaluation.
