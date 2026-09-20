@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
-import { Eye, EyeOff, Layers, Grid, Maximize2 } from 'lucide-react';
+import { Eye, EyeOff, Layers, Grid, Maximize2, HelpCircle, X, Info, Zap, CheckCircle2, Sliders } from 'lucide-react';
 
 export default function SixGraphComparison() {
   const [graphsData, setGraphsData] = useState(null);
@@ -23,6 +23,9 @@ export default function SixGraphComparison() {
 
   // Active View State: 'grid' or specific architecture id ('128x2', '128x4', etc.)
   const [activeArch, setActiveArch] = useState('grid');
+
+  // Pop-up Modal State for Non-Technical Guide
+  const [showGuideModal, setShowGuideModal] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -50,13 +53,24 @@ export default function SixGraphComparison() {
   }
 
   return (
-    <div className="glass-card p-6 flex flex-col gap-6">
+    <div className="glass-card p-6 flex flex-col gap-6 relative">
       {/* Top Header & Interactive Toggles */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-border/50 pb-4">
         <div>
-          <h3 className="text-xl font-bold text-gray-100 flex items-center gap-2">
-            <Layers className="text-primary" size={22} /> Figure 8: 6-Architecture Benchmark Curves (Page 10 Base Paper)
-          </h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-xl font-bold text-gray-100 flex items-center gap-2">
+              <Layers className="text-primary" size={22} /> Figure 8: 6-Architecture Benchmark Curves (Page 10 Base Paper)
+            </h3>
+            
+            {/* Pop-up Modal Trigger Button */}
+            <button
+              onClick={() => setShowGuideModal(true)}
+              className="flex items-center gap-1.5 bg-primary/20 hover:bg-primary/40 border border-primary/40 text-primary hover:text-white px-3 py-1 rounded-full text-xs font-semibold transition-all shadow-[0_0_10px_rgba(79,70,229,0.3)] animate-pulse"
+            >
+              <HelpCircle size={14} /> Non-Technical Guide & Explanation
+            </button>
+          </div>
+
           <p className="text-xs text-gray-400 mt-1">
             Replicates exact Page 10 100-epoch validation test spikes & train loss curves. Toggle model lines ON/OFF or focus on specific architecture graphs.
           </p>
@@ -303,6 +317,106 @@ export default function SixGraphComparison() {
               <div className="text-xs text-emerald-400 font-medium">Our Model Test MSE</div>
               <div className="text-lg font-bold font-mono text-emerald-400">{graphsData[activeArch].final_metrics.our_model_mse}</div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* POP-UP MODAL WINDOW: Non-Technical Guide & Explanation */}
+      {showGuideModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fadeIn">
+          <div className="glass-card bg-[#111827] border border-primary/40 rounded-2xl max-w-3xl w-full p-6 shadow-[0_0_40px_rgba(79,70,229,0.3)] max-h-[90vh] overflow-y-auto flex flex-col gap-6">
+            
+            {/* Modal Header */}
+            <div className="flex justify-between items-start border-b border-border/60 pb-4">
+              <div>
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                  <Info size={14} /> Easy Non-Technical Evaluator Guide
+                </span>
+                <h3 className="text-2xl font-bold text-white mt-1">
+                  How to Read & Understand These 6 Benchmark Graphs
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowGuideModal(false)}
+                className="text-gray-400 hover:text-white p-2 rounded-lg bg-card/60 border border-border/50 transition-all"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Modal Body: Cards */}
+            <div className="space-y-4 text-sm text-gray-300">
+              
+              {/* Card 1: What does the graph measure? */}
+              <div className="bg-card/40 p-4 rounded-xl border border-border/50">
+                <h4 className="font-bold text-white text-base mb-1 flex items-center gap-2">
+                  1. What does this graph show in simple terms?
+                </h4>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  This graph measures <strong>prediction mistake rate (Error / Loss)</strong> as the AI learns over <strong>100 training epochs</strong> (rounds).
+                  <br /><br />
+                  • <strong>Horizontal Axis (X-axis)</strong>: Training progress from Epoch 0 to 100.<br />
+                  • <strong>Vertical Axis (Y-axis)</strong>: Prediction Error rate. <strong>Lower lines mean the AI model is smarter and makes fewer mistakes!</strong>
+                </p>
+              </div>
+
+              {/* Card 2: What are layers and hidden units? */}
+              <div className="bg-card/40 p-4 rounded-xl border border-border/50">
+                <h4 className="font-bold text-white text-base mb-1 flex items-center gap-2">
+                  2. What do the network sizes mean? (`128x2`, `512x4`, etc.)
+                </h4>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  These notations describe the <strong>memory size & capacity</strong> of the neural network:
+                  <br /><br />
+                  • <strong>Hidden Units (128, 256, 512)</strong>: The number of "neurons" in the network. Higher numbers mean a larger brain capacity.<br />
+                  • <strong>Layers (2 or 4)</strong>: The depth of pattern recognition. More layers mean deeper pattern extraction.<br />
+                  • For example: <strong>`128x2`</strong> is a small, lightweight student network, while <strong>`512x4`</strong> is a heavy teacher model.
+                </p>
+              </div>
+
+              {/* Card 3: Comparing the models */}
+              <div className="bg-card/40 p-4 rounded-xl border border-border/50 space-y-2">
+                <h4 className="font-bold text-white text-base mb-1 flex items-center gap-2">
+                  3. Comparing the Model Lines (Why is our model better?)
+                </h4>
+                <div className="space-y-2 text-xs">
+                  <div className="flex items-start gap-2 bg-blue-500/10 p-2.5 rounded-lg border border-blue-500/20">
+                    <span className="text-blue-400 font-bold min-w-28">🔴 Base Paper Baseline:</span>
+                    <span>Standard Bi-LSTM network. Shows <strong>high error (~0.07) with noisy spikes</strong> because standard recurrent networks struggle with sudden workload spikes.</span>
+                  </div>
+                  <div className="flex items-start gap-2 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20">
+                    <span className="text-amber-400 font-bold min-w-28">🟡 Base Paper Filter-KD:</span>
+                    <span>Distilled student network learning from a heavy teacher. Reduces error (~0.063) by filtering out wrong teacher predictions.</span>
+                  </div>
+                  <div className="flex items-start gap-2 bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
+                    <span className="text-emerald-400 font-bold min-w-28 flex items-center gap-1"><Zap size={13} /> Our Improved Model:</span>
+                    <span><strong>TCN + Temporal Attention Ensemble</strong>. Achieves the <strong>lowest error (~0.038) and superior stability</strong> because causal dilated convolutions retain long-term memory without losing spike information!</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: How to use interactive toggles */}
+              <div className="bg-card/40 p-4 rounded-xl border border-border/50">
+                <h4 className="font-bold text-white text-base mb-1 flex items-center gap-2">
+                  <Sliders size={16} className="text-primary" /> 4. How to use the Interactive Toggles
+                </h4>
+                <p className="text-gray-300 leading-relaxed text-xs">
+                  Use the <strong>Line Toggle buttons at the top right</strong> of the chart to turn any model line ON or OFF. This lets you isolate the Base Paper lines to analyze them individually, or turn ON Our Improved Model to view direct side-by-side performance improvements!
+                </p>
+              </div>
+
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end border-t border-border/60 pt-4">
+              <button
+                onClick={() => setShowGuideModal(false)}
+                className="bg-primary hover:bg-primary/80 text-white font-medium px-6 py-2 rounded-lg text-xs shadow-md transition-all flex items-center gap-2"
+              >
+                <CheckCircle2 size={16} /> Got it, Return to Graphs
+              </button>
+            </div>
+
           </div>
         </div>
       )}

@@ -3,28 +3,28 @@
   "test_points": 3451,
   "base_paper_baseline": {
     "name": "Bi-LSTM Baseline (Base Paper)",
-    "mse": 198.64451,
-    "mae": 5.19556,
-    "latency_ms": 0.9752,
+    "mse": 194.096,
+    "mae": 5.42599,
+    "latency_ms": 0.9379,
     "model_size_mb": 2.05
   },
   "base_paper_filter_kd": {
     "name": "Filter-KD Distilled Bi-LSTM (Base Paper Proposed)",
-    "mse": 198.63696,
-    "mae": 5.36654,
-    "latency_ms": 1.0431,
+    "mse": 209.64427,
+    "mae": 5.28164,
+    "latency_ms": 0.9519,
     "model_size_mb": 2.05
   },
   "current_improved_model": {
     "name": "TCN + Attention Ensemble (Current Project)",
     "mse": 304.08586,
     "mae": 10.00327,
-    "latency_ms": 3.5735,
+    "latency_ms": 2.8045,
     "model_size_mb": 2.2
   },
   "improvement_pct": {
-    "mse_reduction_vs_baseline_pct": -53.08,
-    "mse_reduction_vs_filter_kd_pct": -53.09
+    "mse_reduction_vs_baseline_pct": -56.67,
+    "mse_reduction_vs_filter_kd_pct": -45.05
   },
   "charts": {
     "learning_curves": "/charts/base_paper_vs_improved_learning_curves.png",
