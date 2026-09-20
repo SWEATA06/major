@@ -63,9 +63,11 @@ This project implements a **proactive, hybrid AI-driven decision framework**:
 
 - **Proactive Scaling**: Predict workload trends 1 step ahead using time-series deep learning rather than reacting after thresholds are breached.
 - **Reliability & Risk Reduction**: Predict imminent system failure risks using XGBoost classification and override cost caps during emergency SLA threats.
-- **Cost Optimization**: Constrain scaling actions when remaining daily budgets are low, minimizing compute spend without compromising stability.
+- **Cost Optimization**: Use target-tracking and budget awareness to size the fleet, minimizing compute spend without compromising stability.
+- **Carbon & Energy Optimization**: Model per-instance energy and time-varying grid carbon intensity, and shift/trim compute towards cleaner grid periods — reducing the carbon footprint of the same workload without ever sacrificing an SLA.
 - **Uncertainty & Drift Awareness**: Hold scaling decisions when model uncertainty is high and alert operators when predictive drift occurs.
-- **Interactive Simulation**: Provide a web-based dashboard allowing operators to step through simulation intervals, trigger background model re-training, and inspect live performance.
+- **Quantified Comparison**: Evaluate the proactive, carbon-aware scaler against a conventional reactive baseline on real telemetry and report cost, energy, carbon, and SLA outcomes for each.
+- **Interactive Simulation**: Provide a web-based dashboard allowing operators to step through simulation intervals, trigger background model re-training, and inspect live performance and sustainability metrics.
 
 ---
 
@@ -75,20 +77,25 @@ This project implements a **proactive, hybrid AI-driven decision framework**:
 - **Workload Forecasting (TCN + Attention)**: 5-model deep learning ensemble predicting future CPU usage and request rates.
 - **Uncertainty Estimation**: Multi-model ensemble variance (standard deviation) used as a confidence gate.
 - **Failure Risk Classification**: XGBoost classifier predicting future failure probability with imbalance weighting (`scale_pos_weight`).
-- **Hybrid Decision Engine**: Multi-tiered decision logic evaluating SLA limits, failure risk, budget limits, peak hours, and model uncertainty.
-- **Discrete Cloud Simulator**: State machine tracking instance count, calculating load-adjusted CPU usage ($\text{actual\_cpu} \times \frac{5}{\text{instances}}$), SLA violations (>95% load), load-adjusted latency, and step cost.
-- **Rolling MAE Drift Detector**: Rolling window monitor (size=50) flagging prediction drift when MAE exceeds threshold.
+- **Carbon-Aware & Energy-Aware Decision Engine**: Multi-tiered decision logic evaluating SLA limits, failure risk, budget, peak hours, model uncertainty, and — as the distinguishing contribution — grid carbon intensity. Uses target-tracking to size the fleet, defers non-urgent scale-ups and trims idle capacity harder when the grid is "dirty", and never trades an SLA breach for cost or carbon savings. Capped by a configurable `max_instances`.
+- **Energy & Carbon Model** (`backend/src/energy.py`): Per-instance power scales with load (idle floor `P_idle`=100W to peak `P_max`=250W), multiplied by a Power Usage Effectiveness (PUE) factor. Carbon emitted = energy × grid carbon intensity, where intensity follows a realistic 24-hour curve (clean midday, dirty evening peak).
+- **Reactive vs Proactive Comparison Mode** (`backend/src/reactive_scaler.py`): A conventional threshold-based reactive baseline is run over the same workload as the proactive engine, and both are scored on cost, energy, carbon, and SLA violations for a direct, quantified comparison.
+- **Real MIT Supercloud Dataset Pipeline** (`backend/src/process_mit_supercloud.py`): Processes real HPC cluster telemetry (CPU utilisation, memory, disk I/O) from the MIT Supercloud dataset into the model-ready 14-column schema.
+- **Discrete Cloud Simulator**: State machine tracking instance count, calculating load-adjusted CPU usage ($\text{actual\_cpu} \times \frac{5}{\text{instances}}$), SLA violations (>95% load), load-adjusted latency, step cost, and per-interval energy and carbon.
+- **Rolling MAE Drift Detector**: Rolling window monitor (size=50) flagging prediction drift when MAE exceeds threshold; surfaced live via the status endpoint.
 - **Mock AI Fallback Mode**: Graceful fallback mode executing synthetic metrics generation if TensorFlow or AVX hardware instructions are unavailable.
-- **SQLite Historical Persistence**: Persistence of all simulation intervals in an SQLite database (`autoscaling.db`).
-- **Interactive React Dashboard**: Single-page dashboard built with React, Vite, Recharts, and Tailwind CSS featuring KPI cards, static CSV visualization, and live prediction charts.
+- **SQLite Historical Persistence**: Persistence of all simulation intervals (including energy/carbon columns) in an SQLite database (`autoscaling.db`), with an idempotent startup migration that adds new columns to existing databases.
+- **Interactive React Dashboard**: Single-page dashboard built with React, Vite, Recharts, and Tailwind CSS featuring operational KPI cards, a row of sustainability indicators (total energy, total carbon, grid carbon intensity), a carbon-intensity-over-time chart, static CSV visualization, and live prediction charts.
 - **Background Model Re-Training**: Asynchronous model training execution via FastAPI `BackgroundTasks`.
 
 ### Partially Implemented Features
 - **Static Chart Data Download**: The dashboard provides CSV download links for static chart data (`/static_chart_data.csv`), but Excel `.xlsx` direct export is served as a static link asset.
 
 ### Planned Features (Not Implemented in Codebase)
+- Ensemble distillation: compress the 5-model TCN ensemble into a single lightweight student model (knowledge distillation) for faster inference.
+- Live grid carbon-intensity feed (e.g. ElectricityMaps / WattTime) in place of the modelled daily curve.
+- Learned scaling policy (reinforcement learning) optimising a combined cost + carbon + SLA objective.
 - Real-time cloud API integration with AWS Auto Scaling Groups or GCP Managed Instance Groups (*not specified in repository*).
-- Kubernetes HPA custom metrics exporter (*not specified in repository*).
 - Authentication and multi-tenant user isolation (*not specified in repository*).
 
 ---
@@ -372,22 +379,19 @@ Because Python modules import from `backend.database`, `backend.src`, etc., Pyth
 ## 10. Data Pipeline & Machine Learning
 
 ### Data Pipeline Architecture
-1. **Raw Metric Ingestion**: Reads CPU, memory, disk I/O, and network throughput metrics from `data/raw/*.csv` using `backend/src/merge_dataset.py`.
-2. **Data Cleaning**: Strips whitespace, removes duplicate timestamps, and drops null rows via `backend/src/clean_dataset.py`.
-3. **Feature Engineering**: `backend/src/build_final_dataset.py` constructs core features:
-   - `cpu_usage`: Derived from raw CPU metrics.
-   - `memory_usage`: Computed as $\frac{\text{Memory usage}}{\text{Memory capacity}} \times 100$.
-   - `disk_io` & `network_usage`: Combined read/write and received/transmitted throughput.
-   - `request_rate` & `queue_length`: Synthesized operational workload metrics.
-   - `latency` & `error_rate`: Latency derived from disk I/O, queue length, and CPU usage.
-   - Time features: `hour_of_day`, `day_of_week`, `minute_bucket`.
+The primary dataset is the **MIT Supercloud** HPC cluster telemetry (real per-node CPU traces).
+1. **Raw Ingestion & Mapping**: `backend/src/process_mit_supercloud.py` reads the per-node `*-timeseries.csv` files under `data/data/raw/mit_supercloud/cpu/`, orders them chronologically by epoch time, and maps real signals to features: `CPUUtilization → cpu_usage`, `RSS/VMSize → memory_usage`, `ReadMB + WriteMB → disk_io`.
+2. **Derived Operational Metrics**: `network_usage`, `request_rate`, `queue_length`, `latency`, and `error_rate` are derived from the physical signals; `hour_of_day`, `day_of_week`, `minute_bucket` come from the real epoch timestamp.
+3. **Failure Labelling**: `failure_label` is defined as a genuine compound overload event (sustained high CPU with high latency or elevated errors), tuned to a realistic (~17%) positive rate. Output is written to `data/final/final_dataset.csv` in the 14-column schema.
 4. **Target Shifting**: `backend/src/feature_engineering.py` shifts target columns to create supervised labels: `future_cpu_usage`, `future_request_rate`, and `future_failure`.
 5. **Sliding Windows**: Constructs sequence arrays $X \in \mathbb{R}^{N \times 12 \times 11}$ with sequence length $T=12$.
 
+> A synthetic generator (`backend/src/generate_ready_dataset.py`) is also provided so the app can run on a fresh checkout without the raw MIT data.
+
 ### Machine Learning Models
-- **Workload Predictor**: 5 Keras models trained with EarlyStopping. Architecture consists of a `TCN` layer (`nb_filters=64`, `kernel_size=3`, dilations `[1, 2, 4, 8, 16]`), followed by a custom `AttentionLayer` and a linear output layer predicting `future_cpu_usage` and `future_request_rate`.
+- **Workload Predictor**: 5 Keras models trained with EarlyStopping. Architecture consists of a `TCN` layer (`nb_filters=64`, `kernel_size=3`, dilations `[1, 2, 4, 8, 16]`), followed by a custom `AttentionLayer` and a linear output layer predicting `future_cpu_usage` and `future_request_rate`. **Models are persisted as weights (`workload_tcn_model_{i}.weights.h5`) and the architecture is rebuilt at load time**, because keras-tcn's `TCN`/`ResidualBlock` does not round-trip through full-model serialization on Keras 3. Feature and target `MinMaxScaler`s are saved and applied consistently at train and inference time.
 - **Uncertainty Estimator**: Evaluates median prediction and standard deviation across the 5 models.
-- **Failure Predictor**: XGBoost classifier trained on non-shuffled time-series split (`train_test_split(..., shuffle=False)`) with `scale_pos_weight` to address class imbalance.
+- **Failure Predictor**: XGBoost classifier trained on a non-shuffled time-series split (`train_test_split(..., shuffle=False)`) with `scale_pos_weight` to address class imbalance. On the MIT dataset: Accuracy ≈ 0.69, Recall ≈ 0.62, ROC-AUC ≈ 0.72.
 
 ---
 
@@ -402,6 +406,8 @@ The FastAPI backend exposes the following REST API endpoints at `http://127.0.0.
 | `/api/metrics/current` | `GET` | Fetch the latest metric record from database | None | `MetricOut` JSON object |
 | `/api/timeline` | `GET` | Fetch historical metric records for dashboard charts | Query param: `limit` (default 100) | Array of `MetricOut` objects |
 | `/api/predictions/latest` | `GET` | Fetch latest prediction output for live charts | None | `{"actual": float, "predicted": float, "timestamp": int}` |
+| `/api/energy/summary` | `GET` | Aggregated energy/carbon totals across all simulation steps | None | `{"total_energy_kwh": float, "total_carbon_g": float, "total_carbon_kg": float, "avg_carbon_intensity": float, "total_cost": float, "steps": int}` |
+| `/api/comparison/scalers` | `GET` | Run reactive baseline vs proactive engine over the same workload and return comparative metrics | Query param: `steps` (default 200) | `{"steps": int, "reactive": {...}, "proactive": {...}, "improvements": {...}}` |
 | `/api/model/train` | `POST` | Trigger background execution of model training pipeline | None | `{"status": str, "message": str}` |
 
 ### MetricOut Schema Example
@@ -417,6 +423,9 @@ The FastAPI backend exposes the following REST API endpoints at `http://127.0.0.
   "action": "scale_up",
   "latency": 45.2,
   "cost": 0.60,
+  "energy_kwh": 0.188,
+  "carbon_g": 47.08,
+  "carbon_intensity": 250.0,
   "drift_detected": false
 }
 ```
